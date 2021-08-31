@@ -44,3 +44,28 @@ plot(cum_probability,
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Module 1
+
+Read Stock and Watson textbook (S&W) Chapter 1
+
+### Operators
+```{r}
+mass <- 47.5
+age <- 122
+mass <- mass * 2.0
+age <- age - 20
+mass_index <- mass/age
+
+sqrt(49)
+round(mass_index)
+```
+
+### Downloading Data
+
+```{r}
+caschool <- 
+read.csv(file='data/caSchool.csv')
+is.data.frame(caschool)
+```
+
