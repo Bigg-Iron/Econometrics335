@@ -3,6 +3,7 @@
 .Rapp.history
 
 # Session Data files
+workspace.RData
 .RData
 
 # User-specific files
@@ -49,3 +50,6 @@ renv/
 
 # Local History for Visual Studio Code
 .history/
+
+# Mac
+.DS_Store

@@ -61,9 +61,6 @@ age <- 122
 mass <- mass * 2.0
 age <- age - 20
 mass_index <- mass/age
-
-sqrt(49)
-round(mass_index)
 ```
 
 ### Downloading Data
@@ -88,7 +85,9 @@ Chapter 2 is a review of probability theory and application, materials which you
 2. Calculate unconditional and conditional expected values, variances, and standard deviations of random variables.
 3. Understand, interpret and apply each of the Appendix Tables in the course textbook (cumulative standard normal, Student t, Chi-squared, and F distributions).  (Note that you started the review of this last week.)
 
+
 ```{r}
 
-```
 
+
+```

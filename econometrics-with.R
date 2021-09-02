@@ -1,5 +1,8 @@
 # Read in CA School data as CSV
-surveys <- read.csv('data/caSchool.csv')
+surveys <- read.csv('Data/caSchool.csv')
+
+readRdf <- read_csv('Data/caSchool.csv')
+spec(readrDF)
 
 # Library help stats
 library(help = 'stats')
@@ -36,3 +39,40 @@ mean(z)
 # The set of elements from which sample() draws outcomes does not have to consist of numbers only. We might as well simulate coin tossing with outcomes  
 # H (heads) and T (tails)
 coin_toss <- sample(c("H", "T"), 1) 
+
+# Basics
+1 + 1 
+
+# create variable that is equal to 5:
+x <- 5
+y <- 10
+
+z <- x + y
+
+w <- c(1,2,3,4,5,6,7,8,9) # vector
+mean(w)
+median(w)
+sum(w)
+
+# Some Visualizations
+rolldie <- sample(1:6,1)
+
+# Generate vectors
+probability <- rep(1/6)
+
+install.packages("tidyverse")
+library("tidyverse")
+
+head(surveys)
+str(surveys)
+names(surveys)
+
+mean_tscore <- summarise(surveys)
+
+# plot the chi_12^2 Distribution
+curve(dchisq(x, df=12),
+  from = 0,
+  to = 40,
+  ylab = "density",
+  xlab = "hourly earnings in Euro")
+  
