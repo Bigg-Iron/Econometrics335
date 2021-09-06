@@ -1,6 +1,9 @@
 # Read in CA School data as CSV
 surveys <- read.csv('Data/caSchool.csv')
 
+# Construct path to file in an independent way
+# path <- file.path("~", "Documents", fsep = .Platform)
+
 readRdf <- read_csv('Data/caSchool.csv')
 spec(readrDF)
 
@@ -76,3 +79,5 @@ curve(dchisq(x, df=12),
   ylab = "density",
   xlab = "hourly earnings in Euro")
   
+# set up vector of possible outcomes
+k <- 0:10
