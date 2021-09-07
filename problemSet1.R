@@ -2,8 +2,9 @@
 library(tidyverse)
 
 # Load in data
-df <- read_csv('Data/rural_atlas_merged.csv')
-# Inspect data 
+df <- read_csv("Data/rural_atlas_merged.csv")
+
+# Inspect data
 print(spec(df))
 View(df)
 head(df)
@@ -20,8 +21,8 @@ df1 <- drop_na(df)
 summary(df1)
 
 # Compute mean for PerCapitaInc
-meanPerCapitaInc <- summarize(df1, mean(PerCapitaInc))
-print(meanPerCapitaInc)
+mean_per_capita_inc <- summarize(df1, mean(PerCapitaInc))
+print(mean_per_capita_inc)
 
 # 4.
 #   a)
