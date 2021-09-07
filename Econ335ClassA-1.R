@@ -7,7 +7,7 @@ x <- 5
 
 y <- 10
 
-# Variables are assigned using “<-”, although “=” alsoworks.
+# Variables are assigned using “<-”, although “=” also works.
 
 x + y
 
@@ -82,4 +82,7 @@ summarize(caschool1, mean_tscore = mean(testscr), sd_tscore = sd(testscr), sk_ts
 
 # ggplot2 is a data visualization package of R that provides a general scheme for data visualization.
 ggplot(data = caschool1) +
-     geom_point(mapping = aes(x = str, y = testscr), color = "green")
+     geom_point(mapping = aes(x = str, y = testscr), color = "black")
+
+# Restricting the sample...
+small_class <- subset(caschool1, str < 20)

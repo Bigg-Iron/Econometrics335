@@ -84,3 +84,6 @@ Chapter 2 is a review of probability theory and application, materials which you
 1. Discuss, understand, and apply differences between probability distribution and density functions and cumulative distribution functions.
 2. Calculate unconditional and conditional expected values, variances, and standard deviations of random variables.
 3. Understand, interpret and apply each of the Appendix Tables in the course textbook (cumulative standard normal, Student t, Chi-squared, and F distributions).  (Note that you started the review of this last week.)
+
+## Review of Statistical Theory
+
