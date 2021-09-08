@@ -1,12 +1,12 @@
 # Load packages
 library(tidyverse)
 library(dplyr)
+library(moments)
 
 # Load in data
 df <- read_csv("Data/rural_atlas_merged.csv")
 
 # Inspect data
-print(spec(df))
 View(df)
 head(df)
 str(df)
@@ -18,19 +18,28 @@ names(df)
 summary(df)
 
 # Drop N/A values to compute statistics
-df <- drop_na(df)
-summary(df)
+my_data <- drop_na(df)
+summary(my_data)
 
 my_data <- as_tibble(df)
 
-per_capita_income <- summarise(my_data, avg = mean(PerCapitaInc))
-
+# Summarize data
 sample_stats <- summarise(my_data, across(everything(), list(mean)))
+
 
 # 4.
 #   a)
-#     i) Sample mean
-#     ii) Sample Standard Deviation
-#     iii) Sample skewness
-#     iv) Sample kurtosis and (v)
+#     i) Sample mean PerCapitaInc
+sample_mean_PerCapitaInc <- summarise(my_data, mean = mean(PerCapitaInc))
+
+#     ii) Sample Standard Deviation PerCapitaInc
+sample_standard_deviation <- summarise(my_data, s = mean(PerCapitaInc))
+
+#     iii) Sample skewness PerCapitaInc (package: moments)
+
+
+#     iv) Sample kurtosis and (v) PerCapitaInc (package: moments)
+
+
 #     v) Sample size for per capita income (variable name is "PerCapitaInc")
+
