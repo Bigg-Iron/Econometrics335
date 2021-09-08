@@ -1,3 +1,3 @@
 # Econometrics335
 
-Introduction to Econometrics
+Introduction to Econometrics using R
