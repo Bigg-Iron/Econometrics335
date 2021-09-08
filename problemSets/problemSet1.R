@@ -17,31 +17,27 @@ names(df)
 # Summary
 summary(df)
 
-# Drop N/A values to compute statistics
-my_data <- drop_na(df)
-summary(my_data)
-
-# Summarize PerCapitaInc for sample statistics
+# Summarize PerCapitaInc for sample statistics for entire df
 summarize(df, mean=mean(PerCapitaInc), sd=sd(PerCapitaInc), skewness=skewness(PerCapitaInc), kurtosis=kurtosis(PerCapitaInc), n())
 
 
 # 4.
 #   a)
 #     i) Sample mean PerCapitaInc
-mean(df$PerCapitaInc, na.rm=TRUE)
+sample_mean_PerCapitalInc <- mean(df$PerCapitaInc, na.rm=TRUE)
 
 #     ii) Sample Standard Deviation PerCapitaInc
-sd(df$PerCapitaInc, na.rm=TRUE)
+sample_standard_deviation_PerCapitalInc <-sd(df$PerCapitaInc, na.rm=TRUE)
 
 #     iii) Sample skewness PerCapitaInc (package: moments)
-skewness(df$PerCapitaInc, na.rm=TRUE)
+sample_skewness_PerCapitaInc <- skewness(df$PerCapitaInc, na.rm=TRUE)
 
 #     iv) Sample kurtosis and (v) PerCapitaInc (package: moments)
-kurtosis(df$PerCapitaInc, na.rm=TRUE)
+sample_kurtosis_PerCapitaInc <- kurtosis(df$PerCapitaInc, na.rm=TRUE)
 
 #     v) Sample size for per capita income (variable name is "PerCapitaInc")
-sample_size <- summarize(df, n())
-sample_size
+sample_size_PerCapitaInc <- summarize(df, n())
+
 
 # Min
 min(df$PerCapitaInc, na.rm=TRUE)
