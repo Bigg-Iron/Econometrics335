@@ -20,10 +20,6 @@ summary(df)
 df1 <- drop_na(df)
 summary(df1)
 
-# Compute mean for PerCapitaInc
-mean_per_capita_inc <- summarize(df1, mean(PerCapitaInc))
-print(mean_per_capita_inc)
-
 # 4.
 #   a)
 #     i) Sample mean

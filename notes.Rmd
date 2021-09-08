@@ -68,7 +68,8 @@ mass_index <- mass / age
 ```{r}
 caschool <-
      read.csv(file = "data/caSchool.csv")
-is.data.frame(caschool)
+# is.data.frame(caschool)
+# View(caschool)
 ```
         
 ## Module 2 Overview and Objectives
@@ -85,5 +86,12 @@ Chapter 2 is a review of probability theory and application, materials which you
 2. Calculate unconditional and conditional expected values, variances, and standard deviations of random variables.
 3. Understand, interpret and apply each of the Appendix Tables in the course textbook (cumulative standard normal, Student t, Chi-squared, and F distributions).  (Note that you started the review of this last week.)
 
-## Review of Statistical Theory
+## Math inside R Markdown
 
+#### Mean = $$\bar{X} = \frac{\sum_{i=1}^{n} x_{i}}{n}$$
+
+#### Variance = $$s^{2} = \frac{SS}{N - 1} = \frac{\sum (x_{i} - \bar{x})^{2}}{N - 1}$$
+
+#### Standard Deviation = $$s = \sqrt{s^{2}} = \sqrt{\frac{SS}{N - 1}} = \sqrt{\frac{\sum (x_{i} - \bar{x})^{2}}{N - 1}}$$
+
+#### Standard Error of the Mean = $$\sigma_{\bar{X}} = \frac{s}{\sqrt{N}}$$
