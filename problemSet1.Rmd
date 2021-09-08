@@ -1,0 +1,71 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Install packages
+```{r}
+install.packages("tidyverse")
+install.packages("dplyr")
+install.packages("moments")
+```
+
+Load packages
+```{r}
+library(tidyverse)
+library(dplyr)
+library(moments)
+```
+
+Load data
+```{r}
+df <- read_csv("Data/rural_atlas_merged.csv")
+```
+
+Inspect data
+```{r}
+View(df)
+head(df)
+str(df)
+nrow(df)
+ncol(df)
+names(df)
+```
+
+
+
+```{r}
+# i) Sample mean for PerCapitaInc:
+print(sample_mean_PerCapitaInc <- mean(df$PerCapitaInc, na.rm = TRUE))
+```
+
+```{r}
+# ii) Sample Standard Deviation PerCapitaInc:
+print(sample_standard_deviation_PerCapitalInc <- sd(df$PerCapitaInc, na.rm = TRUE))
+```
+     
+
+```{r}
+# iii) Sample skewness PerCapitaInc (package: moments):
+print(sample_skewness_PerCapitaInc <- skewness(df$PerCapitaInc, na.rm = TRUE))
+```
+
+```{r}
+# iv) Sample kurtosis and (v) PerCapitaInc (package: moments):
+print(sample_kurtosis_PerCapitaInc <- kurtosis(df$PerCapitaInc, na.rm = TRUE))
+```
+
+```{r}
+# v) Sample size for per capita income (variable name is "PerCapitaInc"):
+print(n <- sample_size_PerCapitaInc <- summarize(df, n()))
+```
+     
+
+```{r}
+# Min:
+print(min <- min(df$PerCapitaInc, na.rm = TRUE))
+# Max:
+print(max <- max(df$PerCapitaInc, na.rm = TRUE))
+```
+
+Indicate in your answer whether the per capita income distribution has a longer right tail or a longer left tail (and how you know). Also indicate whether the tails of the distribution would be considered statistically “heavy” or not (and how you know).
