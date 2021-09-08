@@ -41,6 +41,7 @@ kurtosis(df$PerCapitaInc, na.rm=TRUE)
 
 #     v) Sample size for per capita income (variable name is "PerCapitaInc")
 sample_size <- summarize(df, n())
+sample_size
 
 # Min
 min(df$PerCapitaInc, na.rm=TRUE)

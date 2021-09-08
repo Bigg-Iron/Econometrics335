@@ -65,7 +65,7 @@ max(caschool1$testscr, na.rm=TRUE)
 ggplot(data = caschool1) +  
   geom_point(mapping = aes(x = str, y = testscr), color="black")
   
-#Restricting the sample...Subsetting is a very important component of data management and there are several ways that one can subset data in R.
+#Restricting the sample...Sub-setting is a very important component of data management and there are several ways that one can subset data in R.
 small_class<-subset(caschool1, str<20)
 summarize(small_class, mean_tscore=mean(testscr), sd_tscore=sd(testscr), sk_tscore=skewness(testscr), k_tscore=kurtosis(testscr), n())
 
