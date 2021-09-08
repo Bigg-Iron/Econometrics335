@@ -5,6 +5,7 @@
 # Session Data files
 workspace.RData
 .RData
+Data/
 
 # User-specific files
 .Ruserdata
