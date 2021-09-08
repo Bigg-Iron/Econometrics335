@@ -1,5 +1,6 @@
 # Load packages
 library(tidyverse)
+library(dplyr)
 
 # Load in data
 df <- read_csv("Data/rural_atlas_merged.csv")
@@ -17,8 +18,14 @@ names(df)
 summary(df)
 
 # Drop N/A values to compute statistics
-df1 <- drop_na(df)
-summary(df1)
+df <- drop_na(df)
+summary(df)
+
+my_data <- as_tibble(df)
+
+per_capita_income <- summarise(my_data, avg = mean(PerCapitaInc))
+
+sample_stats <- summarise(my_data, across(everything(), list(mean)))
 
 # 4.
 #   a)
