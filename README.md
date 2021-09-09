@@ -8,6 +8,6 @@
    Econometrics
 <h1/>
 
-<h2 align="center">
+<p align="center">
 Introduction to Econometrics using R.
-</h2>
+</p>
