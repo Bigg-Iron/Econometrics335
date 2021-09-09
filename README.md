@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://swc.rs/">
+  <a href="https://bigg-iron.github.io/Econometrics335/">
     <img alt="gh_flow" src="images/gh_flow.png">
   </a>
 </p>
