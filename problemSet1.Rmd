@@ -12,6 +12,7 @@ Install packages
 install.packages("tidyverse")
 install.packages("dplyr")
 install.packages("moments")
+install.packages("ggplot2")
 ```
 
 Load packages
@@ -19,6 +20,7 @@ Load packages
 library(tidyverse)
 library(dplyr)
 library(moments)
+library(ggplot2)
 ```
 
 Load data
@@ -70,5 +72,17 @@ print(min <- min(df$PerCapitaInc, na.rm = TRUE))
 # Max:
 print(max <- max(df$PerCapitaInc, na.rm = TRUE))
 ```
+
+
+### Per Capita Income
+
+Density
+```{r}
+#ggplot2 is a data visualization package of R that provides a general scheme for data visualization.
+ggplot(data = df) +  
+  geom_density(mapping = aes(x = (df$PerCapitaInc)))
+ 
+```
+
 
 Indicate in your answer whether the per capita income distribution has a longer right tail or a longer left tail (and how you know). Also indicate whether the tails of the distribution would be considered statistically “heavy” or not (and how you know).
