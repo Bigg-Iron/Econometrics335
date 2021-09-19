@@ -13,8 +13,6 @@ install.packages("tidyverse")
 install.packages("dplyr")
 install.packages("moments")
 install.packages("ggplot2")
-install.packages("esquisse")
-
 ```
 
 Load packages
@@ -23,12 +21,11 @@ library(tidyverse)
 library(dplyr)
 library(moments)
 library(ggplot2)
-library(esquisse)
 ```
 
 Load data
 ```{r}
-df <- read_csv("../Data/rural_atlas_merged.csv")
+df <- read_csv("Data/rural_atlas_merged.csv")
 ```
 
 Inspect data
@@ -46,6 +43,7 @@ names(df)
 # i) Sample mean for PerCapitaInc:
 print(sample_mean_PerCapitaInc <- mean(df$PerCapitaInc, na.rm = TRUE))
 ```
+
 
 ```{r}
 # ii) Sample Standard Deviation PerCapitaInc:
@@ -86,65 +84,3 @@ ggplot(data = df) +
   geom_density(mapping = aes(x = (df$PerCapitaInc)))
  
 ```
-
-### 4e. Metro2013 
-
-Scatter Plot
-```{r}
-#ggplot2 is a data visualization package of R that provides a general scheme for data visualization.
-ggplot(data = df) +  
-  geom_point(mapping = aes(x = PerCapitaInc, y = Metro2013), alpha=0.1, color="black") 
-
-```
-
-
-```{r}
-#Restricting the sample...Sub-setting is a very important component of data management and there are several ways that one can subset data in R.
-subset_of_data <- subset(df, Metro2013 == 1)
-```
-
-
-
-```{r}
-# Mean
-# i.
-print(sample_mean_subset_PerCapInc <- mean(subset_of_data$PerCapitaInc, na.rm = TRUE))
-
-# Mean
-# i.
-print(sample_mean_subset_UnempRate2013 <- mean(subset_of_data$UnempRate2013, na.rm = TRUE))
-
-```
-
-
-
-```{r}
-# sd for PerCapitaInc
-# ii.
-print(SD_subset_Metro2013 <- sd(subset_of_data$PerCapitaInc, na.rm = TRUE))
-
-# sd for UnEmpRate2013
-# ii.
-print(SD_UnempRate2013_subset_Metro2013 <- sd(subset_of_data$UnempRate2013, na.rm = TRUE))
-
-```
-
-
-```{r}
-# sample size for UnEmpRate2013 n = 1236
-print(n <- PerCapitaInc <- summarize(subset_of_data, n()))
-
-# sample size for PerCapitaInc
-# print(n <- sample_size_PerCapitaInc <- summarize(subset_of_data, n()))
-
-```
-
-
-
-
-```{r}
-# g.)
-NonMetro_subset_of_data <- subset(df, Metro2013 == 0)
-
-```
-
