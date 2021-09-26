@@ -45,3 +45,4 @@ min(df$PerCapitaInc, na.rm=TRUE)
 max(df$PerCapitaInc, na.rm=TRUE)
 
 # Indicate in your answer whether the per capita income distribution has a longer right tail or a longer left tail (and how you know). Also indicate whether the tails of the distribution would be considered statistically “heavy” or not (and how you know).
+

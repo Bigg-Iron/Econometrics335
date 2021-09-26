@@ -1,0 +1,86 @@
+---
+title: "R Notebook"
+knit: (function(input_file, encoding) { out_dir <- 'docs'; rmarkdown::render(input_file,
+  encoding=encoding, output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+output:
+  html_document:
+    df_print: paged
+---
+
+Install packages
+```{r}
+install.packages("tidyverse")
+install.packages("dplyr")
+install.packages("moments")
+install.packages("ggplot2")
+```
+
+Load packages
+```{r}
+library(tidyverse)
+library(dplyr)
+library(moments)
+library(ggplot2)
+```
+
+Load data
+```{r}
+df <- read_csv("Data/rural_atlas_merged.csv")
+```
+
+Inspect data
+```{r}
+View(df)
+head(df)
+str(df)
+nrow(df)
+ncol(df)
+names(df)
+```
+
+
+```{r}
+# i) Sample mean for PerCapitaInc:
+print(sample_mean_PerCapitaInc <- mean(df$PerCapitaInc, na.rm = TRUE))
+```
+
+
+```{r}
+# ii) Sample Standard Deviation PerCapitaInc:
+print(sample_standard_deviation_PerCapitalInc <- sd(df$PerCapitaInc, na.rm = TRUE))
+```
+     
+
+```{r}
+# iii) Sample skewness PerCapitaInc (package: moments):
+print(sample_skewness_PerCapitaInc <- skewness(df$PerCapitaInc, na.rm = TRUE))
+```
+
+```{r}
+# iv) Sample kurtosis and (v) PerCapitaInc (package: moments):
+print(sample_kurtosis_PerCapitaInc <- kurtosis(df$PerCapitaInc, na.rm = TRUE))
+```
+
+```{r}
+# v) Sample size for per capita income (variable name is "PerCapitaInc"):
+print(n <- sample_size_PerCapitaInc <- summarize(df, n()))
+```
+     
+
+```{r}
+# Min:
+print(min <- min(df$PerCapitaInc, na.rm = TRUE))
+# Max:
+print(max <- max(df$PerCapitaInc, na.rm = TRUE))
+```
+
+
+### Per Capita Income
+
+Density
+```{r}
+#ggplot2 is a data visualization package of R that provides a general scheme for data visualization.
+ggplot(data = df) +  
+  geom_density(mapping = aes(x = (df$PerCapitaInc)))
+ 
+```

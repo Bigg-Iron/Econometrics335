@@ -45,15 +45,6 @@ plot(cum_probability,
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-## Module 1
-
-1. Discuss the features of a randomized controlled experiment including treatment vs. control groups.
-2. Identify the 3 main types of observational data (cross-sectional, time series, and panel/longitudinal), and why each of these is not the same thing as a randomized controlled experiment. 
-3. Explain what types of economic questions that we can answer with real-world observational data and give examples of these types of questions. 
-4. Get a jump start on Chapter 2 by reviewing how to use and interpret the statistical tables in the back of the textbook.
-
-Read Stock and Watson textbook (S&W) Chapter 1
-
 ### Operators
 ```{r}
 mass <- 47.5
@@ -63,28 +54,6 @@ age <- age - 20
 mass_index <- mass / age
 ```
 
-### Downloading Data
-
-```{r}
-caschool <-
-     read.csv(file = "data/caSchool.csv")
-# is.data.frame(caschool)
-# View(caschool)
-```
-        
-## Module 2 Overview and Objectives
-
-### Overview
-
-Read Chapter 2.
-
-Chapter 2 is a review of probability theory and application, materials which you should have studied in the past as background to your Statistics prerequisite for this course. Depending on how long ago you studied probability and statistics, however, you may need to spend more or less time studying this chapter. Please be honest with yourself about your particular background when making the judgement call as to how much to study and review here. These materials provide basis for what we will be doing in the major part of this course.
-
-### Module Objectives
-
-1. Discuss, understand, and apply differences between probability distribution and density functions and cumulative distribution functions.
-2. Calculate unconditional and conditional expected values, variances, and standard deviations of random variables.
-3. Understand, interpret and apply each of the Appendix Tables in the course textbook (cumulative standard normal, Student t, Chi-squared, and F distributions).  (Note that you started the review of this last week.)
 
 ## Math inside R Markdown
 
@@ -95,3 +64,4 @@ Chapter 2 is a review of probability theory and application, materials which you
 #### Standard Deviation = $$s = \sqrt{s^{2}} = \sqrt{\frac{SS}{N - 1}} = \sqrt{\frac{\sum (x_{i} - \bar{x})^{2}}{N - 1}}$$
 
 #### Standard Error of the Mean = $$\sigma_{\bar{X}} = \frac{s}{\sqrt{N}}$$
+

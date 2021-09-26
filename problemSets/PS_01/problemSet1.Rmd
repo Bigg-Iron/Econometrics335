@@ -13,6 +13,8 @@ install.packages("tidyverse")
 install.packages("dplyr")
 install.packages("moments")
 install.packages("ggplot2")
+install.packages("esquisse")
+
 ```
 
 Load packages
@@ -21,6 +23,7 @@ library(tidyverse)
 library(dplyr)
 library(moments)
 library(ggplot2)
+library(esquisse)
 ```
 
 Load data
@@ -93,15 +96,6 @@ ggplot(data = df) +
   geom_point(mapping = aes(x = PerCapitaInc, y = Metro2013), alpha=0.1, color="black") 
 
 ```
-
-
-
-
-
-----------------------------------------------------------------
-
-
-
 
 
 ```{r}
