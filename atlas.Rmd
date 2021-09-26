@@ -32,8 +32,7 @@ df <- read_csv("Data/rural_atlas_merged.csv")
 ### Density Graph for Per Capita Income
 
 ```{r}
-#ggplot2 is a data visualization package of R that provides a general scheme for data visualization.
-ggplot(data = df) +  
+#ggplot2 is a data visualization package of R that provides a general scheme for data visualization. # nolint
+ggplot(data = df) +
   geom_density(mapping = aes(x = (df$PerCapitaInc)))
- 
 ```
