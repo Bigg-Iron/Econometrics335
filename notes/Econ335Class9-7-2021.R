@@ -59,7 +59,7 @@ max(caschool1$testscr, na.rm=TRUE)
 #95% CI for Miu(y)={ybar+/-1.96SE(ybar)}
 #99% CI for Miu(y)={ybar+/-2.58SE(ybar)}
 
-#654.1565+/-1.96(19.05335/sqrt(420))==>95%CI is (652.33,655.98)
+# 654.1565+/-1.96(19.05335/sqrt(420))==>95%CI is (652.33,655.98)
 
 #ggplot2 is a data visualization package of R that provides a general scheme for data visualization.
 ggplot(data = caschool1) +  

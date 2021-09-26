@@ -44,6 +44,7 @@ names(df)
 print(sample_mean_PerCapitaInc <- mean(df$PerCapitaInc, na.rm = TRUE))
 ```
 
+
 ```{r}
 # ii) Sample Standard Deviation PerCapitaInc:
 print(sample_standard_deviation_PerCapitalInc <- sd(df$PerCapitaInc, na.rm = TRUE))
@@ -83,6 +84,3 @@ ggplot(data = df) +
   geom_density(mapping = aes(x = (df$PerCapitaInc)))
  
 ```
-
-
-Indicate in your answer whether the per capita income distribution has a longer right tail or a longer left tail (and how you know). Also indicate whether the tails of the distribution would be considered statistically “heavy” or not (and how you know).
