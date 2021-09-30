@@ -22,3 +22,4 @@ summary(pq)
 # Plot the data
 plot(pq$q_cfs ~ pq$Date, type = 'l', ylab = 'River Flow (cfs)', 
      xlab = 'Date',col = 'blue3')
+
