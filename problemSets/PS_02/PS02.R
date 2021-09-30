@@ -1,20 +1,18 @@
-# Install packages
-install.packages("tidyverse")
-install.packages("dplyr")
-install.packages("moments")
-install.packages("lmtest")
-install.packages("sandwich")
+# Package names
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich")
 
-# Load packages
-library(tidyverse)
-library(dplyr)
-library(moments)
-library(lmtest)
-library(sandwich)
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
 
 # Load in data
 df <- read_csv("Data/rural_atlas_merged.csv")
-caschool1 <- read.csv("Data/caSchool.csv")
 
 head(df)
 summary(df)
