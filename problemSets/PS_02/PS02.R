@@ -1,5 +1,5 @@
 # List of packages you want to install -- separated with a comma and surrounded in "quotes" 
-packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr")
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2")
 
 # Installs packages
 installed_packages <- packages %in% rownames(installed.packages())
@@ -11,8 +11,11 @@ if (any(installed_packages == FALSE)) {
 invisible(lapply(packages, library, character.only = TRUE))
 
 
-# Load in data
-df <- read_csv("Data/rural_atlas_merged.csv")
+df <- read.csv(here("Data/rural_atlas_merged.csv"))
+
+
+save(rural_atlas, file = "rural_atlas.Rdata")
+load(file = "rural_atlas.Rdata")
 
 head(df)
 summary(df)
