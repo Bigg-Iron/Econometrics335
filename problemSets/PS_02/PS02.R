@@ -1,13 +1,13 @@
-# Package names
-packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich")
+# List of packages you want to install -- separated with a comma and surrounded in "quotes" 
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr")
 
-# Install packages not yet installed
+# Installs packages
 installed_packages <- packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
   install.packages(packages[!installed_packages])
 }
 
-# Packages loading
+# Loads packages
 invisible(lapply(packages, library, character.only = TRUE))
 
 
