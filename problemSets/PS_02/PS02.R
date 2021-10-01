@@ -10,18 +10,12 @@ if (any(installed_packages == FALSE)) {
 # Loads packages
 invisible(lapply(packages, library, character.only = TRUE))
 
+# save(rural_atlas, file = "rural_atlas.Rdata")
+# load(file = "rural_atlas.Rdata")
 
-df <- read.csv(here("Data/rural_atlas_merged.csv"))
-
-
-save(rural_atlas, file = "rural_atlas.Rdata")
-load(file = "rural_atlas.Rdata")
-
-head(df)
-summary(df)
-str(df)
-nrow(df)
-ncol(df)
+sink("summary")
+summary(rural_atlas_merged)
+sink()
 
 # Subset the df -- Metro 2013
 metro2013 <- subset(df, Metro2013 == 1)

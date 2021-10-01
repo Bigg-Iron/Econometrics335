@@ -22,12 +22,19 @@ library(knitr)
 
 ## EMPIRICAL /COMPUTER WORK
 
-4. [50 points (all questions here are worth 5points each except part (a) which is 10 points)] Important: As usual, your answer should include a printout (can cut and paste into a file. I will show you how to do this) of relevant calculations on the computer (R or other software output) AND a write up of final answers following the subparts of the question. The data again are the same as for Problem Set 1. Use these data to answer the following questions.
+4. [50 points (all questions here are worth 5points each except part (a) which is 10 points)] Important: As usual, your answer should include a printout (can cut and paste into a file. I will show you how to do this) of relevant calculations on the computer (R or other software output) AND a write up of final answers following the sub parts of the question. The data again are the same as for Problem Set 1. Use these data to answer the following questions.
+
+### Rural Atlas Dataset:
+```{r}
+head(rural_atlas_merged)
+
+```
 
 
 (a) Run a regression to determine the impact of the 2013 unemployment rate (UnempRate2013) on the per capita income (PerCapitaInc) in a county. What is the estimated slope? Explain what this number means in words in terms of the unemployment rate and in terms of per capita income. Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels. For this first pass, use homoskedastic standard errors.
 ```{r}
-head(df)
+model1 <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
+summary(model1)
 ```
 
 
