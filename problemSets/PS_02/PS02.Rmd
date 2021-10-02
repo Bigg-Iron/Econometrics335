@@ -26,7 +26,6 @@ rural_atlas_merged <- read.csv(here("Data/rural_atlas_merged.csv"))
 ```
 
 
-
 ## EMPIRICAL /COMPUTER WORK
 
 ### 4. [50 points (all questions here are worth 5points each except part (a) which is 10 points)] Important: As usual, your answer should include a printout (can cut and paste into a file. I will show you how to do this) of relevant calculations on the computer (R or other software output) AND a write up of final answers following the sub parts of the question. The data again are the same as for Problem Set 1. Use these data to answer the following questions.
@@ -39,21 +38,33 @@ str(rural_atlas_merged)
 
 ### (a) Run a regression to determine the impact of the 2013 unemployment rate (UnempRate2013) on the per capita income (PerCapitaInc) in a county. What is the estimated slope? Explain what this number means in words in terms of the unemployment rate and in terms of per capita income. Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels. For this first pass, use homoskedastic standard errors.
 ```{r}
-model1 <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
+names(rural_atlas_merged)
 
-summary(model1)
+modelA <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
+
+summary(modelA)
 
 ```
 
 
-(b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
+### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 ```{r}
+modelA <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
+
+summary(modelA)
+
+coeftest(modelA, vcov = vcovHC(modelA, type = "HC0"))
 
 ```
 
 
 (c) Run the same regression as in part (b) but now also include the additional regressors percentage of the population that is college-educated (Ed5CollegePlusPct), percentage of the population that is black (BlackNonHispanicPct2010), and percentage of the population that is Hispanic (HispanicPct2010). Now, what is the estimated impact of unemployment rate in 2013 on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r}
+modelA <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
+
+summary(modelA)
+
+coeftest(modelA, vcov = vcovHC(modelA, type = "HC0"))
 
 ```
 
