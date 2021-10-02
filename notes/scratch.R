@@ -1,7 +1,9 @@
-# Data retrieval 
-install.packages("dataRetrieval")
+packages <- c("dataRetrieval", "ggplot2", "tidyverse", "sandwich", "moments", "dplyr", "tidyr", "lmtest")
 
-library(dataRetrieval)
+# Loads packages
+lapply(packages, library, character.only = TRUE)
+
+
 
 # Retrieve flow data for Poudre River
 poudre <- readNWISdv(siteNumbers = '06752260',
