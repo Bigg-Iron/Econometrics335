@@ -1,0 +1,6 @@
+               Df Sum Sq Mean Sq F value Pr(>F)    
+PerCapitaInc    1   9403    9403    1354 <2e-16 ***
+Residuals    3269  22699       7                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+7 observations deleted due to missingness

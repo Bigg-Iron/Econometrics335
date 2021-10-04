@@ -13,7 +13,7 @@ library("sandwich")
 
 
 #Now load California school district example from Stock & Watson
-caschool1 <- read.csv('data/caschool.csv') #this may be different depending on the defined paths.
+caschool1 <- read.csv('Data/caschool.csv') #this may be different depending on the defined paths.
 
 #Inspect the data
 head(caschool1) #look at first 6 rows (all columns)
@@ -111,15 +111,15 @@ barplot(counts)
 barplot(counts,horiz=TRUE)
 
 #3. Pie Charts
-#Piechart Syntax is: pie(attributes) i.e.,
-#Consider a pie chart that contains values 10, 12, 4, 16, 8 as slices and US, UK, Au stralia, 
+#Pie chart Syntax is: pie(attributes) i.e.,
+#Consider a pie chart that contains values 10, 12, 4, 16, 8 as slices and US, UK, Australia, 
 #Germany, and France as labels. Use pie(x,labels=) function to create the pie chart:
 slices <-c(10, 12,4, 16,8) 
 lbls <-c("US","UK", "Australia", "Germany", "France") 
 pie( slices, labels = lbls, main="Simple PieChart")
 
 
-#A 3-dim ensional pie chart
+#A 3-dimensional pie chart
 install.packages("plotrix")
 library("plotrix")
 slices <-c(10, 12,4, 16, 8) 
@@ -130,6 +130,4 @@ pie3D(slices, labels=lbls,explode=0.0, main="3D PieChart")
 #4. Histogram
 mtcars$mpg #miles per gallon data 
 hist(mtcars$mpg)
-
-
 

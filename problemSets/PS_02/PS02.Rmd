@@ -9,7 +9,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 # List of packages you want to install -- separated with a comma and surrounded in "quotes" 
-packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2")
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr")
 
 # Installs packages
 installed_packages <- packages %in% rownames(installed.packages())
@@ -25,7 +25,6 @@ rural_atlas_merged <- read_csv(here("Data/rural_atlas_merged.csv"))
 
 # Create summary statistics
 sink("summary.txt")
-
 cat("Summary of Rural Atlas Data: ")
 cat("\n----------------------------------------------------------------------------------------------------------------\n")
 cat("\n")
@@ -39,8 +38,6 @@ summary(rural_atlas_merged)
 cat("\n")
 cat("\n----------------------------------------------------------------------------------------------------------------\n")
 cat("\n")
-
-
 sink()
 
 ```
@@ -54,17 +51,18 @@ sink()
 
 ```{r (a)}
 
-modelA <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
+summary.lm(modelA <- lm(formula = rural_atlas_merged$UnempRate2013 ~ rural_atlas_merged$PerCapitaInc))
 
-summary(modelA)
+# Slope = 1.415e+01 (14.15)
+# Intercept = -2.541e-04 (-0.0002541)
 
 ```
+
 
 
 ### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 
 ```{r (b)}
-
 modelA <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
 summary(modelA)
 
