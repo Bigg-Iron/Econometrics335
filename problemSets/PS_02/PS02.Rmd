@@ -51,6 +51,8 @@ sink()
 
 ### (a) Run a regression to determine the impact of the 2013 unemployment rate (UnempRate2013) on the per capita income (PerCapitaInc) in a county. What is the estimated slope? Explain what this number means in words in terms of the unemployment rate and in terms of per capita income. Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels. For this first pass, use homoskedastic standard errors.
 
+$$ PerCapitaInc = 34507.06 -1152.81 \cdot UnempRate2013 + u_i $$
+
 ```{r}
 
 plot(PerCapitaInc ~ UnempRate2013, 
@@ -62,6 +64,7 @@ plot(PerCapitaInc ~ UnempRate2013,
 abline(a = 34507, b = -1152)
 
 summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
+
 
 confint(model_a, level = 0.99) 
 # 1% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 1% level.
@@ -88,17 +91,20 @@ confint(model_a, level = 0.90)
 
 ```{r}
 
-summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
+summary.lm(model_b <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
-coeftest(model_a, vcov = vcovHC(model_a, type = "HC0"))
+coeftest(model_b, vcov = vcovHC(model_a, type = "HC0"))
+
+# Coefficients are the same as part (a)
 
 ```
 
 
 
 (c) Run the same regression as in part (b) but now also include the additional regressors percentage of the population that is college-educated (Ed5CollegePlusPct), percentage of the population that is black (BlackNonHispanicPct2010), and percentage of the population that is Hispanic (HispanicPct2010). Now, what is the estimated impact of unemployment rate in 2013 on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
+
 ```{r}
-summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010))
+summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010))
 
 ```
 
@@ -135,6 +141,7 @@ summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas
 
 (i) Return to the full sample. Now, run a regression to determine the impact of changing the percentage of the population which is college educated (Ed5CollegePlusPct) on the per capita income (PerCapitaInc) in a county. Include controls for the unemployment rate in 2010 (UnempRate2010), percentage of the population that is black (BlackNonHispanicPct2010), and now also include a dummy variable for metro status (Metro2013). Now, what is the estimated impact of percentage with a college education on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r}
+
 
 ```
 
