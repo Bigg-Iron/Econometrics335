@@ -59,21 +59,17 @@ plot(PerCapitaInc ~ UnempRate2013,
 
 abline(a = 34507, b = -1152)
 
-
 summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
-confint(model_a, level = 0.99) # 1% level
-confint(model_a, level = 0.95) # 5% level
-confint(model_a, level = 0.90) # 10% level
+confint(model_a, level = 0.99) # 1% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 1% level.
+confint(model_a, level = 0.95) # 5% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 5% level.
+confint(model_a, level = 0.90) # 10% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 10% level.
 
 # Intercept = 34507.06
 # Slope = The slope of -1152.81 means that when the unemployment rate differs by 1%, on average, the per capita income is lower by $1,152.81
 # R-squared = On average 29.29% of the variance of the per capita income rate is explained by the unemployment rate
 # SER =  On average the deviation of the actual achieved per capita income rate and the regression line is $5,613
 
-# Reject the hypothesis that the coefficient on the unemployment rate is zero at the 1% level.
-# Reject the hypothesis that the coefficient on the unemployment rate is zero at the 5% level.
-# Reject the hypothesis that the coefficient on the unemployment rate is zero at the 10% level.
 
 ```
 

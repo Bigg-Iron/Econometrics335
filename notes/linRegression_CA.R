@@ -59,6 +59,7 @@ beta_1
 beta_0
 
 # estimate the model and assign the result to linear_model
+# linear_model <- lm(formula = dependent_variable ~ independent_variable, data = DATA)
 linear_model <- lm(score ~ STR, data = CASchools)
 
 # print the standard output of the estimated lm object to the console 
