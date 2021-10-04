@@ -73,10 +73,12 @@ confint(model_a, level = 0.90)
 # 10% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 10% level.
 
 # Intercept = 34507.06
-# Slope = The slope of -1152.81 means that when the unemployment rate differs by 1%, on average, the per capita income is lower by $1,152.81
-# R-squared = On average 29.29% of the variance of the per capita income rate is explained by the unemployment rate
-# SER =  On average the deviation of the actual achieved per capita income rate and the regression line is $5,613
 
+# Slope = The slope of -1152.81 means that when the unemployment rate differs by 1%, on average, the per capita income is lower by $1,152.81
+
+# R-squared = On average 29.29% of the variance of the per capita income rate is explained by the unemployment rate
+
+# SER =  On average the deviation of the actual achieved per capita income rate and the regression line is $5,613
 
 ```
 
@@ -85,9 +87,10 @@ confint(model_a, level = 0.90)
 ### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 
 ```{r}
-summary.lm(modelA <- lm(formula = rural_atlas_merged$UnempRate2013 ~ rural_atlas_merged$PerCapitaInc))
 
-coeftest(modelA, vcov = vcovHC(modelA, type = "HC0"))
+summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
+
+coeftest(model_a, vcov = vcovHC(model_a, type = "HC0"))
 
 ```
 
@@ -95,7 +98,7 @@ coeftest(modelA, vcov = vcovHC(modelA, type = "HC0"))
 
 (c) Run the same regression as in part (b) but now also include the additional regressors percentage of the population that is college-educated (Ed5CollegePlusPct), percentage of the population that is black (BlackNonHispanicPct2010), and percentage of the population that is Hispanic (HispanicPct2010). Now, what is the estimated impact of unemployment rate in 2013 on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r}
-
+summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010))
 
 ```
 
