@@ -51,10 +51,11 @@ sink()
 
 ```{r (a)}
 
-summary.lm(modelA <- lm(formula = rural_atlas_merged$UnempRate2013 ~ rural_atlas_merged$PerCapitaInc))
+summary.lm(modelA <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
-# Slope = 1.415e+01 (14.15)
-# Intercept = -2.541e-04 (-0.0002541)
+# Intercept = 34507.06
+# Slope = -1152.81
+# The slope of -1152.81 means that when the unemployment rate differs by 1%, on average the per capita income is lower by $1,152.81
 
 ```
 
@@ -63,8 +64,7 @@ summary.lm(modelA <- lm(formula = rural_atlas_merged$UnempRate2013 ~ rural_atlas
 ### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 
 ```{r (b)}
-modelA <- lm(formula = UnempRate2013 ~ PerCapitaInc, data = rural_atlas_merged)
-summary(modelA)
+summary.lm(modelA <- lm(formula = rural_atlas_merged$UnempRate2013 ~ rural_atlas_merged$PerCapitaInc))
 
 coeftest(modelA, vcov = vcovHC(modelA, type = "HC0"))
 
