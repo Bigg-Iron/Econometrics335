@@ -120,13 +120,8 @@ summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas
 lm_summ <- summary(model_b)
 
 # Lower -1152.81 - 1.96 * 31.33 = -1214.235
-lower <- lm_summ$coefficients[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coefficients[2, 2]
-
-# Upper -1152.81 + 1.96 * 31.33 = -1091.387
-upper <- lm_summ$coefficients[2, 1] + qt(0.975, df = lm_summ$df[2]) * lm_summ$coefficients[2, 2]
-
-
 c("lower" = lm_summ$coef[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2],
+# Upper -1152.81 + 1.96 * 31.33 = -1091.387  
   "upper" = lm_summ$coef[2,1] + qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2])
 
 ```
