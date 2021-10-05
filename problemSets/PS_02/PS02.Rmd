@@ -51,7 +51,7 @@ sink()
 
 ### (a) Run a regression to determine the impact of the 2013 unemployment rate (UnempRate2013) on the per capita income (PerCapitaInc) in a county. What is the estimated slope? Explain what this number means in words in terms of the unemployment rate and in terms of per capita income. Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels. For this first pass, use homoskedastic standard errors.
 
-$$ PerCapitaInc = 34507.06 -1152.81 \cdot UnempRate2013 + u_i $$
+$$ \widehat{PerCapitaInc} = 34507.06 -1152.81 \times UnempRate2013 + u_i  \tag{Regression equation}$$
 
 ```{r}
 
