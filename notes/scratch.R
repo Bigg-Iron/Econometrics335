@@ -1,28 +1,21 @@
-packages <- c("dataRetrieval", "ggplot2", "tidyverse", "sandwich", "moments", "dplyr", "tidyr", "lmtest")
+# List of packages you want to install -- separated with a comma and surrounded in "quotes" 
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR")
+
+# Installs packages
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
 
 # Loads packages
-lapply(packages, library, character.only = TRUE)
+invisible(lapply(packages, library, character.only = TRUE))
 
+# Chapter 6
+# estimate both regression models
+mod <- lm(rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013, data = rural_atlas_merged) 
+mult.mod <- lm(rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010, data = rural_atlas_merged)
 
-
-# Retrieve flow data for Poudre River
-poudre <- readNWISdv(siteNumbers = '06752260',
-                     parameterCd = c('00060'),
-                     startDate = '2010-10-01',
-                     endDate = Sys.Date())
-
-head(poudre)
-
-#Remove the first two columns
-pq <- poudre[,-c(1,2,5)]
-
-#Rename the remaining columns
-names(pq) <- c('Date','q_cfs')
-
-summary(pq)
-
-# Plot the data
-plot(pq$q_cfs ~ pq$Date, type = 'l', ylab = 'River Flow (cfs)', 
-     xlab = 'Date',col = 'blue3')
-
-as_tibble(rural_atlas_merged)
+# print the results to the console
+mod
+mult.mod
+summary(mult.mod)

@@ -1,9 +1,5 @@
-#Set your working directory.
-#Of course this path depends on your location on your machine.
-getwd()
-setwd('C:/Users/lacks/OneDrive - Colostate/Colorado SU/PhD/6. Teaching Materials/Introduction to Econometrics/Fall 2021/R/ClassPractice/ECON335') 
 
-#Call the different packages you may need especially "lmtest" and "sandwhich" 
+#Call the different packages you may need especially "lmtest" and "sandwich" 
 #which are for the regression and R-SE packages respectively.
 library("tidyverse")
 library("dplyr")

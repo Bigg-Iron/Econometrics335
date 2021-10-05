@@ -51,9 +51,9 @@ sink()
 
 ### (a) Run a regression to determine the impact of the 2013 unemployment rate (UnempRate2013) on the per capita income (PerCapitaInc) in a county. What is the estimated slope? Explain what this number means in words in terms of the unemployment rate and in terms of per capita income. Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels. For this first pass, use homoskedastic standard errors.
 
-$$ \widehat{PerCapitaInc} = 34507.06 -1152.81 \times UnempRate2013 + u_i  \tag{Regression equation}$$
+$$  \widehat{PerCapitaInc} \ = \underset{(9.47)}{34507.06} - \underset{(0.49)}{1152.81} \times UnempRate2013 \ , \ R^2=0.2929 \ , \ SER=5613  $$
 
-```{r}
+```{r (a)}
 
 plot(PerCapitaInc ~ UnempRate2013, 
      data = rural_atlas_merged,
@@ -89,7 +89,7 @@ confint(model_a, level = 0.90)
 
 ### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 
-```{r}
+```{r (b)}
 # Coefficients are the same as part (a)
 summary.lm(model_b <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
@@ -100,44 +100,58 @@ coeftest(model_b, vcov = vcovHC(model_a, type = "HC0"))
 
 ### (c) Run the same regression as in part (b) but now also include the additional regressors percentage of the population that is college-educated (Ed5CollegePlusPct), percentage of the population that is black (BlackNonHispanicPct2010), and percentage of the population that is Hispanic (HispanicPct2010). Now, what is the estimated impact of unemployment rate in 2013 on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 
-```{r}
+```{r (c)}
 summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010))
+
 
 ```
 
 
+
 ### (d) Provide economic/econometric intuition as to why the impact of the unemployment rate’s impact on per capita income changed between parts (b) and (c). Note that I am asking you to think about the context (and hence the “story” behind these data).
-```{r}
+```{r (d)}
 
 ```
 
 
 ### (e) Construct a 95% confidence interval for the slope coefficient on UnempRate2013 in (c). Write out your calculations. Clearly indicate how this confidence interval relates to whether UnempRate2013 is statistically significant or not in this context by relating your answer to your constructed confidence interval.
-```{r}
+```{r (e)}
+# compute 95% confidence interval for coefficients
+lm_summ <- summary(model_b)
+
+# Lower -1152.81 - 1.96 * 31.33 = -1214.235
+lower <- lm_summ$coefficients[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coefficients[2, 2]
+
+# Upper -1152.81 + 1.96 * 31.33 = -1091.387
+upper <- lm_summ$coefficients[2, 1] + qt(0.975, df = lm_summ$df[2]) * lm_summ$coefficients[2, 2]
+
+
+c("lower" = lm_summ$coef[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2],
+  "upper" = lm_summ$coef[2,1] + qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2])
 
 ```
 
 
 ### (f) You recall from problem set 1 that both the means of per capita income and of unemployment rate in 2013 are quite different across metro and nonmetro areas. You therefore want to explore this in more detail. Run the regression from (c) using only metro areas in 2013 (Metro2013==1). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
-```{r}
+```{r (f)}
 
 ```
 
 
 ### (g) Now, run the regression from (c) using only non-metro areas in 2013 (Metro2013==0). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
-```{r}
+```{r (g)}
 
 ```
 
 
 ### (h) What did you learn from the comparison between results in parts (f) and (g)? Explain your answer. Note that I again am asking you to think about the context (and hence the “story” behind these data).
-```{r}
+```{r (h)}
 
 ```
 
 
 ### (i) Return to the full sample. Now, run a regression to determine the impact of changing the percentage of the population which is college educated (Ed5CollegePlusPct) on the per capita income (PerCapitaInc) in a county. Include controls for the unemployment rate in 2010 (UnempRate2010), percentage of the population that is black (BlackNonHispanicPct2010), and now also include a dummy variable for metro status (Metro2013). Now, what is the estimated impact of percentage with a college education on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
-```{r}
+```{r (i)}
 
 
 ```
