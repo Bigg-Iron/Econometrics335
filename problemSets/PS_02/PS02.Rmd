@@ -66,6 +66,9 @@ abline(a = 34507, b = -1152)
 summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
 
+coeftest(model_a, vcov = vcovHC(model_a, type = "HC0"))
+
+
 confint(model_a, level = 0.99) 
 # 1% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 1% level.
 
@@ -86,7 +89,6 @@ confint(model_a, level = 0.90)
 ```
 
 
-
 ### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 
 ```{r (b)}
@@ -103,6 +105,17 @@ coeftest(model_b, vcov = vcovHC(model_a, type = "HC0"))
 ```{r (c)}
 summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010))
 
+coeftest(model_c, vcov = vcovHC(model_c, type = "HC0"))
+
+
+confint(model_c, level = 0.99)
+# 1% level:
+
+confint(model_c, level = 0.95) 
+# 5% level: 
+
+confint(model_c, level = 0.90) 
+# 10% level: 
 
 ```
 
@@ -110,6 +123,7 @@ summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas
 
 ### (d) Provide economic/econometric intuition as to why the impact of the unemployment rate’s impact on per capita income changed between parts (b) and (c). Note that I am asking you to think about the context (and hence the “story” behind these data).
 ```{r (d)}
+
 
 ```
 
@@ -121,20 +135,44 @@ lm_summ <- summary(model_b)
 
 # Lower -1152.81 - 1.96 * 31.33 = -1214.235
 c("lower" = lm_summ$coef[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2],
+  
 # Upper -1152.81 + 1.96 * 31.33 = -1091.387  
   "upper" = lm_summ$coef[2,1] + qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2])
 
 ```
+This interval *does not* contain the value zero which leads to the rejection of the null hypothesis $\beta_{1,0} = 0$.
 
 
 ### (f) You recall from problem set 1 that both the means of per capita income and of unemployment rate in 2013 are quite different across metro and nonmetro areas. You therefore want to explore this in more detail. Run the regression from (c) using only metro areas in 2013 (Metro2013==1). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r (f)}
+
+
+metro <- subset(rural_atlas_merged, Metro2013 == 1)
+
+summary.lm(metro_model <- lm(formula = metro$PerCapitaInc ~ metro$UnempRate2013))
+
+coeftest(metro_model, vcov = vcovHC(metro_model, type = "HC0"))
 
 ```
 
 
 ### (g) Now, run the regression from (c) using only non-metro areas in 2013 (Metro2013==0). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r (g)}
+
+non_metro <- subset(rural_atlas_merged, Metro2013 == 0)
+
+summary.lm(non_metro_model <- lm(formula = non_metro$PerCapitaInc ~ non_metro$UnempRate2013))
+
+coeftest(non_metro_model, vcov = vcovHC(non_metro_model, type = "HC0"))
+
+confint(non_metro_model, level = 0.99)
+# 1% level: Not statistically significant
+
+confint(non_metro_model, level = 0.95) 
+# 5% level: Not statistically significant
+
+confint(non_metro_model, level = 0.90) 
+# 10% level: Not statistically significant
 
 ```
 
@@ -147,6 +185,10 @@ c("lower" = lm_summ$coef[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 
 
 ### (i) Return to the full sample. Now, run a regression to determine the impact of changing the percentage of the population which is college educated (Ed5CollegePlusPct) on the per capita income (PerCapitaInc) in a county. Include controls for the unemployment rate in 2010 (UnempRate2010), percentage of the population that is black (BlackNonHispanicPct2010), and now also include a dummy variable for metro status (Metro2013). Now, what is the estimated impact of percentage with a college education on per capita income? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r (i)}
+
+summary.lm(model_i <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$UnempRate2010 + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$Metro2013))
+
+coeftest(model_i, vcov = vcovHC(model_i, type = "HC0"))
 
 
 ```
