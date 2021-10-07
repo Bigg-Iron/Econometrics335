@@ -2,8 +2,8 @@
 title: "Problem Set 2"
 author: "Lorenzo Bartolo"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -54,6 +54,9 @@ $$  \widehat{PerCapitaInc} \ = \underset{(9.47)}{34507.06} - \underset{(0.49)}{1
 
 ```{r (a)}
 
+summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
+
+# Graph
 plot(PerCapitaInc ~ UnempRate2013, 
      data = rural_atlas_merged,
      main = "Scatterplot of Per Capita Income and Unemployment Rate", 
@@ -62,20 +65,18 @@ plot(PerCapitaInc ~ UnempRate2013,
 
 abline(a = 34507, b = -1152)
 
-summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
-
 # Robust t test
 coeftest(model_a, vcov = vcovHC(model_a, type = "HC0"))
 
 
-confint(model_a, level = 0.99) 
 # 1% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 1% level.
+confint(model_a, level = 0.99)
 
-confint(model_a, level = 0.95) 
 # 5% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 5% level.
+confint(model_a, level = 0.95)
 
-confint(model_a, level = 0.90) 
 # 10% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 10% level.
+confint(model_a, level = 0.90)
 
 # Intercept = 34507.06
 
