@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo = TRUE)
 
 # List of packages you want to install -- separated with a comma and surrounded in "quotes" 
-packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR")
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car")
 
 # Installs packages
 installed_packages <- packages %in% rownames(installed.packages())
@@ -50,7 +50,7 @@ sink()
 
 #### (a) Run a regression to determine the impact of the 2013 unemployment rate (UnempRate2013) on the per capita income (PerCapitaInc) in a county. What is the estimated slope? Explain what this number means in words in terms of the unemployment rate and in terms of per capita income. Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels. For this first pass, use homoskedastic standard errors.
 
-$$  \widehat{PerCapitaInc} \ = \underset{(9.47)}{34507.06} - \underset{(0.49)}{1152.81} \times UnempRate2013 \ , \ R^2=0.2929 \ , \ SER=5613  $$
+$$  \widehat{PerCapitaInc} \ = 34507.06 - 1152.81 \times UnempRate2013 \ , \ R^2=0.2929 \ , \ SER=5613  $$
 
 ```{r (a)}
 
@@ -195,8 +195,8 @@ confint(non_metro_model, level = 0.90)
 
 summary.lm(model_i <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$UnempRate2010 + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$Metro2013))
 
-# Robust t test
-coeftest(model_i, vcov = vcovHC(model_i, type = "HC0"))
+# compute heteroskedasticity-robust standard errors
+coeftest(model_i, vcov = vcovHC(model_i, type = "HC1"))
 
 # 1% level:
 confint(model_i, level = 0.99)
