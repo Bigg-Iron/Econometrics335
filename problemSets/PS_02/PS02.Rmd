@@ -65,7 +65,7 @@ abline(a = 34507, b = -1152)
 
 summary.lm(model_a <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
-
+# Robust t test
 coeftest(model_a, vcov = vcovHC(model_a, type = "HC0"))
 
 
@@ -95,6 +95,7 @@ confint(model_a, level = 0.90)
 # Coefficients are the same as part (a)
 summary.lm(model_b <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
+# Robust t test
 coeftest(model_b, vcov = vcovHC(model_a, type = "HC0"))
 
 ```
@@ -105,17 +106,17 @@ coeftest(model_b, vcov = vcovHC(model_a, type = "HC0"))
 ```{r (c)}
 summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010))
 
+# Robust t test
 coeftest(model_c, vcov = vcovHC(model_c, type = "HC0"))
 
-
-confint(model_c, level = 0.99)
 # 1% level:
+confint(model_c, level = 0.99)
 
+# 5% level:
 confint(model_c, level = 0.95) 
-# 5% level: 
 
+# 10% level:
 confint(model_c, level = 0.90) 
-# 10% level: 
 
 ```
 
@@ -146,11 +147,11 @@ This interval *does not* contain the value zero which leads to the rejection of 
 ### (f) You recall from problem set 1 that both the means of per capita income and of unemployment rate in 2013 are quite different across metro and nonmetro areas. You therefore want to explore this in more detail. Run the regression from (c) using only metro areas in 2013 (Metro2013==1). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r (f)}
 
-
 metro <- subset(rural_atlas_merged, Metro2013 == 1)
 
 summary.lm(metro_model <- lm(formula = metro$PerCapitaInc ~ metro$UnempRate2013))
 
+# Robust t test
 coeftest(metro_model, vcov = vcovHC(metro_model, type = "HC0"))
 
 ```
@@ -163,16 +164,17 @@ non_metro <- subset(rural_atlas_merged, Metro2013 == 0)
 
 summary.lm(non_metro_model <- lm(formula = non_metro$PerCapitaInc ~ non_metro$UnempRate2013))
 
+# Robust t test
 coeftest(non_metro_model, vcov = vcovHC(non_metro_model, type = "HC0"))
 
+# 1% level:
 confint(non_metro_model, level = 0.99)
-# 1% level: Not statistically significant
 
+# 5% level:
 confint(non_metro_model, level = 0.95) 
-# 5% level: Not statistically significant
 
+# 10% level:
 confint(non_metro_model, level = 0.90) 
-# 10% level: Not statistically significant
 
 ```
 
@@ -188,7 +190,17 @@ confint(non_metro_model, level = 0.90)
 
 summary.lm(model_i <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$UnempRate2010 + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$Metro2013))
 
+# Robust t test
 coeftest(model_i, vcov = vcovHC(model_i, type = "HC0"))
+
+# 1% level:
+confint(model_i, level = 0.99)
+
+# 5% level:
+confint(model_i, level = 0.95) 
+
+# 10% level:
+confint(model_i, level = 0.90) 
 
 
 ```
