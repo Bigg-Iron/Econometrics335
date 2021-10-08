@@ -73,7 +73,7 @@ Reg4<-lm(formula = testscr~str, small_class)
 summary(Reg4)
 coeftest(Reg4, vcov = vcovHC(Reg4, type = "HC0"))
 
-#Regression using only small classes:
+#Regression using only large classes:
 Reg5<-lm(formula = testscr~str, large_class)
 summary(Reg5)
 coeftest(Reg4, vcov = vcovHC(Reg5, type = "HC0"))

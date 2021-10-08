@@ -1,0 +1,360 @@
+Summary of Rural Atlas Data: 
+----------------------------------------------------------------------------------------------------------------
+
+spec_tbl_df [3,278 × 96] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ fips                           : num [1:3278] 0 1000 1001 1003 1005 ...
+ $ State                          : chr [1:3278] "US" "AL" "AL" "AL" ...
+ $ County                         : chr [1:3278] "United States" "Alabama" "Autauga" "Baldwin" ...
+ $ MedHHInc                       : num [1:3278] 60336 48193 58343 56607 32490 ...
+ $ PerCapitaInc                   : num [1:3278] 31177 25746 27824 29364 17561 ...
+ $ PovertyUnder18Pct              : num [1:3278] 18.4 24.4 19.3 14.7 50.3 27.3 18.5 48.3 33 24.2 ...
+ $ PovertyAllAgesPct              : num [1:3278] 13.4 16.9 13.4 10.1 33.4 20.2 12.8 34.4 21.3 17.7 ...
+ $ UnempRate2018                  : num [1:3278] NA 3.9 3.6 3.6 5.2 4 3.5 4.7 4.8 4.7 ...
+ $ UnempRate2017                  : num [1:3278] NA 4.4 3.9 4.1 5.8 4.4 4 4.9 5.5 5 ...
+ $ UnempRate2016                  : num [1:3278] NA 5.8 5.1 5.3 8.3 6.4 5.4 6.8 6.9 6.5 ...
+ $ UnempRate2015                  : num [1:3278] NA 6 5 5 8 6 5 7 7 7 ...
+ $ UnempRate2014                  : num [1:3278] NA 6.8 5.8 6.1 10.5 7.2 6.1 8.8 8.6 8 ...
+ $ UnempRate2010                  : num [1:3278] NA 10.5 8.9 10 12.3 11.4 9.8 11.8 13.6 11.4 ...
+ $ UnempRate2007                  : num [1:3278] NA 4 3.3 3.1 6.3 4.1 3.2 9.4 6.2 3.9 ...
+ $ PctEmpChange1018               : num [1:3278] NA 7.52 6.76 20.42 -11.37 ...
+ $ PctEmpChange1718               : num [1:3278] NA 1.47 0.23 2.39 1.39 1.75 1.69 -0.94 0.49 0.77 ...
+ $ PctEmpChange0718               : num [1:3278] NA 1.11 6.1 12.93 -18.01 ...
+ $ PctEmpChange0710               : num [1:3278] NA -5.96 -0.62 -6.22 -7.49 ...
+ $ PctEmpAgriculture              : num [1:3278] 1.3 1.112 0.606 1.029 4.224 ...
+ $ PctEmpMining                   : num [1:3278] 0.571 0.46 0.315 0.478 0.169 ...
+ $ PctEmpConstruction             : num [1:3278] 6.35 6.41 5.13 7.61 5.63 ...
+ $ PctEmpManufacturing            : num [1:3278] 10.3 14.2 13.3 9.8 23.8 ...
+ $ PctEmpTrade                    : num [1:3278] 14.1 14.5 12.9 16.5 14.7 ...
+ $ PctEmpTrans                    : num [1:3278] 5.1 5.21 7.44 4.84 6.24 ...
+ $ PctEmpInformation              : num [1:3278] 2.107 1.62 1.671 1.376 0.394 ...
+ $ PctEmpFIRE                     : num [1:3278] 6.58 5.6 5.57 7.61 3.67 ...
+ $ PctEmpServices                 : num [1:3278] 49 45.4 41.9 45.9 33.3 ...
+ $ PctEmpGovt                     : num [1:3278] 4.67 5.51 11.15 4.84 7.93 ...
+ $ UnempRate2011                  : num [1:3278] NA 9.6 8.4 9 11.5 10.5 8.7 11.6 12.5 10.3 ...
+ $ UnempRate2008                  : num [1:3278] NA 5.7 5.1 4.6 8.8 5.8 4.7 10.5 8.5 5.7 ...
+ $ UnempRate2009                  : num [1:3278] NA 11 9.7 9.8 14.3 13.3 10 15.6 16.4 11.1 ...
+ $ UnempRate2012                  : num [1:3278] NA 8 6.9 7.5 11.5 8.5 6.9 10.4 11.5 8.9 ...
+ $ UnempRate2013                  : num [1:3278] NA 7.2 6.2 6.6 10.2 7.9 6.3 9.4 10.3 8.8 ...
+ $ PopChangeRate1718              : num [1:3278] 0.72 0.26 0.28 2.54 -1.1 -0.69 0.02 -0.37 -1.1 -0.34 ...
+ $ PopChangeRate1018              : num [1:3278] 5.3 2.14 1.55 19.07 -8.96 ...
+ $ TotalPopEst2018                : num [1:3278] NA 4887871 55601 218022 24881 ...
+ $ NetMigrationRate1018           : num [1:3278] 2.28 0.84 0.28 18.14 -8.27 ...
+ $ NaturalChangeRate1018          : num [1:3278] 3.02 1.3 1.26 0.93 -0.69 0.19 0.86 0.65 -0.86 -0.52 ...
+ $ Net_International_Migration_Rat: num [1:3278] 2.28 0.77 0.06 0.74 0.14 0.49 0.27 0.38 0.6 0.39 ...
+ $ PopChangeRate0010              : num [1:3278] 9.71 7.48 24.96 29.8 -5.44 ...
+ $ NetMigrationRate0010           : num [1:3278] NA 3.3 11.9 26.2 -4.8 ...
+ $ NaturalChangeRate0010          : num [1:3278] NA 3.3 5.46 3.32 2.29 2.1 3.14 3.2 -0.25 1.62 ...
+ $ Immigration_Rate_2000_2010     : num [1:3278] NA 1.2229 -0.0102 1.5845 1.8284 ...
+ $ PopDensity2010                 : num [1:3278] 87.4 94.4 91.8 114.7 31 ...
+ $ Under18Pct2010                 : num [1:3278] 24 23.7 26.8 23 21.9 ...
+ $ Age65AndOlderPct2010           : num [1:3278] 13 13.8 12 16.8 14.2 ...
+ $ WhiteNonHispanicPct2010        : num [1:3278] 63.8 67 77.2 83.5 46.8 ...
+ $ BlackNonHispanicPct2010        : num [1:3278] 12.21 26.04 17.58 9.31 46.69 ...
+ $ AsianNonHispanicPct2010        : num [1:3278] 4.69 1.11 0.86 0.74 0.39 0.1 0.2 0.18 0.83 0.7 ...
+ $ NativeAmericanNonHispanicPct201: num [1:3278] 0.73 0.54 0.4 0.63 0.22 0.28 0.5 0.18 0.28 0.4 ...
+ $ HispanicPct2010                : num [1:3278] 16.35 3.88 2.4 4.38 5.05 ...
+ $ MultipleRacePct2010            : num [1:3278] 2.92 1.49 1.59 1.49 0.94 0.89 1.19 0.79 0.77 1.67 ...
+ $ NonHispanicWhitePopChangeRate00: num [1:3278] 1.16 2.51 21.05 25.92 -13.19 ...
+ $ NonHispanicBlackPopChangeRate00: num [1:3278] 11.01 8.2 29.17 18.17 -4.11 ...
+ $ NonHispanicAsianPopChangeRate00: num [1:3278] 42.9 70.8 140.7 152.3 28.9 ...
+ $ NonHispanicNativeAmericanPopCha: num [1:3278] 8.61 19.84 16.67 52.19 -49.58 ...
+ $ HispanicPopChangeRate0010      : num [1:3278] 43 145 115 224 190 ...
+ $ MultipleRacePopChangeRate0010  : num [1:3278] 32 61.3 114.6 85.7 21.7 ...
+ $ ForeignBornPct                 : num [1:3278] 13.4 3.46 2.11 3.25 2.66 ...
+ $ ForeignBornEuropePct           : num [1:3278] 1.494 0.375 0.338 0.742 0.317 ...
+ $ ForeignBornMexPct              : num [1:3278] 3.587 1.078 0.507 0.716 1.313 ...
+ $ NonEnglishHHPct                : num [1:3278] 4.465 1.149 0.75 0.901 0.816 ...
+ $ Ed1LessThanHSPct               : num [1:3278] 12.69 14.68 12.3 9.79 26.91 ...
+ $ Ed2HSDiplomaOnlyPct            : num [1:3278] 27.3 30.9 33.6 27.8 35.5 ...
+ $ Ed3SomeCollegePct              : num [1:3278] 20.8 21.7 21.5 22 18.2 ...
+ $ Ed4AssocDegreePct              : num [1:3278] 8.28 8.16 7.63 9.62 7.34 ...
+ $ Ed5CollegePlusPct              : num [1:3278] 30.9 24.5 25 30.7 12 ...
+ $ AvgHHSize                      : num [1:3278] 2.63 2.55 2.59 2.63 2.54 2.97 2.76 2.74 2.81 2.49 ...
+ $ FemaleHHPct                    : num [1:3278] 12.7 14.78 11.41 9.43 19.37 ...
+ $ HH65PlusAlonePct               : num [1:3278] 10.5 11.2 11.4 12.8 13.9 ...
+ $ OwnHomePct                     : num [1:3278] 63.8 68.6 73.3 72.9 62.5 ...
+ $ TotalPop25Plus                 : num [1:3278] 2.16e+08 3.28e+06 3.68e+04 1.43e+05 1.84e+04 ...
+ $ ForeignBornAfricaPct           : num [1:3278] 0.6347 0.17 0 0.0713 0 ...
+ $ TotalPopACS                    : num [1:3278] 3.21e+08 4.85e+06 5.50e+04 2.03e+05 2.62e+04 ...
+ $ TotalOccHU                     : num [1:3278] 1.19e+08 1.86e+06 2.11e+04 7.61e+04 9.19e+03 ...
+ $ ForeignBornAsiaPct             : num [1:3278] 4.085 1.091 0.849 0.595 0.424 ...
+ $ TotalHH                        : num [1:3278] 1.19e+08 1.86e+06 2.11e+04 7.61e+04 9.19e+03 ...
+ $ ForeignBornCentralSouthAmPct   : num [1:3278] 5.557 1.597 0.654 1.266 1.863 ...
+ $ ForeignBornCaribPct            : num [1:3278] 1.2993 0.1378 0.1581 0.4406 0.0305 ...
+ $ TotalPop2010                   : num [1:3278] 3.09e+08 4.78e+06 5.46e+04 1.82e+05 2.75e+04 ...
+ $ LandAreaSQMiles2010            : num [1:3278] 3531905 50645 594 1590 885 ...
+ $ Net_International_Migration_200: num [1:3278] NA 54447 -4.5 2239.5 530.5 ...
+ $ TotalPopEst2012                : num [1:3278] 3.14e+08 4.82e+06 5.49e+04 1.90e+05 2.72e+04 ...
+ $ TotalPopEst2013                : num [1:3278] 3.16e+08 4.83e+06 5.47e+04 1.95e+05 2.69e+04 ...
+ $ TotalPopEst2010                : num [1:3278] 3.09e+08 4.79e+06 5.48e+04 1.83e+05 2.73e+04 ...
+ $ TotalPopEst2014                : num [1:3278] 3.19e+08 4.84e+06 5.49e+04 1.99e+05 2.68e+04 ...
+ $ TotalPopEst2011                : num [1:3278] 3.12e+08 4.80e+06 5.52e+04 1.87e+05 2.74e+04 ...
+ $ Net_International_Migration_201: num [1:3278] 7042455 36623 32 1364 38 ...
+ $ NaturalChange1018              : num [1:3278] 9338302 62441 692 1697 -188 ...
+ $ TotalPopEst2015                : num [1:3278] 3.21e+08 4.85e+06 5.48e+04 2.03e+05 2.63e+04 ...
+ $ TotalPopEst2016                : num [1:3278] 3.23e+08 4.86e+06 5.52e+04 2.08e+05 2.58e+04 ...
+ $ TotalPopEst2017                : num [1:3278] 3.26e+08 4.88e+06 5.54e+04 2.13e+05 2.52e+04 ...
+ $ NetMigration1018               : num [1:3278] 7042455 39982 155 33214 -2261 ...
+ $ TotalPopEstBase2010            : num [1:3278] 3.09e+08 4.78e+06 5.46e+04 1.82e+05 2.75e+04 ...
+ $ Metro2013                      : num [1:3278] NA NA 1 1 0 1 1 0 0 1 ...
+ $ Metro2003                      : num [1:3278] NA NA 1 0 0 1 1 0 0 1 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   fips = [32mcol_double()[39m,
+  ..   State = [31mcol_character()[39m,
+  ..   County = [31mcol_character()[39m,
+  ..   MedHHInc = [32mcol_double()[39m,
+  ..   PerCapitaInc = [32mcol_double()[39m,
+  ..   PovertyUnder18Pct = [32mcol_double()[39m,
+  ..   PovertyAllAgesPct = [32mcol_double()[39m,
+  ..   UnempRate2018 = [32mcol_double()[39m,
+  ..   UnempRate2017 = [32mcol_double()[39m,
+  ..   UnempRate2016 = [32mcol_double()[39m,
+  ..   UnempRate2015 = [32mcol_double()[39m,
+  ..   UnempRate2014 = [32mcol_double()[39m,
+  ..   UnempRate2010 = [32mcol_double()[39m,
+  ..   UnempRate2007 = [32mcol_double()[39m,
+  ..   PctEmpChange1018 = [32mcol_double()[39m,
+  ..   PctEmpChange1718 = [32mcol_double()[39m,
+  ..   PctEmpChange0718 = [32mcol_double()[39m,
+  ..   PctEmpChange0710 = [32mcol_double()[39m,
+  ..   PctEmpAgriculture = [32mcol_double()[39m,
+  ..   PctEmpMining = [32mcol_double()[39m,
+  ..   PctEmpConstruction = [32mcol_double()[39m,
+  ..   PctEmpManufacturing = [32mcol_double()[39m,
+  ..   PctEmpTrade = [32mcol_double()[39m,
+  ..   PctEmpTrans = [32mcol_double()[39m,
+  ..   PctEmpInformation = [32mcol_double()[39m,
+  ..   PctEmpFIRE = [32mcol_double()[39m,
+  ..   PctEmpServices = [32mcol_double()[39m,
+  ..   PctEmpGovt = [32mcol_double()[39m,
+  ..   UnempRate2011 = [32mcol_double()[39m,
+  ..   UnempRate2008 = [32mcol_double()[39m,
+  ..   UnempRate2009 = [32mcol_double()[39m,
+  ..   UnempRate2012 = [32mcol_double()[39m,
+  ..   UnempRate2013 = [32mcol_double()[39m,
+  ..   PopChangeRate1718 = [32mcol_double()[39m,
+  ..   PopChangeRate1018 = [32mcol_double()[39m,
+  ..   TotalPopEst2018 = [32mcol_double()[39m,
+  ..   NetMigrationRate1018 = [32mcol_double()[39m,
+  ..   NaturalChangeRate1018 = [32mcol_double()[39m,
+  ..   Net_International_Migration_Rat = [32mcol_double()[39m,
+  ..   PopChangeRate0010 = [32mcol_double()[39m,
+  ..   NetMigrationRate0010 = [32mcol_double()[39m,
+  ..   NaturalChangeRate0010 = [32mcol_double()[39m,
+  ..   Immigration_Rate_2000_2010 = [32mcol_double()[39m,
+  ..   PopDensity2010 = [32mcol_double()[39m,
+  ..   Under18Pct2010 = [32mcol_double()[39m,
+  ..   Age65AndOlderPct2010 = [32mcol_double()[39m,
+  ..   WhiteNonHispanicPct2010 = [32mcol_double()[39m,
+  ..   BlackNonHispanicPct2010 = [32mcol_double()[39m,
+  ..   AsianNonHispanicPct2010 = [32mcol_double()[39m,
+  ..   NativeAmericanNonHispanicPct201 = [32mcol_double()[39m,
+  ..   HispanicPct2010 = [32mcol_double()[39m,
+  ..   MultipleRacePct2010 = [32mcol_double()[39m,
+  ..   NonHispanicWhitePopChangeRate00 = [32mcol_double()[39m,
+  ..   NonHispanicBlackPopChangeRate00 = [32mcol_double()[39m,
+  ..   NonHispanicAsianPopChangeRate00 = [32mcol_double()[39m,
+  ..   NonHispanicNativeAmericanPopCha = [32mcol_double()[39m,
+  ..   HispanicPopChangeRate0010 = [32mcol_double()[39m,
+  ..   MultipleRacePopChangeRate0010 = [32mcol_double()[39m,
+  ..   ForeignBornPct = [32mcol_double()[39m,
+  ..   ForeignBornEuropePct = [32mcol_double()[39m,
+  ..   ForeignBornMexPct = [32mcol_double()[39m,
+  ..   NonEnglishHHPct = [32mcol_double()[39m,
+  ..   Ed1LessThanHSPct = [32mcol_double()[39m,
+  ..   Ed2HSDiplomaOnlyPct = [32mcol_double()[39m,
+  ..   Ed3SomeCollegePct = [32mcol_double()[39m,
+  ..   Ed4AssocDegreePct = [32mcol_double()[39m,
+  ..   Ed5CollegePlusPct = [32mcol_double()[39m,
+  ..   AvgHHSize = [32mcol_double()[39m,
+  ..   FemaleHHPct = [32mcol_double()[39m,
+  ..   HH65PlusAlonePct = [32mcol_double()[39m,
+  ..   OwnHomePct = [32mcol_double()[39m,
+  ..   TotalPop25Plus = [32mcol_double()[39m,
+  ..   ForeignBornAfricaPct = [32mcol_double()[39m,
+  ..   TotalPopACS = [32mcol_double()[39m,
+  ..   TotalOccHU = [32mcol_double()[39m,
+  ..   ForeignBornAsiaPct = [32mcol_double()[39m,
+  ..   TotalHH = [32mcol_double()[39m,
+  ..   ForeignBornCentralSouthAmPct = [32mcol_double()[39m,
+  ..   ForeignBornCaribPct = [32mcol_double()[39m,
+  ..   TotalPop2010 = [32mcol_double()[39m,
+  ..   LandAreaSQMiles2010 = [32mcol_double()[39m,
+  ..   Net_International_Migration_200 = [32mcol_double()[39m,
+  ..   TotalPopEst2012 = [32mcol_double()[39m,
+  ..   TotalPopEst2013 = [32mcol_double()[39m,
+  ..   TotalPopEst2010 = [32mcol_double()[39m,
+  ..   TotalPopEst2014 = [32mcol_double()[39m,
+  ..   TotalPopEst2011 = [32mcol_double()[39m,
+  ..   Net_International_Migration_201 = [32mcol_double()[39m,
+  ..   NaturalChange1018 = [32mcol_double()[39m,
+  ..   TotalPopEst2015 = [32mcol_double()[39m,
+  ..   TotalPopEst2016 = [32mcol_double()[39m,
+  ..   TotalPopEst2017 = [32mcol_double()[39m,
+  ..   NetMigration1018 = [32mcol_double()[39m,
+  ..   TotalPopEstBase2010 = [32mcol_double()[39m,
+  ..   Metro2013 = [32mcol_double()[39m,
+  ..   Metro2003 = [32mcol_double()[39m
+  .. )
+ - attr(*, "problems")=<externalptr> 
+
+
+----------------------------------------------------------------------------------------------------------------
+
+      fips          State              County             MedHHInc       PerCapitaInc   PovertyUnder18Pct
+ Min.   :    0   Length:3278        Length:3278        Min.   : 22679   Min.   : 5943   Min.   : 2.70    
+ 1st Qu.:19020   Class :character   Class :character   1st Qu.: 42437   1st Qu.:21636   1st Qu.:14.70    
+ Median :30018   Mode  :character   Mode  :character   Median : 49070   Median :25211   Median :20.40    
+ Mean   :31329                                         Mean   : 51240   Mean   :25738   Mean   :21.49    
+ 3rd Qu.:46100                                         3rd Qu.: 56979   3rd Qu.:29093   3rd Qu.:26.60    
+ Max.   :72153                                         Max.   :136191   Max.   :69529   Max.   :74.70    
+                                                       NA's   :85       NA's   :5       NA's   :85       
+ PovertyAllAgesPct UnempRate2018    UnempRate2017    UnempRate2016    UnempRate2015    UnempRate2014   
+ Min.   : 3.00     Min.   : 1.300   Min.   : 1.500   Min.   : 1.700   Min.   : 1.000   Min.   : 1.200  
+ 1st Qu.:10.90     1st Qu.: 3.150   1st Qu.: 3.500   1st Qu.: 4.000   1st Qu.: 4.000   1st Qu.: 4.700  
+ Median :14.30     Median : 3.900   Median : 4.400   Median : 5.000   Median : 5.000   Median : 6.100  
+ Mean   :15.34     Mean   : 4.297   Mean   : 4.796   Mean   : 5.438   Mean   : 5.297   Mean   : 6.497  
+ 3rd Qu.:18.40     3rd Qu.: 4.900   3rd Qu.: 5.400   3rd Qu.: 6.200   3rd Qu.: 6.000   3rd Qu.: 7.600  
+ Max.   :56.70     Max.   :19.900   Max.   :20.600   Max.   :24.100   Max.   :24.000   Max.   :26.400  
+ NA's   :85        NA's   :7        NA's   :7        NA's   :7        NA's   :7        NA's   :7       
+ UnempRate2010    UnempRate2007    PctEmpChange1018  PctEmpChange1718  PctEmpChange0718  PctEmpChange0710 
+ Min.   : 2.100   Min.   : 1.500   Min.   :-32.680   Min.   :-13.450   Min.   :-59.270   Min.   :-55.030  
+ 1st Qu.: 7.300   1st Qu.: 3.700   1st Qu.: -2.950   1st Qu.: -0.320   1st Qu.:-10.348   1st Qu.:-10.625  
+ Median : 9.300   Median : 4.700   Median :  3.350   Median :  0.690   Median : -1.990   Median : -5.345  
+ Mean   : 9.594   Mean   : 5.064   Mean   :  3.977   Mean   :  0.689   Mean   : -1.345   Mean   : -5.191  
+ 3rd Qu.:11.500   3rd Qu.: 5.800   3rd Qu.:  9.520   3rd Qu.:  1.635   3rd Qu.:  6.157   3rd Qu.: -0.520  
+ Max.   :28.800   Max.   :20.400   Max.   :151.200   Max.   : 38.850   Max.   :210.500   Max.   : 91.570  
+ NA's   :7        NA's   :9        NA's   :7         NA's   :7         NA's   :12        NA's   :12       
+ PctEmpAgriculture  PctEmpMining      PctEmpConstruction PctEmpManufacturing  PctEmpTrade      PctEmpTrans    
+ Min.   : 0.000    Min.   : 0.00000   Min.   : 0.000     Min.   : 0.000      Min.   : 1.156   Min.   : 0.000  
+ 1st Qu.: 1.110    1st Qu.: 0.07375   1st Qu.: 5.621     1st Qu.: 6.749      1st Qu.:12.356   1st Qu.: 4.137  
+ Median : 2.784    Median : 0.29888   Median : 6.909     Median :11.362      Median :13.961   Median : 5.125  
+ Mean   : 4.998    Mean   : 1.61544   Mean   : 7.176     Mean   :12.220      Mean   :13.786   Mean   : 5.460  
+ 3rd Qu.: 6.110    3rd Qu.: 1.30634   3rd Qu.: 8.364     3rd Qu.:16.668      3rd Qu.:15.321   3rd Qu.: 6.390  
+ Max.   :60.227    Max.   :42.39456   Max.   :22.835     Max.   :55.094      Max.   :35.851   Max.   :24.591  
+ NA's   :5         NA's   :5          NA's   :5          NA's   :5           NA's   :5        NA's   :5       
+ PctEmpInformation   PctEmpFIRE     PctEmpServices     PctEmpGovt     UnempRate2011    UnempRate2008   
+ Min.   : 0.0000   Min.   : 0.000   Min.   : 5.128   Min.   : 0.000   Min.   : 1.400   Min.   : 1.300  
+ 1st Qu.: 0.8877   1st Qu.: 3.379   1st Qu.:38.365   1st Qu.: 3.608   1st Qu.: 6.700   1st Qu.: 4.400  
+ Median : 1.3316   Median : 4.282   Median :42.977   Median : 4.793   Median : 8.700   Median : 5.700  
+ Mean   : 1.4095   Mean   : 4.575   Mean   :43.050   Mean   : 5.711   Mean   : 8.958   Mean   : 6.001  
+ 3rd Qu.: 1.7857   3rd Qu.: 5.501   3rd Qu.:47.582   3rd Qu.: 6.820   3rd Qu.:10.700   3rd Qu.: 7.100  
+ Max.   :17.2973   Max.   :21.070   Max.   :82.230   Max.   :34.921   Max.   :28.900   Max.   :22.600  
+ NA's   :5         NA's   :5        NA's   :5        NA's   :5        NA's   :7        NA's   :9       
+ UnempRate2009    UnempRate2012    UnempRate2013    PopChangeRate1718 PopChangeRate1018  TotalPopEst2018   
+ Min.   : 2.100   Min.   : 1.100   Min.   : 1.200   Min.   :-6.5000   Min.   :-26.1500   Min.   :      88  
+ 1st Qu.: 6.900   1st Qu.: 6.000   1st Qu.: 5.500   1st Qu.:-0.5400   1st Qu.: -3.9200   1st Qu.:   11322  
+ Median : 8.800   Median : 7.800   Median : 7.300   Median : 0.1100   Median : -0.4400   Median :   26718  
+ Mean   : 9.256   Mean   : 8.074   Mean   : 7.614   Mean   : 0.1091   Mean   :  0.6803   Mean   :  201018  
+ 3rd Qu.:11.100   3rd Qu.: 9.700   3rd Qu.: 9.100   3rd Qu.: 0.7900   3rd Qu.:  4.1300   3rd Qu.:   71234  
+ Max.   :27.400   Max.   :27.400   Max.   :27.400   Max.   :11.7600   Max.   :112.6300   Max.   :39557045  
+ NA's   :9        NA's   :7        NA's   :7        NA's   :5         NA's   :5          NA's   :7         
+ NetMigrationRate1018 NaturalChangeRate1018 Net_International_Migration_Rat PopChangeRate0010 NetMigrationRate0010
+ Min.   :-25.88000    Min.   :-9.340        Min.   :-0.9100                 Min.   :-46.600   Min.   :-57.4300    
+ 1st Qu.: -3.67000    1st Qu.:-1.110        1st Qu.: 0.0900                 1st Qu.: -2.510   1st Qu.: -5.1150    
+ Median : -0.98000    Median : 0.620        Median : 0.4000                 Median :  3.180   Median : -0.3500    
+ Mean   : -0.00953    Mean   : 1.027        Mean   : 0.9083                 Mean   :  5.198   Mean   :  0.9968    
+ 3rd Qu.:  2.70000    3rd Qu.: 2.770        3rd Qu.: 1.1000                 3rd Qu.: 10.155   3rd Qu.:  5.3550    
+ Max.   : 96.86000    Max.   :20.490        Max.   :24.0700                 Max.   :110.350   Max.   : 85.2000    
+ NA's   :84           NA's   :84            NA's   :84                      NA's   :11        NA's   :94          
+ NaturalChangeRate0010 Immigration_Rate_2000_2010 PopDensity2010     Under18Pct2010  Age65AndOlderPct2010
+ Min.   :-14.480       Min.   :-5.1937            Min.   :    0.04   Min.   : 0.00   Min.   : 3.47       
+ 1st Qu.: -0.260       1st Qu.: 0.1967            1st Qu.:   17.79   1st Qu.:21.49   1st Qu.:13.06       
+ Median :  2.360       Median : 0.5847            Median :   47.05   Median :23.43   Median :15.41       
+ Mean   :  2.838       Mean   : 1.2505            Mean   :  284.83   Mean   :23.46   Mean   :15.79       
+ 3rd Qu.:  5.270       3rd Qu.: 1.5612            3rd Qu.:  131.29   3rd Qu.:25.13   3rd Qu.:18.08       
+ Max.   : 26.410       Max.   :17.6758            Max.   :69468.42   Max.   :41.57   Max.   :43.38       
+ NA's   :94            NA's   :94                 NA's   :5          NA's   :5       NA's   :5           
+ WhiteNonHispanicPct2010 BlackNonHispanicPct2010 AsianNonHispanicPct2010 NativeAmericanNonHispanicPct201
+ Min.   : 0.20           Min.   : 0.00           Min.   : 0.000          Min.   : 0.000                 
+ 1st Qu.:65.34           1st Qu.: 0.38           1st Qu.: 0.260          1st Qu.: 0.190                 
+ Median :84.99           Median : 1.79           Median : 0.460          Median : 0.300                 
+ Mean   :76.30           Mean   : 8.57           Mean   : 1.151          Mean   : 1.821                 
+ 3rd Qu.:94.00           3rd Qu.: 9.53           3rd Qu.: 1.000          3rd Qu.: 0.620                 
+ Max.   :99.16           Max.   :85.44           Max.   :43.010          Max.   :94.950                 
+ NA's   :5               NA's   :5               NA's   :5               NA's   :5                      
+ HispanicPct2010 MultipleRacePct2010 NonHispanicWhitePopChangeRate00 NonHispanicBlackPopChangeRate00
+ Min.   : 0.00   Min.   : 0.100      Min.   :-94.320                 Min.   : -100.000              
+ 1st Qu.: 1.63   1st Qu.: 1.160      1st Qu.: -6.520                 1st Qu.:   -3.305              
+ Median : 3.46   Median : 1.640      Median : -0.680                 Median :   13.590              
+ Mean   :10.51   Mean   : 2.024      Mean   :  0.538                 Mean   :   69.632              
+ 3rd Qu.: 9.16   3rd Qu.: 2.400      3rd Qu.:  5.825                 3rd Qu.:   61.285              
+ Max.   :99.70   Max.   :29.470      Max.   :149.100                 Max.   :21950.000              
+ NA's   :5       NA's   :5           NA's   :11                      NA's   :72                     
+ NonHispanicAsianPopChangeRate00 NonHispanicNativeAmericanPopCha HispanicPopChangeRate0010
+ Min.   :-100.00                 Min.   :-100.00                 Min.   :-100.00          
+ 1st Qu.:  17.76                 1st Qu.:  -8.86                 1st Qu.:  32.49          
+ Median :  47.26                 Median :   9.07                 Median :  66.41          
+ Mean   :  74.21                 Mean   :  17.65                 Mean   :  81.91          
+ 3rd Qu.:  91.55                 3rd Qu.:  30.22                 3rd Qu.: 106.35          
+ Max.   :2900.00                 Max.   :1500.00                 Max.   :1740.51          
+ NA's   :50                      NA's   :34                      NA's   :11               
+ MultipleRacePopChangeRate0010 ForeignBornPct   ForeignBornEuropePct ForeignBornMexPct NonEnglishHHPct  
+ Min.   :-87.50                Min.   : 0.000   Min.   :0.0000       Min.   : 0.0000   Min.   : 0.0000  
+ 1st Qu.: 24.83                1st Qu.: 1.370   1st Qu.:0.1666       1st Qu.: 0.1763   1st Qu.: 0.3214  
+ Median : 53.51                Median : 2.732   Median :0.3536       Median : 0.6666   Median : 0.8998  
+ Mean   : 59.24                Mean   : 4.776   Mean   :0.5708       Mean   : 1.9539   Mean   : 3.5716  
+ 3rd Qu.: 83.58                3rd Qu.: 5.842   3rd Qu.:0.6926       3rd Qu.: 1.9756   3rd Qu.: 2.2719  
+ Max.   :850.00                Max.   :52.945   Max.   :7.7895       Max.   :35.4888   Max.   :89.3175  
+ NA's   :13                    NA's   :84       NA's   :84           NA's   :84        NA's   :5        
+ Ed1LessThanHSPct Ed2HSDiplomaOnlyPct Ed3SomeCollegePct Ed4AssocDegreePct Ed5CollegePlusPct   AvgHHSize    
+ Min.   : 1.124   Min.   : 7.317      Min.   : 3.478    Min.   : 0.797    Min.   : 4.688    Min.   :1.400  
+ 1st Qu.: 9.068   1st Qu.:29.615      1st Qu.:19.030    1st Qu.: 6.971    1st Qu.:14.893    1st Qu.:2.360  
+ Median :12.557   Median :34.467      Median :21.618    Median : 8.551    Median :19.183    Median :2.490  
+ Mean   :14.116   Mean   :34.202      Mean   :21.604    Mean   : 8.725    Mean   :21.353    Mean   :2.529  
+ 3rd Qu.:18.136   3rd Qu.:39.149      3rd Qu.:24.104    3rd Qu.:10.303    3rd Qu.:25.585    3rd Qu.:2.640  
+ Max.   :58.651   Max.   :54.875      Max.   :36.616    Max.   :21.730    Max.   :78.133    Max.   :4.790  
+ NA's   :5        NA's   :5           NA's   :5         NA's   :5         NA's   :5         NA's   :5      
+  FemaleHHPct     HH65PlusAlonePct   OwnHomePct     TotalPop25Plus      ForeignBornAfricaPct  TotalPopACS       
+ Min.   : 0.000   Min.   : 2.911   Min.   : 3.774   Min.   :       64   Min.   :0.00000      Min.   :       74  
+ 1st Qu.: 8.512   1st Qu.:10.387   1st Qu.:67.309   1st Qu.:     7931   1st Qu.:0.00000      1st Qu.:    11414  
+ Median :10.659   Median :12.193   Median :72.450   Median :    18304   Median :0.04719      Median :    26847  
+ Mean   :11.466   Mean   :12.299   Mean   :71.233   Mean   :   199693   Mean   :0.19337      Mean   :   296349  
+ 3rd Qu.:13.457   3rd Qu.:13.992   3rd Qu.:76.769   3rd Qu.:    47707   3rd Qu.:0.18736      3rd Qu.:    71373  
+ Max.   :40.616   Max.   :29.653   Max.   :93.452   Max.   :216271644   Max.   :9.33876      Max.   :321004407  
+ NA's   :5        NA's   :5        NA's   :5        NA's   :5           NA's   :84           NA's   :5          
+   TotalOccHU        ForeignBornAsiaPct    TotalHH          ForeignBornCentralSouthAmPct ForeignBornCaribPct
+ Min.   :       31   Min.   : 0.0000    Min.   :       31   Min.   : 0.0000              Min.   : 0.00000   
+ 1st Qu.:     4383   1st Qu.: 0.2421    1st Qu.:     4383   1st Qu.: 0.3541              1st Qu.: 0.00000   
+ Median :    10149   Median : 0.5023    Median :    10149   Median : 1.0382              Median : 0.03393   
+ Mean   :   109662   Mean   : 1.0715    Mean   :   109662   Mean   : 2.5126              Mean   : 0.23678   
+ 3rd Qu.:    27171   3rd Qu.: 1.0651    3rd Qu.:    27171   3rd Qu.: 2.8106              3rd Qu.: 0.14787   
+ Max.   :118825921   Max.   :30.6017    Max.   :118825921   Max.   :35.4888              Max.   :31.87891   
+ NA's   :5           NA's   :84         NA's   :5           NA's   :84                   NA's   :84         
+  TotalPop2010       LandAreaSQMiles2010 Net_International_Migration_200 TotalPopEst2012     TotalPopEst2013    
+ Min.   :       82   Min.   :      2     Min.   :  -4973.0               Min.   :       86   Min.   :       89  
+ 1st Qu.:    11561   1st Qu.:    421     1st Qu.:     24.5               1st Qu.:    11501   1st Qu.:    11456  
+ Median :    26948   Median :    610     Median :    136.8               Median :    26902   Median :    26896  
+ Mean   :   285268   Mean   :   3239     Mean   :   5972.9               Mean   :   289951   Mean   :   291945  
+ 3rd Qu.:    70311   3rd Qu.:    933     3rd Qu.:    728.1               3rd Qu.:    70730   3rd Qu.:    70911  
+ Max.   :308745538   Max.   :3531905     Max.   :1906302.0               Max.   :313993272   Max.   :316234505  
+ NA's   :5           NA's   :5           NA's   :94                      NA's   :5           NA's   :5          
+ TotalPopEst2010     TotalPopEst2014     TotalPopEst2011     Net_International_Migration_201 NaturalChange1018
+ Min.   :       84   Min.   :       89   Min.   :       90   Min.   :  -1018                 Min.   : -26068  
+ 1st Qu.:    11556   1st Qu.:    11506   1st Qu.:    11487   1st Qu.:     12                 1st Qu.:   -150  
+ Median :    26852   Median :    26938   Median :    26831   Median :     88                 Median :     95  
+ Mean   :   285803   Mean   :   294062   Mean   :   287859   Mean   :   6911                 Mean   :   9389  
+ 3rd Qu.:    70562   3rd Qu.:    71295   3rd Qu.:    70611   3rd Qu.:    516                 3rd Qu.:   1237  
+ Max.   :309338421   Max.   :318622525   Max.   :311644280   Max.   :7042455                 Max.   :9338302  
+ NA's   :5           NA's   :5           NA's   :5           NA's   :84                      NA's   :84       
+ TotalPopEst2015     TotalPopEst2016     TotalPopEst2017     NetMigration1018  TotalPopEstBase2010
+ Min.   :       88   Min.   :       88   Min.   :       88   Min.   :-520593   Min.   :       82  
+ 1st Qu.:    11378   1st Qu.:    11402   1st Qu.:    11343   1st Qu.:   -760   1st Qu.:    11578  
+ Median :    26830   Median :    26612   Median :    26674   Median :   -126   Median :    26929  
+ Mean   :   296203   Mean   :   298308   Mean   :   300237   Mean   :   6911   Mean   :   285282  
+ 3rd Qu.:    71112   3rd Qu.:    71403   3rd Qu.:    71404   3rd Qu.:    804   3rd Qu.:    70405  
+ Max.   :321039839   Max.   :323405935   Max.   :325719178   Max.   :7042455   Max.   :308758105  
+ NA's   :5           NA's   :5           NA's   :5           NA's   :84        NA's   :5          
+   Metro2013        Metro2003     
+ Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.0000   1st Qu.:0.0000  
+ Median :0.0000   Median :0.0000  
+ Mean   :0.3837   Mean   :0.3592  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000  
+ NA's   :57       NA's   :54      
+
+
+----------------------------------------------------------------------------------------------------------------
+

@@ -73,13 +73,13 @@ cat("Correlation between UnempRate2013 and PerCapitaInc: ", cor(rural_atlas_merg
 coeftest(model_a, vcov = vcovHC(model_a, type = "HC0"))
 
 
-# 1% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 1% level.
+# 1% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 1% significance level
 confint(model_a, level = 0.99)
 
-# 5% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 5% level.
+# 5% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 5% significance level
 confint(model_a, level = 0.95)
 
-# 10% level: Reject the hypothesis that the coefficient on the unemployment rate is zero at the 10% level.
+# 10% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 10% significance level
 confint(model_a, level = 0.90)
 
 # Intercept = 34507.06
@@ -96,11 +96,16 @@ confint(model_a, level = 0.90)
 #### (b) Re-run the regression from part (a) but this time use heteroskedastic standard errors. Are your coefficients the same as in part (a)? Why? Are your standard errors (of your betas) the same as in part (a)? Why?
 
 ```{r (b)}
-# Coefficients are the same as part (a)
+
 summary.lm(model_b <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas_merged$UnempRate2013))
 
 # compute heteroskedasticity-robust standard errors
-coeftest(model_b, vcov = vcovHC(model_a, type = "HC1"))
+coeftest(model_b, vcov = vcovHC(model_b, type = "HC1"))
+
+# compute homoskedastic-robust standard errors from model_a and compare
+coeftest(model_a, vcovHC(model_a, type = "HC0"))
+
+# Standard errors differ slightly between homoskedastic and heteroskedastic 
 
 ```
 
@@ -113,14 +118,8 @@ summary.lm(model_c <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas
 # compute heteroskedasticity-robust standard errors
 coeftest(model_c, vcov = vcovHC(model_c, type = "HC1"))
 
-# 1% level:
-confint(model_c, level = 0.99)
 
-# 5% level:
-confint(model_c, level = 0.95) 
-
-# 10% level:
-confint(model_c, level = 0.90) 
+# All regressors in this model are statistically significant predictors of per capita income at the 10%, 5%, and 1% levels
 
 ```
 
@@ -130,6 +129,7 @@ confint(model_c, level = 0.90)
 
 ```{r (d)}
 # If the regressor is correlated with a variable that has been omitted from the analysis (for example: Black Non Hispanic) and that determines, in part, the dependent variable, then the results will change when you add in additional variables to the regression.
+
 ```
 
 
@@ -144,9 +144,11 @@ c("lower" = lm_summ$coef[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 
 # Upper -1152.81 + 1.96 * 31.33 = -1091.387  
   "upper" = lm_summ$coef[2,1] + qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 2])
 
+# The unemployment rate is a statistically significant predictor of per capita income at the 5% level in this model
+
 ```
 This interval *does not* contain the value zero which leads to the rejection of the null hypothesis $\beta_{1,0} = 0$.
-
+Alternatively, this indicates that the unemployment rate in this model is statistically significant at the 5% level
 
 #### (f) You recall from problem set 1 that both the means of per capita income and of unemployment rate in 2013 are quite different across metro and nonmetro areas. You therefore want to explore this in more detail. Run the regression from (c) using only metro areas in 2013 (Metro2013==1). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r (f)}
@@ -157,6 +159,17 @@ summary.lm(metro_model <- lm(formula = metro$PerCapitaInc ~ metro$UnempRate2013)
 
 # compute heteroskedasticity-robust standard errors
 coeftest(metro_model, vcov = vcovHC(metro_model, type = "HC1"))
+
+# 1% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 1% significance level
+confint(metro_model, level = 0.99)
+
+# 5% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 5% significance level
+confint(metro_model, level = 0.95) 
+
+# 10% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 10% significance level
+confint(metro_model, level = 0.90) 
+
+# The unemployment rate is a statistically significant predictor of per capita income at the 10%, 5%, and 1% levels in this model
 
 ```
 
@@ -171,14 +184,16 @@ summary.lm(non_metro_model <- lm(formula = non_metro$PerCapitaInc ~ non_metro$Un
 # compute heteroskedasticity-robust standard errors
 coeftest(non_metro_model, vcov = vcovHC(non_metro_model, type = "HC1"))
 
-# 1% level:
+# 1% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 1% significance level
 confint(non_metro_model, level = 0.99)
 
-# 5% level:
+# 5% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 5% significance level
 confint(non_metro_model, level = 0.95) 
 
-# 10% level:
+# 10% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 10% significance level
 confint(non_metro_model, level = 0.90) 
+
+# The unemployment rate is a statistically significant predictor of per capita income at the 10%, 5%, and 1% levels in this model
 
 ```
 
@@ -198,15 +213,7 @@ summary.lm(model_i <- lm(formula = rural_atlas_merged$PerCapitaInc ~ rural_atlas
 # compute heteroskedasticity-robust standard errors
 coeftest(model_i, vcov = vcovHC(model_i, type = "HC1"))
 
-# 1% level:
-confint(model_i, level = 0.99)
-
-# 5% level:
-confint(model_i, level = 0.95) 
-
-# 10% level:
-confint(model_i, level = 0.90) 
-
+# All regressors are statistically significant predictors of per capita income at the 10%, 5%, and 1% levels in this model
 
 ```
 
