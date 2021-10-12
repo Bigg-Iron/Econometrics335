@@ -82,6 +82,9 @@ confint(model_a, level = 0.95)
 # 10% level: Reject the null hypothesis that the unemployment rate has no influence on per capita income at the 10% significance level
 confint(model_a, level = 0.90)
 
+# Alternatively, the unemployment rate is a statistically significant predictor of per capita income at the 10%, 5%, and 1% levels in this model
+
+
 # Intercept = 34507.06
 
 # Slope = The slope of -1152.81 means that when the unemployment rate differs by 1%, on average, the per capita income is lower by $1,152.81
@@ -149,6 +152,7 @@ c("lower" = lm_summ$coef[2,1] - qt(0.975, df = lm_summ$df[2]) * lm_summ$coef[2, 
 ```
 This interval *does not* contain the value zero which leads to the rejection of the null hypothesis $\beta_{1,0} = 0$.
 Alternatively, this indicates that the unemployment rate in this model is statistically significant at the 5% level
+
 
 #### (f) You recall from problem set 1 that both the means of per capita income and of unemployment rate in 2013 are quite different across metro and nonmetro areas. You therefore want to explore this in more detail. Run the regression from (c) using only metro areas in 2013 (Metro2013==1). [Hint: You need to restrict the data based on a criterion before running the regression.] Now, what is the estimated effect of the 2013 unemployment rate on per capita income and also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 ```{r (f)}

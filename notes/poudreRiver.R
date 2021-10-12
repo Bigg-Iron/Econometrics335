@@ -1,9 +1,9 @@
-packages <- c("dataRetrieval", "ggplot2", "tidyverse", "sandwich", "moments", "dplyr", "tidyr", "lmtest")
+packages <- c("ggplot2", "tidyverse", "sandwich", "moments", "dplyr", "tidyr", "lmtest")
 
 # Loads packages
 lapply(packages, library, character.only = TRUE)
 
-
+install.packages("dataRetrieval")
 
 # Retrieve flow data for Poudre River
 poudre <- readNWISdv(siteNumbers = '06752260',
@@ -25,4 +25,3 @@ summary(pq)
 plot(pq$q_cfs ~ pq$Date, type = 'l', ylab = 'River Flow (cfs)', 
      xlab = 'Date',col = 'blue3')
 
-as_tibble(rural_atlas_merged)
