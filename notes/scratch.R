@@ -1,24 +1,36 @@
-# Data retrieval 
-install.packages("dataRetrieval")
+# List of packages you want to install -- separated with a comma and surrounded in "quotes" 
+packages <- c("tidyverse", "dplyr", "moments", "lmtest","AER", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "here")
 
-library(dataRetrieval)
+# Installs packages
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
 
-# Retrieve flow data for Poudre River
-poudre <- readNWISdv(siteNumbers = '06752260',
-                     parameterCd = c('00060'),
-                     startDate = '2010-10-01',
-                     endDate = Sys.Date())
+# Loads packages
+invisible(lapply(packages, library, character.only = TRUE))
 
-head(poudre)
+data(CASchools)
 
-#Remove the first two columns
-pq <- poudre[,-c(1,2,5)]
+str(CASchools)
 
-#Rename the remaining columns
-names(pq) <- c('Date','q_cfs')
+# define variables
+CASchools$STR <- CASchools$students/CASchools$teachers       
 
-summary(pq)
+CASchools$score <- (CASchools$read + CASchools$math)/2
 
-# Plot the data
-plot(pq$q_cfs ~ pq$Date, type = 'l', ylab = 'River Flow (cfs)', 
-     xlab = 'Date',col = 'blue3')
+# compute correlations
+cor(CASchools$STR, CASchools$score)
+
+cor(CASchools$STR, CASchools$english)
+
+# estimate both regression models
+mod <- lm(score ~ STR, data = CASchools) 
+
+summary(mod)
+
+mult.mod <- lm(score ~ STR + english, data = CASchools)
+
+summary(mult.mod)
+
+
