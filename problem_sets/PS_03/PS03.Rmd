@@ -37,6 +37,10 @@ following questions.
 (a) It is quite common in econometrics to model income variables nonlinearly. Construct a new variable called
 loginc where loginc=ln(PerCapitaInc). Provide summary statistics for this new variable. (Hint: Think back to
 how you constructed summary statistics in problem set 1.)
+```{r}
+
+```
+
 
 (b) Now run a model similar to the one that you ran as the final specification in problem set 2 except this time
 use loginc as the dependent variable (and we are also going to start controlling for metro status in addition to
@@ -46,29 +50,60 @@ as the main regressor, while also including the other regressors: percentage col
 Hispanic in 2010, and metro status in 2013 (Metro2013). Now, what is the estimated effect of UnempRate2013
 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make
 sure that you are using heteroskedastic standard errors.
+```{r}
+
+```
+
 
 (c) What is the null hypothesis corresponding to the F-statistic as reported in the output for the regression in
 part (b)?
+```{r}
+
+```
+
 
 (d) What is the conclusion of the F-test as reported in the output for the regression in part (b)? Explain. (i.e.
 Do you reject or fail to reject the null hypothesis above and how do you know this?)
+```{r}
+
+```
+
 
 (e) What are the degrees of freedom (the specific numbers reported) for the F-test as specified in your regression
 output? Where are these numbers coming from for this case? (i.e., how is the computer calculating these
 numbers specifically given the dataset here?)
+```{r}
+
+```
+
 
 (f) Discuss what the standard error of the regression (SER), R2 and 𝑹𝑹2 in part (b) are telling you in terms of
 the numbers that you have found.
+```{r}
+
+```
+
 
 (g) Using what you know about the difference between the two formulas, explain specifically why the R2 and
 𝑹𝑹2 statistics so similar for this case.
+```{r}
+
+```
+
 
 (h) Use an F-test to test the joint significance of the additional regressors: Ed5CollegePlus,
 BlackNonHispanicPct2010, HispanicPct2010, and Metro2013. Find this test statistic and clearly indicate the
 conclusions of the test.
+```{r}
+
+```
+
 
 (i) If you had more time to study this question and/or more/different data, what would you suggest doing next?
 Propose additional variables to add and/or different specifications to try and give specific reasons why you are
 suggesting these. Answers will vary for this part of the problem.
+```{r}
+
+```
 
 
