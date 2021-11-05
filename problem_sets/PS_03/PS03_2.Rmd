@@ -51,12 +51,17 @@ Now, what is the estimated effect of UnempRate2013 in words? Also indicate if th
 
 rural_atlas_model1 <- lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$PerCapitaInc + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
 
+coefs <- names(coef(rural_atlas_model1))
+
 summary(rural_atlas_model1)
 
-coeftest(rural_atlas_model1, vcov = vcovHC(model1, type = "HC0"))
+coeftest(rural_atlas_model1, vcov = vcovHC(rural_atlas_model1, type = "HC0"))
 
 # To get robust F-statistics
 linearHypothesis(model = rural_atlas_model1, c("rural_atlas_merged$UnempRate2013=0", "rural_atlas_merged$PerCapitaInc=0", "rural_atlas_merged$Ed5CollegePlusPct=0", "rural_atlas_merged$BlackNonHispanicPct2010=0"))
+
+# Testing against the null model (i.e., only the intercept is not set to 0)
+linearHypothesis(model = rural_atlas_model1, coefs[-1])
 
 # The effect of the UnempRate2013 on PerCapitaInc is statistically significant at the 10%, 5%, and 1% levels
 
