@@ -43,20 +43,29 @@ summary(rural_atlas_merged$logPerCapitaInc)
 ```
 
 
-## (b) Now run a model similar to the one that you ran as the final specification in problem set 2 except this time use loginc as the dependent variable (and we are also going to start controlling for metro status in addition to the other controls). Specifically, run a regression of loginc with unemployment rate in 2013 (UnempRate2013) as the main regressor, while also including the other regressors: percentage college educated (Ed5CollegePlusPct), percentage non-Hispanic black in 2010 (BlackNonHispanicPct2010), percentage Hispanic in 2010, and metro status in 2013 (Metro2013). Now, what is the estimated effect of UnempRate2013 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
+## (b) Now run a model similar to the one that you ran as the final specification in problem set 2 except this time use loginc as the dependent variable (and we are also going to start controlling for metro status in addition to the other controls). Specifically, run a regression of loginc with unemployment rate in 2013 (UnempRate2013) as the main regressor, while also including the other regressors: percentage college educated (Ed5CollegePlusPct), percentage non-Hispanic black in 2010 (BlackNonHispanicPct2010), percentage Hispanic in 2010, and metro status in 2013 (Metro2013). 
+
+Now, what is the estimated effect of UnempRate2013 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
+
 ```{r}
 
-model1 <- lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
+rural_atlas_model1 <- lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$PerCapitaInc + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
 
-summary(model1)
+summary(rural_atlas_model1)
 
-coeftest(model1, vcov = vcovHC(model1, type = "HC0"))
+coeftest(rural_atlas_model1, vcov = vcovHC(model1, type = "HC0"))
+
+# To get robust F-statistics
+linearHypothesis(model = rural_atlas_model1, c("rural_atlas_merged$UnempRate2013=0", "rural_atlas_merged$PerCapitaInc=0", "rural_atlas_merged$Ed5CollegePlusPct=0", "rural_atlas_merged$BlackNonHispanicPct2010=0"))
+
+# The effect of the UnempRate2013 on PerCapitaInc is statistically significant at the 10%, 5%, and 1% levels
 
 ```
 
 
 ## (c) What is the null hypothesis corresponding to the F-statistic as reported in the output for the regression in part (b)?
 ```{r}
+# Null hypothesis: UnempRate2013 = PerCapitaInc = Ed5CollegePlusPct = BlackNonHispanicPct2010 = 0
 
 ```
 

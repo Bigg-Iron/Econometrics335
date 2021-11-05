@@ -31,14 +31,14 @@ kurtosis(caschool1$logTestscore, na.rm = TRUE) #To get kurtosis
 
 #Do a regression including the newly created variable is very simple i.e., 
 #use the new dependent variable i.e., logTestscore instead of TestScore. 
-model1 <- lm(formula = logTestscore ~ str + el_pct + expn_stu, caschool1)
-summary(model1)
+caschool_model1 <- lm(formula = logTestscore ~ str + el_pct + expn_stu, caschool1)
+summary(caschool_model1)
 
 # Of course don't forget to get robust S.Es using the Robust t test
-coeftest(model1, vcov = vcovHC(model1, type = "HC0"))
+coeftest(caschool_model1, vcov = vcovHC(model1, type = "HC0"))
 
-#To get robust F-statistics
-linearHypothesis(model1, c("str=0", "expn_stu=0"))
+  #To get robust F-statistics
+  linearHypothesis(caschool_model1, c("str=0", "expn_stu=0"))
 
 
 
