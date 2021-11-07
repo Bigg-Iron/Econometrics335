@@ -2,7 +2,11 @@
 title: "Problem Set 03"
 author: "Lorenzo Bartolo"
 date: "10/18/2021"
-output: pdf_document
+
+output:
+  pdf_document: default
+  html_document: default
+    
 ---
 
 # Setup
@@ -43,8 +47,7 @@ summary(rural_atlas_merged$logPerCapitaInc)
 ```
 
 
-## (b) Now run a model similar to the one that you ran as the final specification in problem set 2 except this time use loginc as the dependent variable (and we are also going to start controlling for metro status in addition to the other controls). Specifically, run a regression of loginc with unemployment rate in 2013 (UnempRate2013) as the main regressor, while also including the other regressors: percentage college educated (Ed5CollegePlusPct), percentage non-Hispanic black in 2010 (BlackNonHispanicPct2010), percentage Hispanic in 2010, and metro status in 2013 (Metro2013). 
-Now, what is the estimated effect of UnempRate2013 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
+## (b) Now run a model similar to the one that you ran as the final specification in problem set 2 except this time use loginc as the dependent variable (and we are also going to start controlling for metro status in addition to the other controls). Specifically, run a regression of loginc with unemployment rate in 2013 (UnempRate2013) as the main regressor, while also including the other regressors: percentage college educated (Ed5CollegePlusPct), percentage non-Hispanic black in 2010 (BlackNonHispanicPct2010), percentage Hispanic in 2010, and metro status in 2013 (Metro2013). Now, what is the estimated effect of UnempRate2013 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 
 ```{r}
 rural_atlas_model1 <- lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
@@ -83,7 +86,7 @@ linearHypothesis(model = rural_atlas_model1, coefs[-1], white.adjust = "hc1")
 
 
 
-## (f) Discuss what the standard error of the regression (SER), R2 and 𝑹𝑹2 in part (b) are telling you in terms of the numbers that you have found.
+## (f) Discuss what the standard error of the regression (SER), $R^2$ and $\bar{R}^2$ in part (b) are telling you in terms of the numbers that you have found.
 
 - The $R^2$ and $\bar{R}^2$ tell us whether the regressors (UnempRate2013, Ed5CollegePlusPct, BlackNonHispanic2010 in this case) are good at predicting, or “explaining,” the values of the dependent variable (per capita income) in the sample of data
 
@@ -95,7 +98,7 @@ linearHypothesis(model = rural_atlas_model1, coefs[-1], white.adjust = "hc1")
 
 
 
-## (g) Using what you know about the difference between the two formulas, explain specifically why the R2 and 𝑹𝑹2 statistics so similar for this case.
+## (g) Using what you know about the difference between the two formulas, explain specifically why the $R^2$ and $\bar{R}^2$ statistics so similar for this case.
 
 - TODO: The $R^2$ and the $\bar{R}^2$ are similar because...
 
