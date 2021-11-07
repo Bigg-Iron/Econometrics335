@@ -1,0 +1,50 @@
+
+Call:
+lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + 
+    rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.86850 -0.08024  0.01711  0.09923  0.74723 
+
+Coefficients:
+                                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                10.1337158  0.0120559 840.559  < 2e-16 ***
+rural_atlas_merged$UnempRate2013           -0.0412292  0.0010044 -41.047  < 2e-16 ***
+rural_atlas_merged$Ed5CollegePlusPct        0.0143310  0.0003306  43.346  < 2e-16 ***
+rural_atlas_merged$BlackNonHispanicPct2010 -0.0005672  0.0002111  -2.687  0.00724 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1666 on 3267 degrees of freedom
+  (7 observations deleted due to missingness)
+Multiple R-squared:  0.6212,	Adjusted R-squared:  0.6208 
+F-statistic:  1786 on 3 and 3267 DF,  p-value: < 2.2e-16
+
+
+t test of coefficients:
+
+                                              Estimate  Std. Error  t value Pr(>|t|)    
+(Intercept)                                10.13371577  0.01795140 564.5084  < 2e-16 ***
+rural_atlas_merged$UnempRate2013           -0.04122924  0.00198116 -20.8107  < 2e-16 ***
+rural_atlas_merged$Ed5CollegePlusPct        0.01433103  0.00039787  36.0195  < 2e-16 ***
+rural_atlas_merged$BlackNonHispanicPct2010 -0.00056720  0.00022986  -2.4675  0.01366 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Linear hypothesis test
+
+Hypothesis:
+rural_atlas_merged$UnempRate2013 = 0
+rural_atlas_merged$Ed5CollegePlusPct = 0
+rural_atlas_merged$BlackNonHispanicPct2010 = 0
+
+Model 1: restricted model
+Model 2: rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + 
+    rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010
+
+  Res.Df     RSS Df Sum of Sq      F    Pr(>F)    
+1   3270 239.212                                  
+2   3267  90.623  3    148.59 1785.6 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

@@ -48,7 +48,6 @@ summary(rural_atlas_merged$logPerCapitaInc)
 TODO: Now, what is the estimated effect of UnempRate2013 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
 
 ```{r}
-
 rural_atlas_model1 <- lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
 
 coefs <- names(coef(rural_atlas_model1))
@@ -66,33 +65,32 @@ linearHypothesis(model = rural_atlas_model1, coefs[-1])
 
 
 ## (c) What is the null hypothesis corresponding to the F-statistic as reported in the output for the regression in part (b)?
-```{r}
-# Null hypothesis: UnempRate2013 = PerCapitaInc = Ed5CollegePlusPct = BlackNonHispanicPct2010 = 0
 
-```
+- Null hypothesis: UnempRate2013 = PerCapitaInc = Ed5CollegePlusPct = BlackNonHispanicPct2010 = 0
 
 
 ## (d) What is the conclusion of the F-test as reported in the output for the regression in part (b)? Explain. (i.e. Do you reject or fail to reject the null hypothesis above and how do you know this?)
-```{r}
-# Statistically significant at the 10%, 5%, and 1% levels
 
-```
+- Testing the joint hypothesis on two or more coefficients using the linear hypothesis test above, we reject the null hypothesis at the 10%, 5%, and 1% levels
+
 
 
 ## (e) What are the degrees of freedom (the specific numbers reported) for the F-test as specified in your regression output? Where are these numbers coming from for this case? (i.e., how is the computer calculating these numbers specifically given the dataset here?)
-```{r}
 
-```
+- The degrees of freedom are 3 for the F-test, given we specified 3 restrictions for this model
+
 
 
 ## (f) Discuss what the standard error of the regression (SER), R2 and 𝑹𝑹2 in part (b) are telling you in terms of the numbers that you have found.
-```{r}
 
-```
+- The $R^2$ and $\bar{R}^2$ tell us whether the regressors (UnempRate2013, Ed5CollegePlusPct, BlackNonHispanic2010 in this case) are good at predicting, or “explaining,” the values of the dependent variable (per capita income) in the sample of data
+- An $R^2$ and $\bar{R}^2$ near 1 means that the regressors are good at predicting the values of the dependent variable (PerCapitaInc) in the sample, and an $R^2$ and $\bar{R}^2$ near 0 means that they are not. 
+- The SER is a measure of the spread of the observations around the regression line, in this case measured in dollars of per-capita income
 
 
 ## (g) Using what you know about the difference between the two formulas, explain specifically why the R2 and 𝑹𝑹2 statistics so similar for this case.
 ```{r}
+# An increase in the R2 or R2 does not necessarily mean that an added variable is statistically significant 
 
 ```
 
