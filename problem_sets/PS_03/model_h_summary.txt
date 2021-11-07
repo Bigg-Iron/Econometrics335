@@ -1,0 +1,60 @@
+
+Call:
+lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + 
+    rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + 
+    rural_atlas_merged$HispanicPct2010 + rural_atlas_merged$Metro2013)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.84074 -0.07798  0.00409  0.08283  0.71550 
+
+Coefficients:
+                                             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)                                10.0947358  0.0107733 937.018  < 2e-16 ***
+rural_atlas_merged$UnempRate2013           -0.0292432  0.0009628 -30.373  < 2e-16 ***
+rural_atlas_merged$Ed5CollegePlusPct        0.0141150  0.0003211  43.961  < 2e-16 ***
+rural_atlas_merged$BlackNonHispanicPct2010 -0.0023356  0.0001914 -12.205  < 2e-16 ***
+rural_atlas_merged$HispanicPct2010         -0.0049064  0.0001491 -32.904  < 2e-16 ***
+rural_atlas_merged$Metro2013                0.0475008  0.0058635   8.101 7.66e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1443 on 3213 degrees of freedom
+  (59 observations deleted due to missingness)
+Multiple R-squared:  0.7157,	Adjusted R-squared:  0.7153 
+F-statistic:  1618 on 5 and 3213 DF,  p-value: < 2.2e-16
+
+
+t test of coefficients:
+
+                                              Estimate  Std. Error  t value  Pr(>|t|)    
+(Intercept)                                10.09473580  0.01384841 728.9454 < 2.2e-16 ***
+rural_atlas_merged$UnempRate2013           -0.02924318  0.00128119 -22.8251 < 2.2e-16 ***
+rural_atlas_merged$Ed5CollegePlusPct        0.01411501  0.00042802  32.9775 < 2.2e-16 ***
+rural_atlas_merged$BlackNonHispanicPct2010 -0.00233558  0.00018130 -12.8825 < 2.2e-16 ***
+rural_atlas_merged$HispanicPct2010         -0.00490639  0.00020533 -23.8956 < 2.2e-16 ***
+rural_atlas_merged$Metro2013                0.04750081  0.00582742   8.1513 5.106e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Linear hypothesis test
+
+Hypothesis:
+rural_atlas_merged$UnempRate2013 = 0
+rural_atlas_merged$Ed5CollegePlusPct = 0
+rural_atlas_merged$BlackNonHispanicPct2010 = 0
+rural_atlas_merged$HispanicPct2010 = 0
+rural_atlas_merged$Metro2013 = 0
+
+Model 1: restricted model
+Model 2: rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + 
+    rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + 
+    rural_atlas_merged$HispanicPct2010 + rural_atlas_merged$Metro2013
+
+Note: Coefficient covariance matrix supplied.
+
+  Res.Df Df      F    Pr(>F)    
+1   3218                        
+2   3213  5 968.78 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

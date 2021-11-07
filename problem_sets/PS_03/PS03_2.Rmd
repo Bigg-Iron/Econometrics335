@@ -86,19 +86,24 @@ linearHypothesis(model = rural_atlas_model1, coefs[-1], white.adjust = "hc1")
 ## (f) Discuss what the standard error of the regression (SER), R2 and 𝑹𝑹2 in part (b) are telling you in terms of the numbers that you have found.
 
 - The $R^2$ and $\bar{R}^2$ tell us whether the regressors (UnempRate2013, Ed5CollegePlusPct, BlackNonHispanic2010 in this case) are good at predicting, or “explaining,” the values of the dependent variable (per capita income) in the sample of data
+
 - An $R^2$ and $\bar{R}^2$ near 1 means that the regressors are good at predicting the values of the dependent variable (PerCapitaInc) in the sample, and an $R^2$ and $\bar{R}^2$ near 0 means that they are not. 
+
+- It is evident that the relatively high $R^2$ and $\bar{R}^2$ CANNOT be used to the conclude that the estimated relation between UnempRate2013 and PerCapitaInc is causal. There could be other determinants and/or control variables.
+
 - The SER is a measure of the spread of the observations around the regression line, in this case measured in dollars of per-capita income
 
 
 
 ## (g) Using what you know about the difference between the two formulas, explain specifically why the R2 and 𝑹𝑹2 statistics so similar for this case.
 
-- The $R^2$ and the $\bar{R}^2$ are similar because...
+- TODO: The $R^2$ and the $\bar{R}^2$ are similar because...
 
 
 
 ## (h) Use an F-test to test the joint significance of the additional regressors: Ed5CollegePlus, BlackNonHispanicPct2010, HispanicPct2010, and Metro2013. Find this test statistic and clearly indicate the conclusions of the test.
 ```{r}
+
 rural_atlas_model_h <- 
 lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010 + rural_atlas_merged$Metro2013)
 
@@ -111,19 +116,17 @@ coeftest(rural_atlas_model_h, vcov = vcovHC(rural_atlas_model_h, type = "HC0"))
 # heteroskedasticity-robust F-test
 linearHypothesis(model = rural_atlas_model_h, coefs_model_h[-1], white.adjust = "hc1")
 
-# The F-statistic is: 1618 on 5 and 3213 DF
-# The value of the F-statistic computed from the data, 1618, exceeds 3.02, so the null hypothesis is rejected at the 1% level 
 
-# as summarized in this F-statistic, we can reject the null hypothesis that the UnempRate2013 and Ed5CollegePlusPct have no effect on PerCapitaInc (holding constant: BlackNonHispanicPct2010, HispanicPct2010, and Metro2013).
+# The value of the F-statistic computed from the data, 1618, exceeds 3.02, thus, we can reject the null hypothesis that the coefficients are zero at any level of significance
+
+# as summarized in this F-statistic, we can reject the null hypothesis that the UnempRate2013 has no effect on PerCapitaInc (holding constant: Ed5CollegePlusPct, BlackNonHispanicPct2010, HispanicPct2010, and Metro2013).
+
 
 ```
 
 
 ## (i) If you had more time to study this question and/or more/different data, what would you suggest doing next? Propose additional variables to add and/or different specifications to try and give specific reasons why you are suggesting these. Answers will vary for this part of the problem.
-```{r}
 
-
-
-```
-
+- I would propose analyzing a coefficient that represents the number of discouraged workers. Since discouraged workers are not counted as "unemployed" in economic data. 
+- Since we know the unemployment rate is correlated to per capita income, it would be interesting to see how the unemployment rate effects per capita income while controlling for the number of discouraged workers.
 
