@@ -1,7 +1,6 @@
 ---
 title: "Problem Set 03"
 author: "Lorenzo Bartolo"
-date: "10/18/2021"
 
 output:
   pdf_document: default
@@ -9,7 +8,6 @@ output:
     
 ---
 
-# Setup
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo = TRUE)
 
@@ -32,7 +30,8 @@ rural_atlas_merged <- read_csv(here("Data/rural_atlas_merged.csv"))
 
 
 # EMPIRICAL /COMPUTER WORK
-5. [50 points (all questions here are worth 5points each except part (a) which is 10 points)] Important: As usual,
+# 5. 
+[50 points (all questions here are worth 5points each except part (a) which is 10 points)] Important: As usual,
 your answer should include a printout (can cut and paste into a file. I will show you how to do this) of relevant
 calculations on the computer (R or other software output) AND a write up of final answers following the
 sub parts of the question. The data again are the same as for Problem Set 1. Use these data to answer the
@@ -64,8 +63,8 @@ linearHypothesis(model = rural_atlas_model1, coefs[-1])
 # heteroskedasticity-robust F-test
 linearHypothesis(model = rural_atlas_model1, coefs[-1], white.adjust = "hc1")
 
-# The effect of the UnempRate2013 on PerCapitaInc is statistically significant at the 10%, 5%, and 1% levels
-# TODO: What about the other coefficients?
+# The effect of the UnempRate2013 on PerCapitaInc is statistically significant at the 10%, 5%, and 1% levels (holding constant: Ed5CollegePlusPct, BlackNonHispanicPct2010)
+
 ```
 
 
@@ -100,7 +99,7 @@ linearHypothesis(model = rural_atlas_model1, coefs[-1], white.adjust = "hc1")
 
 ## (g) Using what you know about the difference between the two formulas, explain specifically why the $R^2$ and $\bar{R}^2$ statistics so similar for this case.
 
-- TODO: The $R^2$ and the $\bar{R}^2$ are similar because...
+- The $R^2$ and the $\bar{R}^2$ are similar because the only difference between R-squared and Adjusted R-squared equation is degrees of freedom
 
 
 
@@ -122,7 +121,7 @@ linearHypothesis(model = rural_atlas_model_h, coefs_model_h[-1], white.adjust = 
 
 # The value of the F-statistic computed from the data, 1618, exceeds 3.02, thus, we can reject the null hypothesis that the coefficients are zero at any level of significance
 
-# as summarized in this F-statistic, we can reject the null hypothesis that the UnempRate2013 has no effect on PerCapitaInc (holding constant: Ed5CollegePlusPct, BlackNonHispanicPct2010, HispanicPct2010, and Metro2013).
+# As summarized in this F-statistic, we can reject the null hypothesis that the UnempRate2013 has no effect on PerCapitaInc (holding constant: Ed5CollegePlusPct, BlackNonHispanicPct2010, HispanicPct2010, and Metro2013).
 
 
 ```
