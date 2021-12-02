@@ -54,3 +54,6 @@ renv/
 
 # Mac
 .DS_Store
+
+# Other
+pdfs/

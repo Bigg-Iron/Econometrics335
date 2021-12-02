@@ -1,0 +1,134 @@
+---
+title: "Problem Set 03"
+author: "Lorenzo Bartolo"
+
+output:
+  pdf_document: default
+  html_document: default
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo = TRUE)
+
+# List of packages you want to install -- separated with a comma and surrounded in "quotes" 
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car")
+
+# Installs packages
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Loads packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+# Load in data
+rural_atlas_merged <- read_csv(here("Data/rural_atlas_merged.csv"))
+
+```
+
+
+# EMPIRICAL /COMPUTER WORK
+# 5. 
+[50 points (all questions here are worth 5points each except part (a) which is 10 points)] Important: As usual,
+your answer should include a printout (can cut and paste into a file. I will show you how to do this) of relevant
+calculations on the computer (R or other software output) AND a write up of final answers following the
+sub parts of the question. The data again are the same as for Problem Set 1. Use these data to answer the
+following questions.
+
+## (a) It is quite common in econometrics to model income variables nonlinearly. Construct a new variable called loginc where loginc=ln(PerCapitaInc). Provide summary statistics for this new variable. (Hint: Think back to how you constructed summary statistics in problem set 1.)
+
+```{r}
+rural_atlas_merged$logPerCapitaInc <- log(rural_atlas_merged$PerCapitaInc)
+summary(rural_atlas_merged$logPerCapitaInc)
+
+```
+
+
+## (b) Now run a model similar to the one that you ran as the final specification in problem set 2 except this time use loginc as the dependent variable (and we are also going to start controlling for metro status in addition to the other controls). Specifically, run a regression of loginc with unemployment rate in 2013 (UnempRate2013) as the main regressor, while also including the other regressors: percentage college educated (Ed5CollegePlusPct), percentage non-Hispanic black in 2010 (BlackNonHispanicPct2010), percentage Hispanic in 2010, and metro status in 2013 (Metro2013). Now, what is the estimated effect of UnempRate2013 in words? Also indicate if the relationship is statistically significant at the 10%, 5%, and 1% levels? Make sure that you are using heteroskedastic standard errors.
+
+```{r}
+rural_atlas_model1 <- lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010)
+
+coefs <- names(coef(rural_atlas_model1))
+
+summary(rural_atlas_model1)
+
+coeftest(rural_atlas_model1, vcov = vcovHC(rural_atlas_model1, type = "HC0"))
+
+# To get robust F-statistics I am testing against the null model (i.e., only the intercept is not set to 0)
+linearHypothesis(model = rural_atlas_model1, coefs[-1])
+
+# heteroskedasticity-robust F-test
+linearHypothesis(model = rural_atlas_model1, coefs[-1], white.adjust = "hc1")
+
+# The effect of the UnempRate2013 on PerCapitaInc is statistically significant at the 10%, 5%, and 1% levels (holding constant: Ed5CollegePlusPct, BlackNonHispanicPct2010)
+
+```
+
+
+## (c) What is the null hypothesis corresponding to the F-statistic as reported in the output for the regression in part (b)?
+
+- Null hypothesis: UnempRate2013 = PerCapitaInc = Ed5CollegePlusPct = BlackNonHispanicPct2010 = 0
+
+
+## (d) What is the conclusion of the F-test as reported in the output for the regression in part (b)? Explain. (i.e. Do you reject or fail to reject the null hypothesis above and how do you know this?)
+
+- Testing the joint hypothesis on two or more coefficients using the linear hypothesis test above, we reject the null hypothesis at the 10%, 5%, and 1% levels
+
+
+
+## (e) What are the degrees of freedom (the specific numbers reported) for the F-test as specified in your regression output? Where are these numbers coming from for this case? (i.e., how is the computer calculating these numbers specifically given the dataset here?)
+
+- The degrees of freedom are 3 for the F-test, given we specified 3 restrictions for this model
+
+
+
+## (f) Discuss what the standard error of the regression (SER), $R^2$ and $\bar{R}^2$ in part (b) are telling you in terms of the numbers that you have found.
+
+- The $R^2$ and $\bar{R}^2$ tell us whether the regressors (UnempRate2013, Ed5CollegePlusPct, BlackNonHispanic2010 in this case) are good at predicting, or “explaining,” the values of the dependent variable (per capita income) in the sample of data
+
+- An $R^2$ and $\bar{R}^2$ near 1 means that the regressors are good at predicting the values of the dependent variable (PerCapitaInc) in the sample, and an $R^2$ and $\bar{R}^2$ near 0 means that they are not. 
+
+- It is evident that the relatively high $R^2$ and $\bar{R}^2$ CANNOT be used to the conclude that the estimated relation between UnempRate2013 and PerCapitaInc is causal. There could be other determinants and/or control variables.
+
+- The SER is a measure of the spread of the observations around the regression line, in this case measured in dollars of per-capita income
+
+
+
+## (g) Using what you know about the difference between the two formulas, explain specifically why the $R^2$ and $\bar{R}^2$ statistics so similar for this case.
+
+- The $R^2$ and the $\bar{R}^2$ are similar because the only difference between R-squared and Adjusted R-squared equation is degrees of freedom
+
+
+
+## (h) Use an F-test to test the joint significance of the additional regressors: Ed5CollegePlus, BlackNonHispanicPct2010, HispanicPct2010, and Metro2013. Find this test statistic and clearly indicate the conclusions of the test.
+```{r}
+
+rural_atlas_model_h <- 
+lm(formula = rural_atlas_merged$logPerCapitaInc ~ rural_atlas_merged$UnempRate2013 + rural_atlas_merged$Ed5CollegePlusPct + rural_atlas_merged$BlackNonHispanicPct2010 + rural_atlas_merged$HispanicPct2010 + rural_atlas_merged$Metro2013)
+
+coefs_model_h <- names(coef(rural_atlas_model_h))
+
+summary(rural_atlas_model_h)
+
+coeftest(rural_atlas_model_h, vcov = vcovHC(rural_atlas_model_h, type = "HC0"))
+
+# heteroskedasticity-robust F-test
+linearHypothesis(model = rural_atlas_model_h, coefs_model_h[-1], white.adjust = "hc1")
+
+
+# The value of the F-statistic computed from the data, 1618, exceeds 3.02, thus, we can reject the null hypothesis that the coefficients are zero at any level of significance
+
+# As summarized in this F-statistic, we can reject the null hypothesis that the UnempRate2013 has no effect on PerCapitaInc (holding constant: Ed5CollegePlusPct, BlackNonHispanicPct2010, HispanicPct2010, and Metro2013).
+
+
+```
+
+
+## (i) If you had more time to study this question and/or more/different data, what would you suggest doing next? Propose additional variables to add and/or different specifications to try and give specific reasons why you are suggesting these. Answers will vary for this part of the problem.
+
+- I would propose analyzing a coefficient that represents the number of discouraged workers. Since discouraged workers are not counted as "unemployed" in economic data. 
+- Since we know the unemployment rate is correlated to per capita income, it would be interesting to see how the unemployment rate effects per capita income while controlling for the number of discouraged workers.
+
