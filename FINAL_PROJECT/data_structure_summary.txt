@@ -1,0 +1,39 @@
+spec_tbl_df [85,400 × 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ gnd        : chr [1:85400] "F" "F" "F" "F" ...
+ $ indv_pctile: num [1:85400] 1 1 1 1 1 1 1 1 1 1 ...
+ $ age_at_d   : num [1:85400] 40 40 40 40 40 40 40 40 40 40 ...
+ $ yod        : num [1:85400] 2001 2002 2003 2004 2005 ...
+ $ lag        : num [1:85400] 2 2 2 2 2 2 2 2 2 2 ...
+ $ mortrate   : num [1:85400] 0.00191 0.00263 0.00185 0.00256 0.00257 ...
+ $ indv_inc   : num [1:85400] 1.637 1.402 0.945 0.726 0.614 ...
+ $ deaths     : num [1:85400] 40 55 38 51 45 34 44 46 37 40 ...
+ $ count      : num [1:85400] 20922 20940 20572 19890 17482 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   gnd = [31mcol_character()[39m,
+  ..   indv_pctile = [32mcol_double()[39m,
+  ..   age_at_d = [32mcol_double()[39m,
+  ..   yod = [32mcol_double()[39m,
+  ..   lag = [32mcol_double()[39m,
+  ..   mortrate = [32mcol_double()[39m,
+  ..   indv_inc = [32mcol_double()[39m,
+  ..   deaths = [32mcol_double()[39m,
+  ..   count = [32mcol_double()[39m
+  .. )
+ - attr(*, "problems")=<externalptr> 
+
+-------------------------------------------------
+     gnd             indv_pctile        age_at_d          yod            lag            mortrate       
+ Length:85400       Min.   :  1.00   Min.   :40.00   Min.   :2001   Min.   : 2.000   Min.   :0.000000  
+ Class :character   1st Qu.: 25.75   1st Qu.:47.00   1st Qu.:2005   1st Qu.: 2.000   1st Qu.:0.001743  
+ Mode  :character   Median : 50.50   Median :55.00   Median :2008   Median : 2.000   Median :0.003641  
+                    Mean   : 50.50   Mean   :55.02   Mean   :2008   Mean   : 3.066   Mean   :0.005959  
+                    3rd Qu.: 75.25   3rd Qu.:62.00   3rd Qu.:2012   3rd Qu.: 2.000   3rd Qu.:0.007840  
+                    Max.   :100.00   Max.   :76.00   Max.   :2014   Max.   :15.000   Max.   :0.067797  
+    indv_inc             deaths           count      
+ Min.   :      0.5   Min.   :  0.00   Min.   : 4730  
+ 1st Qu.:  17391.7   1st Qu.: 33.00   1st Qu.:12362  
+ Median :  36693.6   Median : 60.00   Median :17322  
+ Mean   :  59747.0   Mean   : 77.13   Mean   :16145  
+ 3rd Qu.:  63741.9   3rd Qu.:106.00   3rd Qu.:19452  
+ Max.   :2447709.4   Max.   :558.00   Max.   :23229  

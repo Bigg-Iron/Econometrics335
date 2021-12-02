@@ -25,17 +25,48 @@ invisible(lapply(packages, library, character.only = TRUE))
 
 ```
 
+# The Question: Does income effect how long you live?
+
+## Data
+The data is from "The Health Inequality Project", because the data is not publicly available. Income data for the US population were obtained from 1.4 billion deidentified tax records between 1999 and 2014. Mortality data were obtained from Social Security Administration death records. These data were used to estimate race- and ethnicity-adjusted life expectancy at 40 years of age by household income percentile, sex, and geographic area, and to evaluate factors associated with differences in life expectancy.
+
+Note: 
+- I don't have access to the raw data, instead I am using the deidentified tax records and mortality data obtained from the "Health Inequality Project"
+- Table 16 is National mortality rates by gender, age, year, and individual income
+percentile. 
+
+
+
 ```{r}
+
 # Load in data
-health_inequality_full_covariates <- read_dta("../Data/health_ineq_replication_dataonly/data/derived/final_covariates/cty_full_covariates.dta")
+county_level_data <- read_csv("../Data/health_ineq_online_table_12.csv")
+
+table_5 <- read_csv("../Data/health_ineq_online_table_5.csv")
+
+data_table_16 <- read_csv("../Data/health_ineq_online_table_16.csv")
+
 ```
 
 
 ```{r}
-sink(file = "summary.txt")
+sink(file = "data_structure_summary.txt")
 
-str(health_inequality_full_covariates)
+str(data_table_16)
+cat("\n-------------------------------------------------\n")
+summary(data_table_16)
 
 sink()
 ```
+
+
+```{r}
+summary(data_table_16)
+
+```
+
+
+
+$$ LifeExpectancy_{it} = \beta_1 indv\_pctile_{it} + gnd + u_{it} $$
+
 
