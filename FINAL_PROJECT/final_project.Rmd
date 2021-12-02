@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo = TRUE)
 
 # List of packages you want to install -- separated with a comma and surrounded in "quotes" 
-packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car")
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car", "AER", "plm", "stargazer", "readxl","haven")
 
 # Installs packages
 installed_packages <- packages %in% rownames(installed.packages())
@@ -23,8 +23,19 @@ if (any(installed_packages == FALSE)) {
 # Loads packages
 invisible(lapply(packages, library, character.only = TRUE))
 
-# Load in data
-# rural_atlas_merged <- read_csv(here("Data/rural_atlas_merged.csv"))
+```
 
+```{r}
+# Load in data
+health_inequality_full_covariates <- read_dta("../Data/health_ineq_replication_dataonly/data/derived/final_covariates/cty_full_covariates.dta")
+```
+
+
+```{r}
+sink(file = "summary.txt")
+
+str(health_inequality_full_covariates)
+
+sink()
 ```
 
