@@ -1,3 +1,5 @@
+Summary statistics for table 16
+-------------------------------------------------
 spec_tbl_df [85,400 × 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
  $ gnd        : chr [1:85400] "F" "F" "F" "F" ...
  $ indv_pctile: num [1:85400] 1 1 1 1 1 1 1 1 1 1 ...
@@ -22,7 +24,6 @@ spec_tbl_df [85,400 × 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
   .. )
  - attr(*, "problems")=<externalptr> 
 
--------------------------------------------------
      gnd             indv_pctile        age_at_d          yod            lag            mortrate       
  Length:85400       Min.   :  1.00   Min.   :40.00   Min.   :2001   Min.   : 2.000   Min.   :0.000000  
  Class :character   1st Qu.: 25.75   1st Qu.:47.00   1st Qu.:2005   1st Qu.: 2.000   1st Qu.:0.001743  
