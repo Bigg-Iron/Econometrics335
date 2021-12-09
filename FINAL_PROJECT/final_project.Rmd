@@ -25,18 +25,14 @@ invisible(lapply(packages, library, character.only = TRUE))
 
 ```
 
-# The Question: Does income effect how long you live? *NOTE: Could I implement COVID-19 Data? *
 
-## Data
-The data is from "The Health Inequality Project", because the data is not publicly available. Income data for the US population were obtained from 1.4 billion deidentified tax records between 1999 and 2014. Mortality data were obtained from Social Security Administration death records. These data were used to estimate race- and ethnicity-adjusted life expectancy at 40 years of age by household income percentile, sex, and geographic area, and to evaluate factors associated with differences in life expectancy.
+*NOTE: The data is from "The Health Inequality Project", because the data is not publicly available. Income data for the US population were obtained from 1.4 billion deidentified tax records between 1999 and 2014. Mortality data were obtained from Social Security Administration death records. These data were used to estimate race- and ethnicity-adjusted life expectancy at 40 years of age by household income percentile, sex, and geographic area, and to evaluate factors associated with differences in life expectancy. *
 
-Note: 
-- I don't have access to the raw data, instead I am using the deidentified tax records and mortality data obtained from the "Health Inequality Project"
-- Table 16 is National mortality rates by gender, age, year, and individual income
-percentile. 
+*NOTE: I don't have access to the raw data, instead I am using the deidentified tax records and mortality data obtained from the "Health Inequality Project". Table 16 is National mortality rates by gender, age, year, and individual income percentile.*
 
 
 
+# Code
 ```{r}
 
 # Load in data
@@ -67,22 +63,22 @@ sink()
 
 
 ```{r}
-# indv_pctile: Individual Income Level
+# indv_inc: Mean Individual Income
 # age_at_d: Age at Death
-summary(data_table_16[, c(2,3)])
+summary(data_table_16[, c(3,7)])
 
 ```
 
 
 
-$$ LifeExpectancy_{it} = \beta_1 indv\_pctile_{it} + gnd + u_{it} $$
+$$ LifeExpectancy_{it} = \beta_1 indv\_inc_{it} + gnd + u_{it} $$
 ```{r}
 
 
 ```
 
 
-1. Introduction and Statement of Research Question
+# 1. Introduction and Statement of Research Question
 - Pose and motivate the question to be investigated with your data and econometric model.
 - Good econometric questions are generally based on economic theory; however,
 econometrics can be used to analyze all kinds of cause and effect relationships even if
@@ -91,8 +87,10 @@ that interests you. Since the goal of the project is causal identification of th
 one variable on another, a good question should specify the one primary X variable
 and one primary Y variable that you are interested in.
 
+## The Question: Does income effect how long you live?
 
-2. Formulation of the Model
+
+# 2. Formulation of the Model
 - Express the question both verbally and in the form of an equation to be estimated. Be sure to
 include the names and units of the dependent and independent variables.
 - You must include at least three independent variables, but can include as many as you’d like
@@ -103,7 +101,7 @@ particular X variables that you did and why you didn’t select others.
 while researching your topic.
 
 
-3. Data Description
+# 3. Data Description
 - Describe the data used to estimate the model. Your data set must have at least 40 observations.
 - You should construct a table that provides the mean, minimum, maximum and
 standard deviation (and any other summary statistics you feel are relevant) of all
@@ -126,7 +124,7 @@ etc.). To do this, use the steps we have followed in Problem sets). If data you�
 a different format other than .csv, let me know so I can show you how to load into RStudio.
 
 
-4. Empirical Results
+# 4. Empirical Results
 • Present the results of the OLS estimation (and/or other appropriate technique learned in class) in
 the form of a table(s).
 o Tables should be formatted as easy-to-read tables rather than cut and pasted out of
@@ -143,7 +141,7 @@ statistically significant and at what level.
 • Also discuss the goodness of fit measure for the model (e.g. R-squared, SER, adjusted R-squared).
 
 
-5. Summary and Discussion
+# 5. Summary and Discussion
 - Summarize your main results and discuss limitations to your approach.
 - Carefully explain caveats to your study, especially whether or not certain parameter
 estimates may be biased.
