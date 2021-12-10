@@ -1,5 +1,10 @@
 summary(data_table_16)
 
+# NOTE: Model Specifications:
+#         # Income and mortality rate
+#         # Income and Age at Death
+#         # Mortality rate and Age at Death 
+
 
 # subset the data (remove income values less than $1)
 adjusted_income <- subset(data_table_16, indv_inc > 1)
@@ -13,7 +18,6 @@ coeftest(adjusted_income_model, vcov. = vcovHC, type = "HC1")
 
 
 
-
 # plot the observations and add the estimated regression line
 # Adjusted income model (Income above $1)
 plot(x = adjusted_income$indv_inc, 
@@ -24,3 +28,33 @@ plot(x = adjusted_income$indv_inc,
      col = "steelblue")
 abline(adjusted_income_model, col = "red")
 
+
+# Income and Mortality Rate model
+mortality_model <- lm(mortrate ~ indv_inc, data = data_table_16)
+summary(mortality_model)
+
+# Plot Income and Mortality 
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$mortrate, 
+     xlab = "Income",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
+     col = "steelblue")
+abline(mortality_model, col = "red")
+
+
+# Age and Mortality Rate model
+age_mortality_model <- lm(mortrate ~ age_at_d, data = data_table_16)
+summary(age_mortality_model)
+
+coeftest(age_mortality_model, vcov. = vcovHC, type = "HC1")
+
+
+# Plot Age and Mortality Rate
+plot(x = data_table_16$age_at_d, 
+     y = data_table_16$mortrate, 
+     xlab = "Age",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Age",
+     col = "steelblue")
+abline(age_mortality_model, col = "red")
