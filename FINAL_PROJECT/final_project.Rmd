@@ -71,9 +71,20 @@ summary(data_table_16[, c(3,7)])
 
 
 
-$$ LifeExpectancy_{it} = \beta_1 indv\_inc_{it} + gnd + u_{it} $$
-```{r}
+$$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
 
+
+## Graph 
+```{r}
+# plot the observations and add the estimated regression line
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$age_at_d, 
+     xlab = "Income",
+     ylab = "Age",
+     main = "Income and Life Expectancy",
+     col = "steelblue")
+
+abline(model_1, col = "red")
 
 ```
 
