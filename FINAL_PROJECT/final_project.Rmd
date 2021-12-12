@@ -72,6 +72,9 @@ summary(data_table_16[, c(3,7)])
 
 
 $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
+$$ MortalityRate_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + indv\_pctile u_{it} $$
+
+
 
 
 ## Graphs and Figures
