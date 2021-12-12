@@ -74,18 +74,16 @@ summary(data_table_16[, c(3,7)])
 $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
 
 
-## Graph 
+## Graphs and Figures
 ```{r}
-# plot the observations and add the estimated regression line
+# Plot Income and Mortality 
 plot(x = data_table_16$indv_inc, 
-     y = data_table_16$age_at_d, 
+     y = data_table_16$mortrate, 
      xlab = "Income",
-     ylab = "Age",
-     main = "Income and Life Expectancy",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
      col = "steelblue")
-
-abline(model_1, col = "red")
-
+abline(mortality_model, col = "red")
 ```
 
 
