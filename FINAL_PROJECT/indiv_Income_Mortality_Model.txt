@@ -1,0 +1,29 @@
+Individual Income and Mortality Rate Model: 
+ 
+Call:
+lm(formula = data_table_16$mortrate ~ data_table_16$indv_inc)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.005950 -0.004195 -0.002295  0.001893  0.061435 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(>|t|)    
+(Intercept)             6.362e-03  2.357e-05  269.96   <2e-16 ***
+data_table_16$indv_inc -6.752e-09  1.645e-10  -41.04   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.006259 on 85398 degrees of freedom
+Multiple R-squared:  0.01934,	Adjusted R-squared:  0.01933 
+F-statistic:  1684 on 1 and 85398 DF,  p-value: < 2.2e-16
+
+
+t test of coefficients:
+
+                          Estimate  Std. Error t value  Pr(>|t|)    
+(Intercept)             6.3620e-03  2.5722e-05 247.334 < 2.2e-16 ***
+data_table_16$indv_inc -6.7516e-09  2.0868e-10 -32.354 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+

@@ -14,3 +14,6 @@ https://www.huduser.gov/portal/pdrdatas_landing.html
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3491569/
 https://www.icpsr.umich.edu/web/ICPSR/studies/37705
 
+
+## Interpretation:
+The coefficient on X is negative and significant. The interpretation is that the estimated fatality rate decreases by XX when individual income increases by YY.

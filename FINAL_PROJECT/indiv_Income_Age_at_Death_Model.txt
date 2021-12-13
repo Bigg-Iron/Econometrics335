@@ -1,0 +1,29 @@
+Individual Income and Age at Death Model:
+ ---------------------------------------------------------------
+Call:
+lm(formula = data_table_16$age_at_d ~ data_table_16$indv_inc)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.054  -7.990  -0.024   7.027  21.034 
+
+Coefficients:
+                        Estimate Std. Error  t value Pr(>|t|)    
+(Intercept)            5.497e+01  3.481e-02 1579.023  < 2e-16 ***
+data_table_16$indv_inc 8.351e-07  2.430e-07    3.437 0.000589 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 9.246 on 85398 degrees of freedom
+Multiple R-squared:  0.0001383,	Adjusted R-squared:  0.0001266 
+F-statistic: 11.81 on 1 and 85398 DF,  p-value: 0.0005894
+
+
+t test of coefficients:
+
+                         Estimate Std. Error   t value  Pr(>|t|)    
+(Intercept)            5.4966e+01 3.4767e-02 1580.9880 < 2.2e-16 ***
+data_table_16$indv_inc 8.3513e-07 2.2846e-07    3.6555 0.0002569 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+

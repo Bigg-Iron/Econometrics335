@@ -2,13 +2,12 @@
 
 
 
-# Individual Income and mortality rate
-indiv_Income_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$gnd)
-
-cat("Individual Income and Mortality Rate Model:")
-cat("\n ---------------------------------------------------------------")
+# Individual Income and Mortality Rate Model
+indiv_Income_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)
+cat("Individual Income and Mortality Rate Model: \n ")
 summary(indiv_Income_Mortality_Model)
 coeftest(indiv_Income_Mortality_Model, vcov. = vcovHC, type = "HC1")
+
 
 
 
