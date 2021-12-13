@@ -51,11 +51,11 @@ particular X variables that you did and why you didn’t select others.
 while researching your topic.
 I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
     
-    I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), and gender (gnd).
+    I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), while holding gender (gnd) constant.
 
 
 ## Individual Income and Mortality Rate Model
-$$ MortalityRate_{it} =   0.006362022 - 6.752_{e-09}\beta_1 indv\_inc_{it} + u_{it} $$
+$$ MortalityRate_{it} =   0.006362022 - 6.752_{e-09}\beta_1 indv\_inc_{it} + gnd + u_{it} $$
 ## Individual Income and Age at Death Model
 $$ MortalityRate_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + indv\_pctile u_{it} $$
 ## Income Percentile and mortality rate
