@@ -1,14 +1,5 @@
 summary(data_table_16)
 
-# NOTE: Model Specifications:
-#         # Income and mortality rate
-#         # Income and Age at Death
-#         # Mortality rate and Age at Death 
-
-
-# subset the data (remove income values less than $1)
-adjusted_income <- subset(data_table_16, indv_inc > 1)
-
 
 
 # estimate simple regression models
@@ -29,7 +20,7 @@ plot(x = adjusted_income$indv_inc,
 abline(adjusted_income_model, col = "red")
 
 
-# Income and Mortality Rate model
+# Individual Income and Mortality Rate model
 mortality_model <- lm(mortrate ~ indv_inc, data = data_table_16)
 summary(mortality_model)
 
@@ -41,6 +32,10 @@ plot(x = data_table_16$indv_inc,
      main = "Mortality Rates and Income",
      col = "steelblue")
 abline(mortality_model, col = "red")
+
+# Income Percentile and Mortality Rate Model
+
+# Individual Income and Age at Death Model
 
 
 # Age and Mortality Rate model

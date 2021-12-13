@@ -96,12 +96,28 @@ beyond that.
 particular X variables that you did and why you didn’t select others.
 - You may also want to briefly cite relevant literature (e.g. previous studies) that you come across
 while researching your topic.
-    I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
+I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
     
     I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), and gender (gnd).
 
-    $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
-    $$ MortalityRate_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + indv\_pctile u_{it} $$
+$$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
+$$ MortalityRate_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + indv\_pctile u_{it} $$
+## Model Specifications:
+```{r}
+
+# Individual Income and mortality rate
+indiv_Income_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)
+
+# Individual Income and Age at Death
+indiv_Income_Age_at_Death_Model <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc)
+
+# Income Percentile and mortality rate
+indiv_IncomePercentile_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_pctile)
+
+# Income Percentile and Age at Death
+indiv_IncomePercentile_Age_at_Death_Model <- lm(data_table_16$age_at_d ~ data_table_16$indv_pctile)
+
+```
 
 
 
@@ -112,9 +128,12 @@ while researching your topic.
 - You might also want to show and discuss key scatterplots or graphs of interest.
     The data used was deidentified data from federal income tax records from 1999 to 2014. The measure of income was pretax earnings. Mortality and death rates were attained from the Social Security Administration (SSA). There are several limitations to the data: while I would have liked to include more variables in the regression models, such as race or ethnicity, but race and ethnicity are not recorded in tax records. The other limitation within the data is that the data is not made available to the public, so I had to derive the data from a 2016 JAMA study: "The Association Between Income and Life Expectancy in the United States, 2001-2014".
 
+- Describe the content of the summary statistics or table(s)
 *NOTE: [INSERT SUMMARY STATISTICS HERE]*
+```{r}
+summary(data_table_16)
 
-- Describe the content of the table(s) above ^
+```
 
 
 
