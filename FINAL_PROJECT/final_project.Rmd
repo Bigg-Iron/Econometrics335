@@ -23,6 +23,10 @@ if (any(installed_packages == FALSE)) {
 # Loads packages
 invisible(lapply(packages, library, character.only = TRUE))
 
+# Load in Data
+data_table_16 <- read_csv("../Data/health_ineq_online_table_16.csv")
+
+
 ```
 
 
@@ -30,57 +34,6 @@ invisible(lapply(packages, library, character.only = TRUE))
 
 *NOTE: I don't have access to the raw data, instead I am using the deidentified tax records and mortality data obtained from the "Health Inequality Project". Table 16 is National mortality rates by gender, age, year, and individual income percentile.*
 
-
-
-# Code
-```{r}
-
-# Load in data
-county_level_data <- read_csv("../Data/health_ineq_online_table_12.csv")
-
-table_5 <- read_csv("../Data/health_ineq_online_table_5.csv")
-
-data_table_16 <- read_csv("../Data/health_ineq_online_table_16.csv")
-
-```
-
-
-```{r} 
-# Summary Statistics
-
-sink(file = "data_structure_summary.txt")
-
-cat("Summary statistics for table 16")
-cat("\n-------------------------------------------------\n")
-
-str(data_table_16)
-cat("\n")
-summary(data_table_16)
-
-
-sink()
-```
-
-
-```{r}
-# indv_inc: Mean Individual Income
-# age_at_d: Age at Death
-summary(data_table_16[, c(3,7)])
-
-```
-
-
-## Graphs and Figures
-```{r}
-# Plot Income and Mortality 
-plot(x = data_table_16$indv_inc, 
-     y = data_table_16$mortrate, 
-     xlab = "Income",
-     ylab = "Mortality Rate",
-     main = "Mortality Rates and Income",
-     col = "steelblue")
-abline(mortality_model, col = "red")
-```
 
 
 # 1. Introduction and Statement of Research Question
@@ -112,6 +65,8 @@ $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
 
 ## Model Specifications:
 ```{r}
+sink(file = "model_summaries.txt")
+
 # Individual Income and mortality rate
 indiv_Income_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)
 cat("Individual Income and Mortality Rate Model:")
@@ -143,6 +98,7 @@ cat("\n ---------------------------------------------------------------")
 summary(indiv_IncomePercentile_Age_at_Death_Model)
 coeftest(indiv_IncomePercentile_Age_at_Death_Model, vcov. = vcovHC, type = "HC1")
 
+sink()
 ```
 
 
