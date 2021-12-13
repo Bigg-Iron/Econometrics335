@@ -80,15 +80,12 @@ abline(age_mortality_model, col = "red")
 
 
 
-# generate the table
-stargazer(fatalities_mod1, fatalities_mod2, fatalities_mod3, 
-          fatalities_mod4, fatalities_mod5, fatalities_mod6, fatalities_mod7, 
+# STARGAZER TABLES
+stargazer(indiv_Income_Age_at_Death_Model, indiv_Income_Mortality_Model, indiv_IncomePercentile_Age_at_Death_Model, indiv_IncomePercentile_Mortality_Model, 
           digits = 3,
           header = FALSE,
           type = "latex", 
-          se = rob_se,
-          title = "Linear Panel Regression Models of Traffic Fatalities due to Drunk Driving",
+          title = "Linear Panel Regression Models of Income and Mortality Rates",
           model.numbers = FALSE,
-          column.labels = c("(1)", "(2)", "(3)", "(4)", "(5)", "(6)", "(7)"),
-          out="table10.txt")
+          out="stargazer_table.txt")
 
