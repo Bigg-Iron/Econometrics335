@@ -77,13 +77,18 @@ plot(x = data_table_16$age_at_d,
 abline(age_mortality_model, col = "red")
 
 
-
+# gather clustered standard errors in a list
+clustered_standard_errors <- list(sqrt(diag(vcovHC(indiv_Income_Age_at_Death_Model, type = "HC1"))),
+               sqrt(diag(vcovHC(indiv_Income_Mortality_Model, type = "HC1"))),
+               sqrt(diag(vcovHC(indiv_IncomePercentile_Age_at_Death_Model, type = "HC1"))),
+               sqrt(diag(vcovHC(indiv_IncomePercentile_Mortality_Model, type = "HC1"))))
 
 
 # STARGAZER TABLES
 stargazer(indiv_Income_Age_at_Death_Model, indiv_Income_Mortality_Model, indiv_IncomePercentile_Age_at_Death_Model, indiv_IncomePercentile_Mortality_Model, 
           digits = 3,
           header = FALSE,
+          se = clustered_standard_errors,
           type = "latex", 
           title = "Linear Panel Regression Models of Income and Mortality Rates",
           model.numbers = FALSE,

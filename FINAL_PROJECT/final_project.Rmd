@@ -54,16 +54,16 @@ I hypothesize that individual income has a significant effect on mortality and l
     I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), and gender (gnd).
 
 
-Individual Income and mortality rate model
-$$ MortalityRate_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
-Individual Income and Age at Death
+## Individual Income and Mortality Rate Model
+$$ MortalityRate_{it} =   0.006362022 - 6.752_{e-09}\beta_1 indv\_inc_{it} + u_{it} $$
+## Individual Income and Age at Death Model
 $$ MortalityRate_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + indv\_pctile u_{it} $$
-Income Percentile and mortality rate
+## Income Percentile and mortality rate
 $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
-Income Percentile and Age at Death
+## Income Percentile and Age at Death
 $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
 
-## Model Specifications:
+### Model Specifications:
 ```{r}
 sink(file = "model_summaries.txt")
 
