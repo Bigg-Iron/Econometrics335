@@ -4,7 +4,9 @@ Call:
 lm(formula = data_table_16$mortrate ~ data_table_16$indv_inc)
 
 Residuals:
-      Min        1Q    Median        3Q       Max 
+      Min    [1] 54.9665
+[1] 54.9665
+3Q       Max 
 -0.005950 -0.004195 -0.002295  0.001893  0.061435 
 
 Coefficients:

@@ -64,13 +64,14 @@ indiv_Income_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_i
 cat("Individual Income and Mortality Rate Model: \n ")
 summary(indiv_Income_Mortality_Model)
 coeftest(indiv_Income_Mortality_Model, vcov. = vcovHC, type = "HC1")
+
 sink()
 ```
 
 
 
-## Individual Income and Age at Death Model
-$$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + indv\_pctile u_{it} $$
+## Individual Income and Life Expectancy
+$$ \widehat{LifeExpectancy_{it}} =   \underset{(0.03481)}{54.966} - \underset{(2.43e-07)}{[8.3513e-07} \times indv\_inc_{it}] + u_{it} $$
 ```{r}
 sink(file = "indiv_Income_Age_at_Death_Model.txt", append = FALSE)
 
@@ -86,9 +87,41 @@ sink()
 
 
 ## Income Percentile and mortality rate
+$$ \widehat{MortalityRate_{it}} =   \underset{(0.03481)}{54.966} - \underset{(2.43e-07)}{[8.3513e-07} \times indv\_pctile_{it}] + u_{it} $$
+```{r}
+sink(file = "indiv_Income_pctile_Mortality_Model.txt", append = FALSE)
+
+# Individual Income Percentile and Mortality Rate Model
+indiv_Income_pctile_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_pctile)
+cat("Individual Income Percentile and Mortality Rate Model: \n ")
+summary(indiv_Income_pctile_Mortality_Model)
+coeftest(indiv_Income_pctile_Mortality_Model, vcov. = vcovHC, type = "HC1")
+
+
+sink()
+```
+
+
+
+
+
+## Individual Income Percentile and Life Expectancy
 $$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
-## Income Percentile and Age at Death
-$$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
+```{r}
+sink(file = "indiv_IncomePercentile_LifeExpectancy_Model.txt", append = FALSE)
+
+# Individual Income Percentile and Life Expectancy Model
+indiv_IncomePercentile_LifeExpectancy_Model <- lm(data_table_16$age_at_d ~ data_table_16$indv_pctile)
+cat("Individual Income Percentile and Age at Death Model:")
+cat("\n ---------------------------------------------------------------")
+summary(indiv_IncomePercentile_LifeExpectancy_Model)
+coeftest(indiv_IncomePercentile_LifeExpectancy_Model, vcov. = vcovHC, type = "HC1")
+
+sink()
+```
+
+
+
 
 ### Model Specifications:
 ```{r}
@@ -110,12 +143,11 @@ summary(indiv_Income_Age_at_Death_Model)
 coeftest(indiv_Income_Age_at_Death_Model, vcov. = vcovHC, type = "HC1")
 
 
-# Income Percentile and mortality rate
-indiv_IncomePercentile_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_pctile)
-cat("Income Percentile and Mortality Rate Model:")
-cat("\n ---------------------------------------------------------------")
-summary(indiv_Income_Mortality_Model)
-coeftest(indiv_Income_Mortality_Model, vcov. = vcovHC, type = "HC1")
+# Individual Income Percentile and Mortality Rate Model
+indiv_Income_pctile_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_pctile)
+cat("Individual Income Percentile and Mortality Rate Model: \n ")
+summary(indiv_Income_pctile_Mortality_Model)
+coeftest(indiv_Income_pctile_Mortality_Model, vcov. = vcovHC, type = "HC1")
 
 
 # Income Percentile and Age at Death
