@@ -143,16 +143,25 @@ summary(data_table_16)
 the form of a table(s).
 *NOTE: [INSERT STARGAZER TABLE RESULTS]*
 
-```{r}
-# STARGAZER TABLE
-stargazer(indiv_Income_Mortality_Model, indiv_Income_Age_at_Death_Model, indiv_Income_pctile_Mortality_Model, indiv_IncomePercentile_LifeExpectancy_Model, 
+```{r, results='asis'}
+
+combined_life_expect <- lm(data = data_table_16, data_table_16$age_at_d ~ data_table_16$indv_pctile + data_table_16$indv_inc + data_table_16$gnd)
+summary(combined_life_expect)
+coeftest(combined_life_expect, vcov. = vcovHC, type = "HC1")
+
+combined_mortality <- lm(data = data_table_16, data_table_16$mortrate ~ data_table_16$indv_pctile + data_table_16$indv_inc + data_table_16$gnd)
+summary(combined_mortality)
+coeftest(combined_mortality, vcov. = vcovHC, type = "HC1")
+
+
+stargazer(combined_life_expect, combined_mortality,
           digits = 3,
           header = FALSE,
-          se = clustered_standard_errors,
           type = "latex", 
-          title = "Linear Panel Regression Models of Income and Life Expectancy",
-          model.numbers = FALSE,
-          out="stargazer_table.txt")
+          title = "combined life expectancy model",
+          model.numbers = FALSE)
+
+
 ```
 
 

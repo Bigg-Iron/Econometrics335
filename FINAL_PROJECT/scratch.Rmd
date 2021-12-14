@@ -1,0 +1,81 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Plots
+
+
+## Income and Mortality
+```{r}
+# Plot Income and Mortality 
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$mortrate, 
+     xlab = "Income",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
+     col = "steelblue")
+# Add trend line
+abline(indiv_Income_Mortality_Model, col = "red")
+```
+
+
+## Income and Life Expectancy
+```{r}
+# Plot Income and Mortality 
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$mortrate, 
+     xlab = "Income",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
+     col = "steelblue")
+# Add trend line
+abline(indiv_Income_Mortality_Model, col = "red")
+```
+
+
+
+## Income Percentile and Mortality Rate
+```{r}
+# Plot Income and Mortality 
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$mortrate, 
+     xlab = "Income",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
+     col = "steelblue")
+# Add trend line
+abline(indiv_Income_Mortality_Model, col = "red")
+```
+
+
+
+## Income Percentile and Life Expectancy
+```{r}
+# Plot Income and Mortality 
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$mortrate, 
+     xlab = "Income",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
+     col = "steelblue")
+# Add trend line
+abline(indiv_Income_Mortality_Model, col = "red")
+```
+
+
+
+
+```{r, results='asis'}
+# STARGAZER TABLES
+stargazer(indiv_Income_Mortality_Model, indiv_Income_Age_at_Death_Model, indiv_Income_pctile_Mortality_Model, indiv_IncomePercentile_LifeExpectancy_Model, 
+          digits = 3,
+          header = FALSE,
+          se = clustered_standard_errors,
+          type = "latex", 
+          title = "Linear Panel Regression Models of Income and Life Expectancy",
+          model.numbers = FALSE,
+          out="stargazer_table.txt")
+```
+
+
