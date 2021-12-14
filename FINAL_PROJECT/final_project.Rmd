@@ -38,7 +38,7 @@ data_table_16 <- read_csv("../Data/health_ineq_online_table_16.csv")
 
 # 1. Introduction and Statement of Research Question
 - Pose and motivate the question to be investigated with your data and econometric model.
-    The relationship between income and health outcomes are well established. However, I wanted to investigate the relationship between an individual's income and their life expectancy. To put simply, does income effect how long you live?
+The relationship between income and health outcomes are well established. However, I wanted to investigate the relationship between an individual's income and their life expectancy. To put simply, does income effect how long you live?
 
 
 # 2. Formulation of the Model
@@ -55,7 +55,7 @@ particular X variables that you did and why you didn’t select others.
 
 
 ## Individual Income and Mortality Rate Model
-$$ \widehat{MortalityRate_{it}} =   \underset{(2.5722e-5)}{[6.362022e-03]} - \underset{(2.0868e-10)}{[6.752e-09} \times indv\_inc_{it}] + u_{it} $$
+$$ \widehat{MortalityRate_{it}} =   \underset{(2.5722e-5)}{6.362022e-03} - \underset{(2.0868e-10)}{6.752e-09} \times indv\_inc_{it} + u_{it} $$
 ```{r}
 sink(file = "indiv_Income_Mortality_Model.txt", append = FALSE)
 
@@ -70,8 +70,8 @@ sink()
 
 
 
-## Individual Income and Life Expectancy
-$$ \widehat{LifeExpectancy_{it}} =   \underset{(0.03481)}{54.966} - \underset{(2.43e-07)}{[8.3513e-07} \times indv\_inc_{it}] + u_{it} $$
+## Individual Income and Life Expectancy Model
+$$ \widehat{LifeExpectancy_{it}} =   \underset{(0.03481)}{54.966} + \underset{(2.43e-07)}{8.3513e-07} \times indv\_inc_{it} + u_{it} $$
 ```{r}
 sink(file = "indiv_Income_Age_at_Death_Model.txt", append = FALSE)
 
@@ -86,8 +86,10 @@ sink()
 ```
 
 
-## Income Percentile and mortality rate
-$$ \widehat{MortalityRate_{it}} =   \underset{(0.03481)}{54.966} - \underset{(2.43e-07)}{[8.3513e-07} \times indv\_pctile_{it}] + u_{it} $$
+
+
+## Individual Income Percentile and mortality rate Model
+$$ \widehat{MortalityRate_{it}} =   \underset{(4.058e-05)}{9.993e-03} - \underset{(7.5419e-07)}{7.990e-05} \times indv\_pctile_{it} + u_{it} $$
 ```{r}
 sink(file = "indiv_Income_pctile_Mortality_Model.txt", append = FALSE)
 
@@ -103,10 +105,8 @@ sink()
 
 
 
-
-
-## Individual Income Percentile and Life Expectancy
-$$ LifeExpectancy_{it} = 54.97 + \beta_1 indv\_inc_{it} + gnd + u_{it} $$
+## Individual Income Percentile and Life Expectancy Model
+$$ \widehat{LifeExpectancy_{it}} =   \underset{(6.3758e-02)}{5.5016e+01} - \underset{(1.0961e-03)}{5.9910e-16} \times indv\_pctile_{it} + u_{it} $$
 ```{r}
 sink(file = "indiv_IncomePercentile_LifeExpectancy_Model.txt", append = FALSE)
 
