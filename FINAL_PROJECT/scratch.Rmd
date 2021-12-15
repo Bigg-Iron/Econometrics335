@@ -67,6 +67,7 @@ abline(Life.Expect.model.1, col = "red")
 
 # Models:
 
+$$ \widehat{MortalityRate_{it}} =  6.3620_{e-03} - 6.7516_{e-09} indv\_inc + u_{it} $$
 ## Mortality Rate Model 1
 ```{r}
 Mortality.model.1 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)

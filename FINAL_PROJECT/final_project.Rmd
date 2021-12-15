@@ -78,6 +78,7 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 ## Life Expectancy Model Specifications:
 $$ \widehat{LifeExpectancy_{it}} =  \beta_0 + \beta_1 + u_{it} $$
 ```{r}
+
 Life.Expect.model.1 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc)
 summary(Life.Expect.model.1)
 coeftest(Mortality.model.1, vcov. = vcovHC, type = "HC1")
@@ -102,20 +103,20 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 - You might also want to show and discuss key scatterplots or graphs of interest.
     The data used was deidentified data from federal income tax records from 1999 to 2014. The measure of income was pretax earnings. Mortality and death rates were attained from the Social Security Administration (SSA). There are several limitations to the data: while I would have liked to include more variables in the regression models, such as race or ethnicity, but race and ethnicity are not recorded in tax records. The other limitation within the data is that the data is not made available to the public, so I had to derive the data from a 2016 JAMA study: "The Association Between Income and Life Expectancy in the United States, 2001-2014".
 
-This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths.
+    This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths.
 
 
-Variable Name:                         Variable Description:
-
-gnd                                     Gender
-indv_pctile                             Individual Income Percentile
-age_at_d                                Age at Death
-yod                                     Year of Death
-lag                                     Income Lag
-mortrate                                Mortality Rate
-indv_inc                                Mean Individual Income
-deaths                                  Numerator of mortrate
-count                                   Denominator of mortrate (alive at beginning of year)
+    Variable Name:                         Variable Description:
+    
+    gnd                                     Gender
+    indv_pctile                             Individual Income Percentile
+    age_at_d                                Age at Death
+    yod                                     Year of Death
+    lag                                     Income Lag
+    mortrate                                Mortality Rate
+    indv_inc                                Mean Individual Income
+    deaths                                  Numerator of mortrate
+    count                                   Denominator of mortrate (alive at beginning of year)
 
 
 *NOTE: [INSERT SUMMARY STATISTICS HERE]*
@@ -138,9 +139,17 @@ stargazer(data_table_16[0:9,],
 
 
 
-# 4. Empirical Results
-- Present the results of the OLS estimation (and/or other appropriate technique learned in class) in
-the form of a table(s).
+# 4. *TODO: Empirical Results*
+- You may want to, for example, examine your key parameter estimates with and without additional regressors to compare any differences (i.e., run a single regressor model and then a multiple regression model).
+
+- You should show at least three specifications of your design.
+
+- These will likely include various non-linear versions of a baseline model, for example by adding a polynomial or interaction variable, or by creating relevant categorical or binary variables to analyze group effects.
+
+- Explain the meaning of estimated coefficients in your model and whether or not coefficients are statistically significant and at what level.
+
+    The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to table 1, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample.   
+- Also discuss the goodness of fit measure for the model (e.g. R-squared, SER, adjusted R-squared). 
 
 *NOTE: [INSERT STARGAZER TABLE RESULTS]*
 ```{r, results='asis'}
@@ -150,7 +159,7 @@ stargazer(Mortality.model.1, Mortality.model.2, Mortality.model.3,
           digits = 3,
           header = FALSE,
           type = "latex", 
-          title = "Mortality Models",
+          title = "Table 1: Mortality Models",
           model.numbers = TRUE,
           out="mortality_table.txt")
 
@@ -159,27 +168,13 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
           digits = 3,
           header = FALSE,
           type = "latex", 
-          title = "Life Expectancy Models",
+          title = "Table 2: Life Expectancy Models",
           model.numbers = TRUE,
           summary = TRUE,
           t.auto = TRUE,
           out="life_expect_table.txt")
 
 ```
-
-
-- Tables should be formatted as easy-to-read tables rather than cut and pasted out of RStudio.
-
-- You may want to, for example, examine your key parameter estimates with and without additional regressors to compare any differences (i.e., run a single regressor model and then a multiple regression model).
-
-- You should show at least three specifications of your design.
-
-- These will likely include various non-linear versions of a baseline model, for example by adding a polynomial or interaction variable, or by creating relevant categorical or binary variables to analyze group effects.
-
-- Explain the meaning of estimated coefficients in your model and whether or not coefficients are statistically significant and at what level.
-
-- Also discuss the goodness of fit measure for the model (e.g. R-squared, SER, adjusted R-squared).
-
 
 
 
