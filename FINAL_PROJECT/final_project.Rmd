@@ -245,25 +245,47 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
     One unfortunate limitation of this study, was not being able to accurately control for race or ethnicity. As discussed previously, this information is not recorded on collected tax data, and I would hypothesize that it would also be a significant indicator for life expectancy and mortality rates. Given more time, I would have also liked to compare the results of these models to similar studies done internationally, to contrast the differing results. Additionally, I would like to see how recent COVID-19 data would effect the results of the models.
 
 
-
-
 # 6. Graphs and Figures
+
+## Income and Mortality Rate
+```{r}
+# Plot Income and Mortality Rate
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$mortrate, 
+     xlab = "Income",
+     ylab = "Mortality Rate",
+     main = "Mortality Rates and Income",
+     col = "steelblue")
+# Add trend line
+abline(Mortality.model.1, col = "red")
+```
+
+## Income and Life Expectancy
+```{r}
+# Plot Income and Life Expectancy
+plot(x = data_table_16$indv_inc, 
+     y = data_table_16$age_at_d, 
+     xlab = "Income",
+     ylab = "Age at Death",
+     main = "Life Expectancy and Income",
+     col = "steelblue")
+# Add trend line
+abline(Life.Expect.model.1, col = "red")
+```
+
+
 # 7. Bibliography
 All cited sources should be reported in a bibliography in MLA format.
 o One useful reference is your textbook.
 Also include anything relevant that is not within the main document at the end, such as
 attachments of key R output (Here I want regression or summary statistics outputs, and not a
 series of lines of code)
+Sources Used:
+- Econometrics with R: https://www.econometrics-with-r.org/10-rwpd.html
+- Investopedia: https://www.investopedia.com/terms/r/residual-standard-deviation.asp
+- Website: https://www.statology.org/significance-codes-in-r/
+- Website: https://www.marsja.se/create-dummy-variables-in-r/
 - 2016 JAMA Study: https://jamanetwork.com/journals/jama/fullarticle/2513561?guestAccessKey=4023ce75-d0fb-44de-bb6c-8a10a30a6173
+- Introduction to Econometrics Book
 
-
-
-*NOTE: Formatting:*
-- Your report must be typed and proofread.
-- There is no set minimum length of your paper as long as you cover all of the requirements.
-- However, your paper should not exceed five(5) double spaced pages with 12-point font and
-one-inch margins.
-- This five-page maximum does not include attachments, graphs, tables etc.
-- Projects are to be turned in via Canvas and must be completed individually.
-- Your paper should be only your own work and not that of any other person.
 
