@@ -143,3 +143,41 @@ df16 <- dummy_cols(df16, select_columns = 'gnd')
 
 dummy.model <- lm(df16$age_at_d ~ df16$indv_inc + df16$indv_pctile + df16$mortrate + df16$gnd_F)
 summary(dummy.model)
+
+
+
+
+# List of packages you want to install -- separated with a comma and surrounded in "quotes" 
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car", "AER", "plm", "stargazer", "readxl", "haven", "fastDummies")
+
+# Installs packages
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Loads packages
+invisible(lapply(packages, library, character.only = TRUE))
+
+# Load in Data
+data_table_16 <- read_csv(here("./Data/health_ineq_online_table_16.csv"))
+
+setwd(here("final_project"))
+
+
+# Create dummy column for gender (gnd)
+data_table_16 <- dummy_cols(data_table_16, select_columns = 'gnd')
+
+
+# Mortality rate model
+Mortality.model.3 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$age_at_d + data_table_16$gnd_M)
+summary(Mortality.model.3)
+
+
+# Life Expectancy Model
+Life.Expect.model.3 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$gnd_F + data_table_16$mortrate)
+summary(Life.Expect.model.3)
+
+
+
+

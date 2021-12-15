@@ -163,3 +163,4 @@ summary(indiv_IncomePercentile_LifeExpectancy_Model)
 coeftest(indiv_IncomePercentile_LifeExpectancy_Model, vcov. = vcovHC, type = "HC1")
 
 ```
+

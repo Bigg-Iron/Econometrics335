@@ -97,12 +97,14 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
     The data used was deidentified data from federal income tax records from 1999 to 2014. The measure of income was pretax earnings. Mortality and death rates were attained from the Social Security Administration (SSA). There are several limitations to the data: while I would have liked to include more variables in the regression models, such as race or ethnicity, but race and ethnicity are not recorded in tax records. The other limitation within the data is that the data is not made available to the public, so I had to derive the data from a 2016 JAMA study: "The Association Between Income and Life Expectancy in the United States, 2001-2014".
 
-    This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths.
+    This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths. Additionally, I added two columns to the dataset with binary "dummy" variables (0 if Male, and 1 if Female) to perform regression on gender.
 
 
     Variable Name:                         Variable Description:
     
     gnd                                     Gender
+    *gnd_M                                  Male Gender
+    *gnd_F                                  Female Gender
     indv_pctile                             Individual Income Percentile
     age_at_d                                Age at Death
     yod                                     Year of Death
@@ -188,7 +190,7 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
 
 
-# 4. *TODO: Empirical Results*
+# 4. Empirical Results
 - You may want to, for example, examine your key parameter estimates with and without additional regressors to compare any differences (i.e., run a single regressor model and then a multiple regression model).
 - You should show at least three specifications of your design.
 - These will likely include various non-linear versions of a baseline model, for example by adding a polynomial or interaction variable, or by creating relevant categorical or binary variables to analyze group effects.
@@ -197,12 +199,14 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
 ## Empirical Results of Mortality Rate Models
 
-    The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to the model summary, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by individual income. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. These results are summarized in Table 1.
+    The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to the model summary, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by the coefficients. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. All the coefficients in the models I tested were statistically significant at predicting mortality rates at the level of α = .05; Most notably, individual income percentile (indv_pctile) was statistically the most significant indicator of mortality rate (besides age_at_d, which is to be expected) out of all the coefficients, with a t-value of -182.718, which was significant at the level of α = .001. These results are summarized in Table 1.
 
 
 ## Empirical Results of Life Expectancy Models:
 
-    The second model specification was regressing different coefficients on life expectancy. The coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to table 1, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by individual income. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. These results are summarized in Table 2.
+    The second model specification was regressing different coefficients on life expectancy. The average age at death (age_at_d) for this model was: 39.97.
+    If we used an alpha level of α = .05 to determine which coefficients were significant at predicting life expectancy or age at death, this regression model, we would say that all of the coefficients were statistically significant predictors of life expectancy in this sample. Behind mortality rate, which is to be expected, the most statistically significant coefficient for this regression model was also individual income percentile (indv_pctile). With a t-value of 140.24, it was significant at predicting the life expectancy of individuals at levels down to α = .001. 
+    The R-squared for this life expectancy model was 0.6748, which represents the proportion of the variance for life expectancy that can be explained by the coefficients in the model. The standard error of the regression line (SER) was 5.273, which represents the average distance that the observed values of life expectancy fell from the actual values on the regression line. These results are summarized in Table 2.
 
 
 *NOTE: [INSERT STARGAZER TABLE RESULTS]*
@@ -231,22 +235,20 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
 ```
 
 
-
-# 5. *TODO: Summary and Discussion*
+# 5. Summary and Discussion
 - Summarize your main results and discuss limitations to your approach.
-
-- Carefully explain caveats to your study, especially whether or not certain parameter
-
-estimates may be biased.
-- Suggest what other independent variables, possible functional forms, or statistical tests
-might be appropriate to include and any interesting follow-up questions or extensions
-that may have come to mind.
-
+- Suggest what other independent variables, possible functional forms, or statistical tests might be appropriate to include and any interesting follow-up questions or extensions that may have come to mind.
+- Carefully explain caveats to your study, especially whether or not certain parameter estimates may be biased.
 - Address all issues of internal and external validity.
+    While the results of the regression models were significant, they are not completely surprising. I previously hypothesized that income would be a strong determining factor on health outcomes in the United States, for the reason that healthcare services are bought and sold on a marketplace, and the healthcare services of higher quality will often cost more than those of lesser quality. Consequently, those who have the ability to purchase higher quality healthcare services would realize the benefits as longer life expectancies and lower mortality rates. It is also important to realize that at some income levels, certain healthcare procedures that are not covered by individual's health insurance, would simply be unattainable. To use an exaggerated example, a patient seeking an additional round of chemotherapy treatment for cancer, might not be able to cover the cost of the procedure if it was not covered under their health insurance. Thus, forgoing the additional round of chemotherapy that could have hypothetically extended their life. 
+    
+    One unfortunate limitation of this study, was not being able to accurately control for race or ethnicity. As discussed previously, this information is not recorded on collected tax data, and I would hypothesize that it would also be a significant indicator for life expectancy and mortality rates. Given more time, I would have also liked to compare the results of these models to similar studies done internationally, to contrast the differing results. Additionally, I would like to see how recent COVID-19 data would effect the results of the models.
 
 
 
-## Bibliography
+
+# 6. Graphs and Figures
+# 7. Bibliography
 All cited sources should be reported in a bibliography in MLA format.
 o One useful reference is your textbook.
 Also include anything relevant that is not within the main document at the end, such as
@@ -256,7 +258,7 @@ series of lines of code)
 
 
 
-## Formatting:
+*NOTE: Formatting:*
 - Your report must be typed and proofread.
 - There is no set minimum length of your paper as long as you cover all of the requirements.
 - However, your paper should not exceed five(5) double spaced pages with 12-point font and
