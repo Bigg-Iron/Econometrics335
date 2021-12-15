@@ -24,8 +24,9 @@ if (any(installed_packages == FALSE)) {
 invisible(lapply(packages, library, character.only = TRUE))
 
 # Load in Data
-data_table_16 <- read_csv("../Data/health_ineq_online_table_16.csv")
+data_table_16 <- read_csv(here("./Data/health_ineq_online_table_16.csv"))
 
+setwd(here("final_project"))
 
 ```
 
@@ -130,8 +131,32 @@ sink()
 
 - Describe the content of the summary statistics or table(s)
 *NOTE: [INSERT SUMMARY STATISTICS HERE]*
-```{r}
-summary(data_table_16)
+This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths.
+
+Variable Name:                         Variable Description:
+
+gnd                                     Gender
+indv_pctile                             Individual Income Percentile
+age_at_d                                Age at Death
+yod                                     Year of Death
+lag                                     Income Lag
+mortrate                                Mortality Rate
+indv_inc                                Mean Individual Income
+deaths                                  Numerator of mortrate
+count                                   Denominator of mortrate (alive at beginning of year)
+
+```{r, results='asis'}
+
+stargazer(as.data.frame(data_table_16),
+          type = "latex",
+          title = "National mortality rates by gender, age, year, and individual income percentile")
+
+stargazer(data_table_16[0:9,],
+          header = FALSE,
+          summary = FALSE,
+          rownames = FALSE,
+          align = TRUE,
+          type = "latex")
 
 ```
 

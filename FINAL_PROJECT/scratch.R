@@ -3,57 +3,72 @@
 
 # Mortality Rate Model Specifications:
 Mortality.model.1 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)
+summary(Mortality.model.1)
+coeftest(Mortality.model.1, vcov. = vcovHC, type = "HC1")
 
-Mortality.model.2 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$gnd)
 
-Mortality.model.3 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$gnd + data_table_16$indv_pctile)
+Mortality.model.2 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile)
+summary(Mortality.model.2)
+coeftest(Mortality.model.2, vcov. = vcovHC, type = "HC1")
 
-Mortality.model.4 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$gnd + data_table_16$indv_pctile + data_table_16$age_at_d)
+
+Mortality.model.3 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$age_at_d)
+summary(Mortality.model.3)
+coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
+
+
 
 
 # Life Expectancy (Age at Death) Model Specifications:
 Life.Expect.model.1 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc)
-
-Life.Expect.model.2 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$gnd)
-
-Life.Expect.model.3 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$gnd + data_table_16$indv_pctile)
-
-Life.Expect.model.4 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$gnd + data_table_16$indv_pctile + data_table_16$mortrate)
+summary(Life.Expect.model.1)
+coeftest(Mortality.model.1, vcov. = vcovHC, type = "HC1")
 
 
+Life.Expect.model.2 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$indv_pctile)
+summary(Life.Expect.model.2)
+coeftest(Mortality.model.2, vcov. = vcovHC, type = "HC1")
 
-combined_life_expect <- lm(data = data_table_16, data_table_16$age_at_d ~ data_table_16$indv_pctile + data_table_16$indv_inc + data_table_16$gnd)
-summary(combined_life_expect)
-coeftest(combined_life_expect, vcov. = vcovHC, type = "HC1")
 
-combined_mortality <- lm(data = data_table_16, data_table_16$mortrate ~ data_table_16$indv_pctile + data_table_16$indv_inc + data_table_16$gnd)
-summary(combined_mortality)
-coeftest(combined_mortality, vcov. = vcovHC, type = "HC1")
+Life.Expect.model.3 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$mortrate)
+summary(Life.Expect.model.3)
+coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
 
 
-# gather clustered standard errors in a list
-standard_errors <- list(sqrt(diag(vcovHC(Mortality.model.1, type = "HC1"))),
+
+# Mortality Models standard errors in a list
+mortality_standard_errors <- list(sqrt(diag(vcovHC(Mortality.model.1, type = "HC1"))),
                sqrt(diag(vcovHC(Mortality.model.2, type = "HC1"))),
-               sqrt(diag(vcovHC(Mortality.model.3, type = "HC1"))),
-               sqrt(diag(vcovHC(Mortality.model.4, type = "HC1"))),
+               sqrt(diag(vcovHC(Mortality.model.3, type = "HC1"))))
                
-               sqrt(diag(vcovHC(Life.Expect.model.1, type = "HC1"))),
+
+# Life Expectancy Models standard errors in a list
+Life_Expect_standard_errors <- list(sqrt(diag(vcovHC(Life.Expect.model.1, type = "HC1"))),
                sqrt(diag(vcovHC(Life.Expect.model.2, type = "HC1"))),
-               sqrt(diag(vcovHC(Life.Expect.model.3, type = "HC1"))),
-               sqrt(diag(vcovHC(Life.Expect.model.4, type = "HC1"))))
+               sqrt(diag(vcovHC(Life.Expect.model.3, type = "HC1"))))
 
 
-# STARGAZER TABLES
-stargazer(Mortality.model.1, Mortality.model.2, Mortality.model.3, Mortality.model.4, Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3, Life.Expect.model.4,
+
+# Mortality Models STARGAZER TABLE
+stargazer(Mortality.model.1, Mortality.model.2, Mortality.model.3,
           digits = 3,
           header = FALSE,
-          se = standard_err,
           type = "latex", 
-          title = "combined life expectancy model",
-          model.numbers = FALSE,
-          out="new_models.txt")
+          title = "Mortality Models",
+          model.numbers = TRUE,
+          out="mortality_table.txt")
 
+# Life Expectancy Models STARGAZER TABLE
+stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
+          digits = 3,
+          header = FALSE,
+          type = "latex", 
+          title = "Life Expectancy Models",
+          model.numbers = TRUE,
+          summary = TRUE,
+          t.auto = TRUE,
+          out="life_expect_table.txt")
 
 
 
@@ -105,5 +120,7 @@ plot(x = data_table_16$indv_inc,
      col = "steelblue")
 # Add trend line
 abline(indiv_Income_Mortality_Model, col = "red")
+
+
 
 

@@ -3,8 +3,9 @@ output:
   pdf_document: default
   html_document: default
 ---
-# Plots
 
+
+# Plots:
 
 ## Income and Mortality
 ```{r}
@@ -16,7 +17,7 @@ plot(x = data_table_16$indv_inc,
      main = "Mortality Rates and Income",
      col = "steelblue")
 # Add trend line
-abline(indiv_Income_Mortality_Model, col = "red")
+abline(Mortality.model.1, col = "red")
 ```
 
 
@@ -24,58 +25,68 @@ abline(indiv_Income_Mortality_Model, col = "red")
 ```{r}
 # Plot Income and Mortality 
 plot(x = data_table_16$indv_inc, 
-     y = data_table_16$mortrate, 
+     y = data_table_16$age_at_d, 
      xlab = "Income",
-     ylab = "Mortality Rate",
-     main = "Mortality Rates and Income",
+     ylab = "Age at Death",
+     main = "Life Expectancy and Income",
      col = "steelblue")
 # Add trend line
-abline(indiv_Income_Mortality_Model, col = "red")
+abline(Life.Expect.model.1, col = "red")
 ```
 
 
 
 ## Income Percentile and Mortality Rate
 ```{r}
-# Plot Income and Mortality 
-plot(x = data_table_16$indv_inc, 
+# Plot Income Percentile and Mortality Rate 
+plot(x = data_table_16$indv_pctile, 
      y = data_table_16$mortrate, 
-     xlab = "Income",
+     xlab = "Income Percentile",
      ylab = "Mortality Rate",
-     main = "Mortality Rates and Income",
+     main = "Mortality Rates and Income Percentile",
      col = "steelblue")
 # Add trend line
-abline(indiv_Income_Mortality_Model, col = "red")
+abline(Mortality.model.1, col = "red")
 ```
 
 
 
 ## Income Percentile and Life Expectancy
 ```{r}
-# Plot Income and Mortality 
-plot(x = data_table_16$indv_inc, 
-     y = data_table_16$mortrate, 
-     xlab = "Income",
-     ylab = "Mortality Rate",
-     main = "Mortality Rates and Income",
+plot(x = data_table_16$indv_pctile, 
+     y = data_table_16$age_at_d, 
+     xlab = "Income Percentile",
+     ylab = "Age at Death",
+     main = "Income Percentile and Life Expectancy",
      col = "steelblue")
 # Add trend line
-abline(indiv_Income_Mortality_Model, col = "red")
+abline(Life.Expect.model.1, col = "red")
 ```
 
 
 
+# Models:
 
-```{r, results='asis'}
-# STARGAZER TABLES
-stargazer(indiv_Income_Mortality_Model, indiv_Income_Age_at_Death_Model, indiv_Income_pctile_Mortality_Model, indiv_IncomePercentile_LifeExpectancy_Model, 
-          digits = 3,
-          header = FALSE,
-          se = clustered_standard_errors,
-          type = "latex", 
-          title = "Linear Panel Regression Models of Income and Life Expectancy",
-          model.numbers = FALSE,
-          out="stargazer_table.txt")
+## Mortality Rate Model 1
+```{r}
+Mortality.model.1 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)
+summary(Mortality.model.1)
+coeftest(Mortality.model.1, vcov. = vcovHC, type = "HC1")
 ```
 
+
+## Mortality Rate Model 2
+```{r}
+Mortality.model.2 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile)
+summary(Mortality.model.2)
+coeftest(Mortality.model.2, vcov. = vcovHC, type = "HC1")
+```
+
+
+## Mortality Rate Model 3
+```{r}
+Mortality.model.3 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$age_at_d)
+summary(Mortality.model.3)
+coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
+```
 
