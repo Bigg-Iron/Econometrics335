@@ -32,19 +32,9 @@ setwd(here("final_project"))
 
 
 # 1. Introduction and Statement of Research Question
-- Pose and motivate the question to be investigated with your data and econometric model.
-The relationship between income and health outcomes are well established. However, I wanted to investigate the relationship between an individual's income and their life expectancy. To put simply, does income effect how long you live?
 
-
-- Express the question both verbally and in the form of an equation to be estimated. Be sure to include the names and units of the dependent and independent variables.
-- You must include at least three independent variables, but can include as many as you’d like
-beyond that.
-- Explain the mechanisms you believe pertain to your study question and why you selected the
-particular X variables that you did and why you didn’t select others.
-- You may also want to briefly cite relevant literature (e.g. previous studies) that you come across while researching your topic.
-
+    The relationship between income and health outcomes are well established. However, I wanted to investigate the relationship between an individual's income and their life expectancy. To put simply, does income effect how long you live?
     I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
-    
     I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), while holding gender (gnd) constant.
     
     
@@ -87,13 +77,7 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 ```
 
 
-
-
-
 # 2. Data Description
-- Describe the data used to estimate the model. Your data set must have at least 40 observations.
-- You should construct a table that provides the mean, minimum, maximum and standard deviation (and any other summary statistics you feel are relevant) of all variables in the model.
-- You might also want to show and discuss key scatterplots or graphs of interest.
 
     The data used was deidentified data from federal income tax records from 1999 to 2014. The measure of income was pretax earnings. Mortality and death rates were attained from the Social Security Administration (SSA). There are several limitations to the data: while I would have liked to include more variables in the regression models, such as race or ethnicity, but race and ethnicity are not recorded in tax records. The other limitation within the data is that the data is not made available to the public, so I had to derive the data from a 2016 JAMA study: "The Association Between Income and Life Expectancy in the United States, 2001-2014".
 
@@ -115,7 +99,6 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
     count                                   Denominator of mortrate (alive at beginning of year)
 
 
-*NOTE: [INSERT SUMMARY STATISTICS HERE]*
 ```{r, results='asis'}
 
 stargazer(as.data.frame(data_table_16),
@@ -133,15 +116,7 @@ stargazer(data_table_16[0:9,],
 ```
 
 
-
-
 # 3. Formulation of the Model
-- Express the question both verbally and in the form of an equation to be estimated. Be sure to include the names and units of the dependent and independent variables.
-- You must include at least three independent variables, but can include as many as you’d like
-beyond that.
-- Explain the mechanisms you believe pertain to your study question and why you selected the
-particular X variables that you did and why you didn’t select others.
-- You may also want to briefly cite relevant literature (e.g. previous studies) that you come across while researching your topic.
 
     I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
     
@@ -187,15 +162,7 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 ```
 
 
-
-
-
 # 4. Empirical Results
-- You may want to, for example, examine your key parameter estimates with and without additional regressors to compare any differences (i.e., run a single regressor model and then a multiple regression model).
-- You should show at least three specifications of your design.
-- These will likely include various non-linear versions of a baseline model, for example by adding a polynomial or interaction variable, or by creating relevant categorical or binary variables to analyze group effects.
-- Explain the meaning of estimated coefficients in your model and whether or not coefficients are statistically significant and at what level.
-- Also discuss the goodness of fit measure for the model (e.g. R-squared, SER, adjusted R-squared). 
 
 ## Empirical Results of Mortality Rate Models
 
@@ -209,7 +176,6 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
     The R-squared for this life expectancy model was 0.6748, which represents the proportion of the variance for life expectancy that can be explained by the coefficients in the model. The standard error of the regression line (SER) was 5.273, which represents the average distance that the observed values of life expectancy fell from the actual values on the regression line. These results are summarized in Table 2.
 
 
-*NOTE: [INSERT STARGAZER TABLE RESULTS]*
 ```{r, results='asis'}
 
 # Mortality Models STARGAZER TABLE
@@ -235,11 +201,9 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
 ```
 
 
+
 # 5. Summary and Discussion
-- Summarize your main results and discuss limitations to your approach.
-- Suggest what other independent variables, possible functional forms, or statistical tests might be appropriate to include and any interesting follow-up questions or extensions that may have come to mind.
-- Carefully explain caveats to your study, especially whether or not certain parameter estimates may be biased.
-- Address all issues of internal and external validity.
+
     While the results of the regression models were significant, they are not completely surprising. I previously hypothesized that income would be a strong determining factor on health outcomes in the United States, for the reason that healthcare services are bought and sold on a marketplace, and the healthcare services of higher quality will often cost more than those of lesser quality. Consequently, those who have the ability to purchase higher quality healthcare services would realize the benefits as longer life expectancies and lower mortality rates. It is also important to realize that at some income levels, certain healthcare procedures that are not covered by individual's health insurance, would simply be unattainable. To use an exaggerated example, a patient seeking an additional round of chemotherapy treatment for cancer, might not be able to cover the cost of the procedure if it was not covered under their health insurance. Thus, forgoing the additional round of chemotherapy that could have hypothetically extended their life. 
     
     One unfortunate limitation of this study, was not being able to accurately control for race or ethnicity. As discussed previously, this information is not recorded on collected tax data, and I would hypothesize that it would also be a significant indicator for life expectancy and mortality rates. Given more time, I would have also liked to compare the results of these models to similar studies done internationally, to contrast the differing results. Additionally, I would like to see how recent COVID-19 data would effect the results of the models.
