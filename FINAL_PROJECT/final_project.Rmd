@@ -9,6 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo = TRUE)
 
 # List of packages you want to install -- separated with a comma and surrounded in "quotes" 
@@ -26,6 +27,9 @@ invisible(lapply(packages, library, character.only = TRUE))
 # Load in Data
 data_table_16 <- read_csv(here("./Data/health_ineq_online_table_16.csv"))
 
+# Create dummy column for gender (gnd)
+data_table_16 <- dummy_cols(data_table_16, select_columns = 'gnd')
+
 setwd(here("final_project"))
 
 ```
@@ -33,9 +37,7 @@ setwd(here("final_project"))
 
 # 1. Introduction and Statement of Research Question
 
-    The relationship between income and health outcomes are well established. However, I wanted to investigate the relationship between an individual's income and their life expectancy. To put simply, does income effect how long you live?
-    I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
-    I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), while holding gender (gnd) constant.
+The relationship between income and health outcomes are well established. However, I wanted to investigate the relationship between an individual's income and their life expectancy. To put simply, does income effect how long you live? I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), while holding gender (gnd) constant.
     
     
 ## Mortality Rate Model Specifications:
@@ -79,24 +81,9 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
 # 2. Data Description
 
-    The data used was deidentified data from federal income tax records from 1999 to 2014. The measure of income was pretax earnings. Mortality and death rates were attained from the Social Security Administration (SSA). There are several limitations to the data: while I would have liked to include more variables in the regression models, such as race or ethnicity, but race and ethnicity are not recorded in tax records. The other limitation within the data is that the data is not made available to the public, so I had to derive the data from a 2016 JAMA study: "The Association Between Income and Life Expectancy in the United States, 2001-2014".
+The data used was deidentified data from federal income tax records from 1999 to 2014. The measure of income was pretax earnings. Mortality and death rates were attained from the Social Security Administration (SSA). There are several limitations to the data: while I would have liked to include more variables in the regression models, such as race or ethnicity, but race and ethnicity are not recorded in tax records. The other limitation within the data is that the data is not made available to the public, so I had to derive the data from a 2016 JAMA study: "The Association Between Income and Life Expectancy in the United States, 2001-2014".
 
-    This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths. Additionally, I added two columns to the dataset with binary "dummy" variables (0 if Male, and 1 if Female) to perform regression on gender.
-
-
-    Variable Name:                         Variable Description:
-    
-    gnd                                     Gender
-    *gnd_M                                  Male Gender
-    *gnd_F                                  Female Gender
-    indv_pctile                             Individual Income Percentile
-    age_at_d                                Age at Death
-    yod                                     Year of Death
-    lag                                     Income Lag
-    mortrate                                Mortality Rate
-    indv_inc                                Mean Individual Income
-    deaths                                  Numerator of mortrate
-    count                                   Denominator of mortrate (alive at beginning of year)
+This table reports US mortality rates by gender, age, year and individual income percentile. Individual income percentiles are calculated separately for each gender, age, and year. Incomes are measured two years prior to the mortality rate for mortality rates at ages 40-63, and at age 61 for mortality rates at ages 64-76. The “lag” variable indicates the number of years between measurement of income and mortality. Observations with 1 or 2 deaths have been masked: all mortality rates that reflect only 1 or 2 deaths have been recoded to reflect 3 deaths. Additionally, I added two columns to the dataset with binary "dummy" variables (0 if Male, and 1 if Female) to perform regression on gender.
 
 
 ```{r, results='asis'}
@@ -106,21 +93,23 @@ stargazer(as.data.frame(data_table_16),
           type = "latex",
           title = "National mortality rates by gender, age, year, and individual income percentile")
 
+```
+
+```{r, results='asis'}
+
 stargazer(data_table_16[0:9,],
           header = FALSE,
           summary = FALSE,
           rownames = FALSE,
-          align = TRUE,
           type = "latex")
 
 ```
 
-
 # 3. Formulation of the Model
 
-    I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
+I hypothesize that individual income has a significant effect on mortality and life expectancy. The United State's lack of basic social programs, and the privatization of healthcare, simply equates to health outcomes in proportion to an individual's income. Under the classical assumptions of economics, the market for healthcare services would behave identically to any other market, i.e. the market for an automobile; the vehicles with better features, airbags, seatbelts, cupholders, etc., will inherently cost more, and only the individual's who can afford these features will purchase the automobile. This often implies that those with higher incomes can afford vehicles with more advanced safety systems, reducing their chances of being injured or dying in a car crash. I hypothesize that these same market mechanisms apply to healthcare, and are pronounced due to the nature of services being sought. Individual's at the lower end of the income distribution are not able to afford the same healthcare services that the top income earners can afford. It is well established that access to better healthcare improves individual health outcomes and life expectancy. Therefore, it is reasonable to assume that those who do not have access to quality healthcare will have poorer health outcomes and a shorter life expectancy. 
     
-    I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), while holding gender (gnd) constant.
+I test the hypothesis that individual income is a statistically significant indicator on life expectancy and mortality rate. In the model I have included individual income (indv_inc), individual income percentile (indv_pctile), while holding gender (gnd) constant.
     
     
 ## Mortality Rate Model Specifications:
@@ -166,14 +155,14 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
 ## Empirical Results of Mortality Rate Models
 
-    The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to the model summary, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by the coefficients. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. All the coefficients in the models I tested were statistically significant at predicting mortality rates at the level of α = .05; Most notably, individual income percentile (indv_pctile) was statistically the most significant indicator of mortality rate (besides age_at_d, which is to be expected) out of all the coefficients, with a t-value of -182.718, which was significant at the level of α = .001. These results are summarized in Table 1.
+The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to the model summary, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by 1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of $\alpha$ = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by the coefficients. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. All the coefficients in the models I tested were statistically significant at predicting mortality rates at the level of $\alpha$ = .05; Most notably, individual income percentile (indv_pctile) was statistically the most significant indicator of mortality rate (besides age_at_d, which is to be expected) out of all the coefficients, with a t-value of -182.718, which was significant at the level of $\alpha$ = .001. These results are summarized in Table 1.
 
 
 ## Empirical Results of Life Expectancy Models:
 
-    The second model specification was regressing different coefficients on life expectancy. The average age at death (age_at_d) for this model was: 39.97.
-    If we used an alpha level of α = .05 to determine which coefficients were significant at predicting life expectancy or age at death, this regression model, we would say that all of the coefficients were statistically significant predictors of life expectancy in this sample. Behind mortality rate, which is to be expected, the most statistically significant coefficient for this regression model was also individual income percentile (indv_pctile). With a t-value of 140.24, it was significant at predicting the life expectancy of individuals at levels down to α = .001. 
-    The R-squared for this life expectancy model was 0.6748, which represents the proportion of the variance for life expectancy that can be explained by the coefficients in the model. The standard error of the regression line (SER) was 5.273, which represents the average distance that the observed values of life expectancy fell from the actual values on the regression line. These results are summarized in Table 2.
+The second model specification was regressing different coefficients on life expectancy. The average age at death (age_at_d) for this model was: 39.97.
+If we used an alpha level of $\alpha$ = .05 to determine which coefficients were significant at predicting life expectancy or age at death, this regression model, we would say that all of the coefficients were statistically significant predictors of life expectancy in this sample. Behind mortality rate, which is to be expected, the most statistically significant coefficient for this regression model was also individual income percentile (indv_pctile). With a t-value of 140.24, it was significant at predicting the life expectancy of individuals at levels down to $\alpha$ = .001. 
+The R-squared for this life expectancy model was 0.6748, which represents the proportion of the variance for life expectancy that can be explained by the coefficients in the model. The standard error of the regression line (SER) was 5.273, which represents the average distance that the observed values of life expectancy fell from the actual values on the regression line. These results are summarized in Table 2.
 
 
 ```{r, results='asis'}
@@ -184,8 +173,7 @@ stargazer(Mortality.model.1, Mortality.model.2, Mortality.model.3,
           header = FALSE,
           type = "latex", 
           title = "Table 1: Mortality Models",
-          model.numbers = TRUE,
-          out="mortality_table.txt")
+          model.numbers = TRUE)
 
 # Life Expectancy Models STARGAZER TABLE
 stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
@@ -195,8 +183,7 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
           title = "Table 2: Life Expectancy Models",
           model.numbers = TRUE,
           summary = TRUE,
-          t.auto = TRUE,
-          out="life_expect_table.txt")
+          t.auto = TRUE)
 
 ```
 
@@ -204,9 +191,9 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
 
 # 5. Summary and Discussion
 
-    While the results of the regression models were significant, they are not completely surprising. I previously hypothesized that income would be a strong determining factor on health outcomes in the United States, for the reason that healthcare services are bought and sold on a marketplace, and the healthcare services of higher quality will often cost more than those of lesser quality. Consequently, those who have the ability to purchase higher quality healthcare services would realize the benefits as longer life expectancies and lower mortality rates. It is also important to realize that at some income levels, certain healthcare procedures that are not covered by individual's health insurance, would simply be unattainable. To use an exaggerated example, a patient seeking an additional round of chemotherapy treatment for cancer, might not be able to cover the cost of the procedure if it was not covered under their health insurance. Thus, forgoing the additional round of chemotherapy that could have hypothetically extended their life. 
+While the results of the regression models were significant, they are not completely surprising. I previously hypothesized that income would be a strong determining factor on health outcomes in the United States, for the reason that healthcare services are bought and sold on a marketplace, and the healthcare services of higher quality will often cost more than those of lesser quality. Consequently, those who have the ability to purchase higher quality healthcare services would realize the benefits as longer life expectancies and lower mortality rates. It is also important to realize that at some income levels, certain healthcare procedures that are not covered by individual's health insurance, would simply be unattainable. To use an exaggerated example, a patient seeking an additional round of chemotherapy treatment for cancer, might not be able to cover the cost of the procedure if it was not covered under their health insurance. Thus, forgoing the additional round of chemotherapy that could have hypothetically extended their life. 
     
-    One unfortunate limitation of this study, was not being able to accurately control for race or ethnicity. As discussed previously, this information is not recorded on collected tax data, and I would hypothesize that it would also be a significant indicator for life expectancy and mortality rates. Given more time, I would have also liked to compare the results of these models to similar studies done internationally, to contrast the differing results. Additionally, I would like to see how recent COVID-19 data would effect the results of the models.
+One unfortunate limitation of this study, was not being able to accurately control for race or ethnicity. As discussed previously, this information is not recorded on collected tax data, and I would hypothesize that it would also be a significant indicator for life expectancy and mortality rates. Given more time, I would have also liked to compare the results of these models to similar studies done internationally, to contrast the differing results. Additionally, I would like to see how recent COVID-19 data would effect the results of the models.
 
 
 # 6. Graphs and Figures
