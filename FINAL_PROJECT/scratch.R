@@ -137,8 +137,9 @@ stargazer(panel_model,
 
 
 
+data_table_16 <- dummy_cols(data_table_16, select_columns = 'gnd')
 
 df16 <- dummy_cols(df16, select_columns = 'gnd')
 
-dummy.model <- lm(df16$age_at_d ~ df16$indv_inc + df16$gnd_M + df16$gnd_F)
+dummy.model <- lm(df16$age_at_d ~ df16$indv_inc + df16$indv_pctile + df16$mortrate + df16$gnd_F)
 summary(dummy.model)

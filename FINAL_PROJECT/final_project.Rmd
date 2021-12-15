@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE, echo = TRUE)
 
 # List of packages you want to install -- separated with a comma and surrounded in "quotes" 
-packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car", "AER", "plm", "stargazer", "readxl","haven")
+packages <- c("tidyverse", "dplyr", "moments", "lmtest", "sandwich", "stringr", "readr", "here", "ggplot2", "modelr", "MASS", "knitr", "formatR", "car", "AER", "plm", "stargazer", "readxl", "haven", "fastDummies")
 
 # Installs packages
 installed_packages <- packages %in% rownames(installed.packages())
@@ -159,7 +159,7 @@ summary(Mortality.model.2)
 coeftest(Mortality.model.2, vcov. = vcovHC, type = "HC1")
 
 
-Mortality.model.3 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$age_at_d)
+Mortality.model.3 <- lm(data_table_16$mortrate ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$age_at_d + data_table_16$gnd_M)
 summary(Mortality.model.3)
 coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
@@ -178,7 +178,7 @@ Life.Expect.model.2 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data
 summary(Life.Expect.model.2)
 coeftest(Mortality.model.2, vcov. = vcovHC, type = "HC1")
 
-Life.Expect.model.3 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$mortrate)
+Life.Expect.model.3 <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc + data_table_16$indv_pctile + data_table_16$gnd_F + data_table_16$mortrate)
 summary(Life.Expect.model.3)
 coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
@@ -190,14 +190,19 @@ coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 
 # 4. *TODO: Empirical Results*
 - You may want to, for example, examine your key parameter estimates with and without additional regressors to compare any differences (i.e., run a single regressor model and then a multiple regression model).
-
 - You should show at least three specifications of your design.
-
 - These will likely include various non-linear versions of a baseline model, for example by adding a polynomial or interaction variable, or by creating relevant categorical or binary variables to analyze group effects.
 - Explain the meaning of estimated coefficients in your model and whether or not coefficients are statistically significant and at what level.
 - Also discuss the goodness of fit measure for the model (e.g. R-squared, SER, adjusted R-squared). 
 
-    The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to table 1, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by individual income. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line.
+## Empirical Results of Mortality Rate Models
+
+    The first mortality model (Mortality.model.1), the coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to the model summary, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by individual income. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. These results are summarized in Table 1.
+
+
+## Empirical Results of Life Expectancy Models:
+
+    The second model specification was regressing different coefficients on life expectancy. The coefficient representing individual income (indv_inc) was regressed on mortality rates. The average mortality rate for this model was:   6.362e-03. According to table 1, there is an inverse relationship between income and the mortality rate: on average, as an individual's income rises by $1.00 USD, the individual's mortality rate decreases by -6.7516e-09. The t-value for the individual income coefficient was -32.35. If we used an alpha level of α = .05 to determine which predictors were significant in this regression model, we would say that indv_inc is a statistically significant predictor of the mortality rate in this sample. The R-squared for this model was 0.01934, which represents the proportion of the variance for the mortality rate that can be explained by individual income. The standard error of the regression line (SER) was 0.006259, which represents the average distance that the observed values of mortality rate fall from the actual values on the regression line. These results are summarized in Table 2.
 
 
 *NOTE: [INSERT STARGAZER TABLE RESULTS]*
@@ -227,7 +232,7 @@ stargazer(Life.Expect.model.1, Life.Expect.model.2, Life.Expect.model.3,
 
 
 
-# 5. Summary and Discussion
+# 5. *TODO: Summary and Discussion*
 - Summarize your main results and discuss limitations to your approach.
 
 - Carefully explain caveats to your study, especially whether or not certain parameter
