@@ -122,5 +122,23 @@ plot(x = data_table_16$indv_inc,
 abline(indiv_Income_Mortality_Model, col = "red")
 
 
+df16 <- read_csv(here("./Data/health_ineq_online_table_16.csv"))
+is.data.frame(df16)
+
+panel_model <- plm(df16$age_at_d ~ df16$indv_inc, data = df16, index = "yod", model = "within")
+summary(panel_model)
+
+stargazer(panel_model,
+          header = FALSE,
+          type = "latex", 
+          title = "panel model",
+          model.numbers = TRUE,
+          out="panelModel.txt")
 
 
+
+
+df16 <- dummy_cols(df16, select_columns = 'gnd')
+
+dummy.model <- lm(df16$age_at_d ~ df16$indv_inc + df16$gnd_M + df16$gnd_F)
+summary(dummy.model)

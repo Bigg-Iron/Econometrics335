@@ -90,3 +90,75 @@ summary(Mortality.model.3)
 coeftest(Mortality.model.3, vcov. = vcovHC, type = "HC1")
 ```
 
+
+
+# Panel Model
+```{r}
+panel_model <- plm(df16$age_at_d ~ df16$indv_inc, data = df16, index = "yod", model = "within")
+summary(panel_model)
+```
+
+
+
+
+## Mortality Rate Model
+$$ \widehat{MortalityRate_{it}} =  \beta0 + \beta1 + \underset{(2.5722e-5)}{6.362022e-03} - \underset{(2.0868e-10)}{6.752e-09} \times indv\_inc_{it} + u_{it} $$
+
+
+## Individual Income and Mortality Rate Model
+$$ \widehat{MortalityRate_{it}} =   \underset{(2.5722e-5)}{6.362022e-03} - \underset{(2.0868e-10)}{6.752e-09} \times indv\_inc_{it} + u_{it} $$
+```{r}
+
+# Individual Income and Mortality Rate Model
+indiv_Income_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_inc)
+cat("Individual Income and Mortality Rate Model: \n ")
+summary(indiv_Income_Mortality_Model)
+coeftest(indiv_Income_Mortality_Model, vcov. = vcovHC, type = "HC1")
+
+```
+
+
+
+## Individual Income and Life Expectancy Model
+$$ \widehat{LifeExpectancy_{it}} =   \underset{(0.03481)}{54.966} + \underset{(2.43e-07)}{8.3513e-07} \times indv\_inc_{it} + u_{it} $$
+```{r}
+
+# Individual Income and Age at Death Model
+indiv_Income_Age_at_Death_Model <- lm(data_table_16$age_at_d ~ data_table_16$indv_inc)
+cat("Individual Income and Age at Death Model:")
+cat("\n ---------------------------------------------------------------")
+summary(indiv_Income_Age_at_Death_Model)
+coeftest(indiv_Income_Age_at_Death_Model, vcov. = vcovHC, type = "HC1")
+
+```
+
+
+
+
+## Individual Income Percentile and mortality rate Model
+$$ \widehat{MortalityRate_{it}} =   \underset{(4.058e-05)}{9.993e-03} - \underset{(7.5419e-07)}{7.990e-05} \times indv\_pctile_{it} + u_{it} $$
+```{r}
+
+# Individual Income Percentile and Mortality Rate Model
+indiv_Income_pctile_Mortality_Model <- lm(data_table_16$mortrate ~ data_table_16$indv_pctile)
+cat("Individual Income Percentile and Mortality Rate Model: \n ")
+summary(indiv_Income_pctile_Mortality_Model)
+coeftest(indiv_Income_pctile_Mortality_Model, vcov. = vcovHC, type = "HC1")
+
+
+```
+
+
+
+## Individual Income Percentile and Life Expectancy Model
+$$ \widehat{LifeExpectancy_{it}} =   \underset{(6.3758e-02)}{5.5016e+01} - \underset{(1.0961e-03)}{5.9910e-16} \times indv\_pctile_{it} + u_{it} $$
+```{r}
+
+# Individual Income Percentile and Life Expectancy Model
+indiv_IncomePercentile_LifeExpectancy_Model <- lm(data_table_16$age_at_d ~ data_table_16$indv_pctile)
+cat("Individual Income Percentile and Age at Death Model:")
+cat("\n ---------------------------------------------------------------")
+summary(indiv_IncomePercentile_LifeExpectancy_Model)
+coeftest(indiv_IncomePercentile_LifeExpectancy_Model, vcov. = vcovHC, type = "HC1")
+
+```
