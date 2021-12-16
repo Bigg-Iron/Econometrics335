@@ -181,3 +181,4 @@ summary(Life.Expect.model.3)
 
 
 
+stargazer::stargazer(Mortality.model.1, out = "temp.txt")
